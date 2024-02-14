@@ -8,10 +8,6 @@ export default defineComponent({
       type: String,
       required: true
     },
-    textColor: {
-      type: String,
-      default: 'var(--green300)'
-    },
     icon: {
       type: String,
       default: ''
@@ -32,7 +28,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <a :style="{ color: textColor }" to="handleClick">
+  <a to="handleClick">
     <span v-if="icon" class="icon" v-html="icon"></span>
     {{ buttonText }}
   </a>
@@ -41,6 +37,24 @@ export default defineComponent({
 <style scoped>
 a {
   background-color: var(--green1200);
-  border: 2px solid var(--green1200);
+  color: var(--green300);
+}
+a:hover {
+  background-color: var(--green600);
+  color: var(--black);
+}
+a:active {
+  background-color: var(--green400);
+}
+a:focus::before {
+  content: ' ';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid #272727;
+  opacity: 1;
+  background-color: transparent;
 }
 </style>
