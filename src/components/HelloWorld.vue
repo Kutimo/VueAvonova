@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
+</script>
 
 <template>
   <div class="greetings">
@@ -14,6 +16,7 @@
     <p class="body-lg">body lg Lorem ipsum dolor sit amet.</p>
     <p class="body-md">body md Lorem ipsum dolor sit amet.</p>
   </div>
+  <ButtonPrimary button-text="Buy now" />
 </template>
 
 <style scoped></style>
