@@ -28,7 +28,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <a to="handleClick">
+  <a to="handleClick" tabindex="0">
     <span v-if="icon" class="icon" v-html="icon"></span>
     {{ buttonText }}
   </a>
@@ -46,15 +46,8 @@ a:hover {
 a:active {
   background-color: var(--green400);
 }
-a:focus::before {
-  content: ' ';
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #272727;
-  opacity: 1;
-  background-color: transparent;
+a:focus {
+  outline: 2px solid #272727;
+  outline-offset: 2px;
 }
 </style>
