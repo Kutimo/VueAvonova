@@ -1,23 +1,28 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref, onMounted } from 'vue';
+import ProductCard from '@/components/ProductCard.vue';
+
+const hospitalIcon = ref('');
+
+onMounted(async () => {
+  const iconModule = await import('@/assets/productCardIcons/Icons/hospital.png');
+  hospitalIcon.value = iconModule.default;
+});
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
 
   <main>
-    <TheWelcome />
+    <ProductCard 
+      :cardIcon="hospitalIcon"
+      cardHeader="Helsetilbud"
+      cardContent="Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      Sed convallis porttitor pellentesque. Donec consectetur felis at mattis luctus."
+    />
   </main>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 header {
   line-height: 1.5;
 }
@@ -44,4 +49,4 @@ header {
     flex-wrap: wrap;
   }
 }
-</style>
+</style> -->
