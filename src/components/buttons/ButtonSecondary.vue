@@ -44,10 +44,10 @@ a:hover {
   color: var(--white);
 }
 a:active {
-  background-color: var(--green400);
+  background-color: #00382e;
 }
-a:focus {
+a:focus-visible {
   outline: 2px solid #272727;
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 </style>

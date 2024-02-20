@@ -46,8 +46,8 @@ a:hover {
 a:active {
   background-color: var(--green400);
 }
-a:focus {
+a:focus-visible {
   outline: 2px solid #272727;
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 </style>
