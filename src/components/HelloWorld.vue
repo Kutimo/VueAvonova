@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
+import ButtonSecondary from './buttons/ButtonSecondary.vue'
 </script>
 
 <template>
@@ -17,6 +18,7 @@ import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
     <p class="body-md">body md Lorem ipsum dolor sit amet.</p>
   </div>
   <ButtonPrimary button-text="Buy now" />
+  <ButtonSecondary button-text="secondary" />
 </template>
 
 <style scoped></style>
