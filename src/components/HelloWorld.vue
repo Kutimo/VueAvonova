@@ -17,8 +17,23 @@ import ButtonSecondary from './buttons/ButtonSecondary.vue'
     <p class="body-lg">body lg Lorem ipsum dolor sit amet.</p>
     <p class="body-md">body md Lorem ipsum dolor sit amet.</p>
   </div>
-  <ButtonPrimary button-text="Buy now" />
-  <ButtonSecondary button-text="secondary" />
+  <div class="buttons">
+    <ButtonPrimary button-text="Buy now" />
+    <ButtonSecondary button-text="secondary" />
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.greetings {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  gap: 15px;
+}
+
+.buttons {
+  display: flex;
+  margin: 10px;
+  gap: 15px;
+}
+</style>
