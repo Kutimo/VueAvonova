@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
 import ButtonSecondary from './buttons/ButtonSecondary.vue'
+import Input from './input/Input.vue'
 </script>
 
 <template>
@@ -21,6 +22,7 @@ import ButtonSecondary from './buttons/ButtonSecondary.vue'
     <ButtonPrimary button-text="Buy now" />
     <ButtonSecondary button-text="secondary" />
   </div>
+  <Input label="Text" name="lastName" descriptive-text="hello" />
 </template>
 
 <style scoped>
