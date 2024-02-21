@@ -22,9 +22,9 @@ export default {
         <img src="../icons/IconArrow.svg" alt="Helseforsikring icon" height="10" width="15" />
       </li>
     </ul>
-    <div>
+    <div class="buttons">
       <button>
-        <img src="../icons/IconUser.svg" alt="Brukermeny" height="40" width="40" />
+        <img src="../icons/IconUser.svg" alt="Brukermeny" height="18" width="20" />
       </button>
       <button>
         <img src="../icons/IconQuestion.svg" alt="hjelpemeny" height="40" width="40" />
@@ -33,4 +33,38 @@ export default {
   </nav>
 </template>
 
-<style scoped></style>
+<style scoped>
+li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--green1100);
+  font-weight: 400;
+  font-size: 20px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--gray200);
+  border: 2px solid var(--green1100);
+  border-radius: 100px;
+  height: 40px;
+  width: 40px;
+}
+</style>
