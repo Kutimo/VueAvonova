@@ -43,7 +43,7 @@ export default defineComponent({
       </label>
       <img
         v-if="icon"
-        src="../icons/IconQuestion.svg"
+        src="../icons/IconQuestionBlue.svg"
         alt="Question icon"
         width="24"
         height="24"
