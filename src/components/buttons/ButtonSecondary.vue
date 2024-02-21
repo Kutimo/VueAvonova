@@ -38,6 +38,11 @@ export default defineComponent({
 a {
   background-color: var(--green200);
   color: var(--black);
+  font-size: 16px;
+  line-height: 20.8px;
+  border-radius: var(--radius-28);
+  padding: var(--spacing-12) var(--spacing-24);
+  outline: none;
 }
 a:hover {
   background-color: var(--green1200);
