@@ -20,12 +20,12 @@ export default defineComponent({
       default: ''
     },
     icon: {
-      type: String,
-      default: ''
+      type: Boolean,
+      default: false
     },
     error: {
       type: Boolean,
-      default: true
+      default: false
     },
     errorText: {
       type: String,
@@ -37,13 +37,29 @@ export default defineComponent({
 
 <template>
   <div class="input">
-    <label for="{{name}}">
-      {{ label }}
-      <p>{{ descriptiveText }}</p>
-      <input id="{{name}}" type="text" :placeholder="placeholder" />
-    </label>
+    <div class="input__label">
+      <label for="{{name}}">
+        {{ label }}
+      </label>
+      <img
+        v-if="icon"
+        src="../icons/IconQuestion.svg"
+        alt="Question icon"
+        width="24"
+        height="24"
+        class="input__label-icon"
+      />
+    </div>
+    <p>{{ descriptiveText }}</p>
+    <input id="{{name}}" type="text" :placeholder="placeholder" />
     <div v-if="error" class="input__error">
-      <img class="input__error-img" src="../icons/IconError.svg" alt="error icon" />
+      <img
+        class="input__error-img"
+        src="../icons/IconError.svg"
+        alt="error icon"
+        height="12"
+        width="12"
+      />
       <p class="input__error-text">{{ errorText }}</p>
     </div>
   </div>
@@ -69,6 +85,20 @@ input:active {
   border-color: var(--green1100);
 }
 
+.input__label {
+  display: flex;
+  gap: 8px;
+}
+label {
+  font-size: 16px;
+  font-weight: 500;
+}
+p {
+  font-size: 16px;
+}
+.input__label-icon {
+  cursor: pointer;
+}
 .input__error {
   display: flex;
   align-items: center;

@@ -22,7 +22,12 @@ import Input from './input/Input.vue'
     <ButtonPrimary button-text="Buy now" />
     <ButtonSecondary button-text="secondary" />
   </div>
-  <Input label="Text" name="lastName" descriptive-text="hello" />
+  <div>
+    <p>inputs:</p>
+    <Input label="Text" name="lastName" descriptive-text="hello" error error-text="test" />
+    <Input label="with error" name="lastName" descriptive-text="hello" error error-text="test" />
+    <Input label="with question icon" name="lastName" descriptive-text="hello" icon />
+  </div>
 </template>
 
 <style scoped>
