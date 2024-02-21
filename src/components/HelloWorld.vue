@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import Nav from '@/components/Layout/Nav.vue'
 import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
 import ButtonSecondary from './buttons/ButtonSecondary.vue'
 import Input from './input/Input.vue'
 </script>
 
 <template>
+  <Nav />
   <div class="greetings">
     <h1>h1 Lorem ipsum dolor sit amet.</h1>
     <h2>h2 Lorem ipsum dolor sit amet.</h2>
