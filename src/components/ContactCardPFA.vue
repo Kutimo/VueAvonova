@@ -65,7 +65,7 @@ p {
     align-items: center;
   }
 }
-t .ContactAndCallBtnContainer {
+.ContactAndCallBtnContainer {
   display: flex;
   flex-direction: column;
 }
