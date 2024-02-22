@@ -3,6 +3,7 @@ import Nav from '@/components/Layout/Nav.vue'
 import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
 import ButtonSecondary from './buttons/ButtonSecondary.vue'
 import Input from './input/Input.vue'
+import ContactCardPFA from './ContactCardPFA.vue'
 </script>
 
 <template>
@@ -30,6 +31,9 @@ import Input from './input/Input.vue'
     <Input label="with error" name="lastName" descriptive-text="hello" error error-text="test" />
     <Input label="with question icon" name="lastName" descriptive-text="hello" icon />
   </div>
+  <div class="PFA">
+    <ContactCardPFA />
+  </div>
 </template>
 
 <style scoped>
@@ -41,6 +45,12 @@ import Input from './input/Input.vue'
 }
 
 .buttons {
+  display: flex;
+  margin: 10px;
+  gap: 15px;
+}
+
+.PFA {
   display: flex;
   margin: 10px;
   gap: 15px;
