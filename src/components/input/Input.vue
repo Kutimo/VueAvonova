@@ -1,38 +1,38 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 export default defineComponent({
-  name: 'Input',
+  name: "Input",
   props: {
     label: {
       type: String,
-      required: true
+      required: true,
     },
     name: {
       type: String,
-      required: true
+      required: true,
     },
     placeholder: {
       type: String,
-      default: ''
+      default: "",
     },
     descriptiveText: {
       type: String,
-      default: ''
+      default: "",
     },
     icon: {
       type: Boolean,
-      default: false
+      default: false,
     },
     error: {
       type: Boolean,
-      default: false
+      default: false,
     },
     errorText: {
       type: String,
-      default: ''
-    }
-  }
-})
+      default: "",
+    },
+  },
+});
 </script>
 
 <template>

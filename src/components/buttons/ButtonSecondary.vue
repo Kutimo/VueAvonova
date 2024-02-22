@@ -1,22 +1,22 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'ButtonSecondary',
+  name: "ButtonSecondary",
   props: {
     buttonText: {
       type: String,
-      required: true
+      required: true,
     },
     icon: {
       type: String,
-      default: ''
+      default: "",
     },
     to: {
       type: [String, Object],
-      default: ''
-    }
-  }
+      default: "",
+    },
+  },
   // methods: {
   // handleClick() {
   //   if (this.to) {
@@ -24,7 +24,7 @@ export default defineComponent({
   //     console.log('Navigating to:', this.to)
   //   }
   // }
-})
+});
 </script>
 
 <template>
