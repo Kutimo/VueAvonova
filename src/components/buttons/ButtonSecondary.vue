@@ -2,7 +2,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'ButtonPrimary',
+  name: 'ButtonSecondary',
   props: {
     buttonText: {
       type: String,
@@ -36,15 +36,15 @@ export default defineComponent({
 
 <style scoped>
 a {
-  background-color: var(--green1200);
-  color: var(--green300);
-}
-a:hover {
-  background-color: var(--green600);
+  background-color: var(--green200);
   color: var(--black);
 }
+a:hover {
+  background-color: var(--green1200);
+  color: var(--white);
+}
 a:active {
-  background-color: var(--green400);
+  background-color: #00382e;
 }
 a:focus-visible {
   outline: 2px solid #272727;
