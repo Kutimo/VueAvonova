@@ -43,7 +43,7 @@ export default defineComponent({
       </label>
       <img
         v-if="icon"
-        src="../icons/IconQuestion.svg"
+        src="@/assets/icons/IconQuestion.svg"
         alt="Question icon"
         width="24"
         height="24"
@@ -60,7 +60,7 @@ export default defineComponent({
     <div v-if="error" class="flex items-center gap-8">
       <img
         class="input__error-img"
-        src="../icons/IconError.svg"
+        src="@/assets/icons/IconError.svg"
         alt="error icon"
         height="12"
         width="12"

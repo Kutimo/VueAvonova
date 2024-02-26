@@ -9,13 +9,13 @@ import HelloWorld from "./components/HelloWorld.vue";
 const cards = ref([
   {
     id: 1,
-    cardIcon: "./public/productCardIcons/hospital.svg",
+    cardIcon: "/public/productCardIcons/hospital.svg",
     cardHeader: "Helsesjekk",
     cardContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   },
   {
     id: 2,
-    cardIcon: "./public/productCardIcons/notepad.svg",
+    cardIcon: "/public/productCardIcons/notepad.svg",
     cardHeader: "Helseattest",
     cardContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   },
