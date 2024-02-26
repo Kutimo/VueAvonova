@@ -15,17 +15,3 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-a {
-  font-family: GT-Walsheim;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 20.8px;
-  border-radius: var(--radius-28);
-  padding: var(--spacing-12) var(--spacing-24);
-  outline: none;
-  cursor: pointer;
-  transition: background-color 0.5s;
-  user-select: none;
-  white-space: nowrap;
-}

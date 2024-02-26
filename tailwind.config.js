@@ -76,7 +76,7 @@ export default {
       "120": "120px",
       "160": "160px"
     },
-    radius: {
+    borderRadius: {
       "4": "4px",
       "6": "6px",
       "8": "8px",

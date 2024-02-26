@@ -28,24 +28,17 @@ export default defineComponent({
 </script>
 
 <template>
-  <a to="handleClick" tabindex="0">
+  <a
+    to="handleClick"
+    tabindex="0"
+    class="rounded-28 cursor-pointer select-none bg-green-1200 px-24 py-12 font-body text-base font-medium leading-5 text-green-300 outline-none ring-2 ring-offset-[#272727] transition-all duration-500 hover:bg-green-600 hover:text-black active:bg-green-400"
+  >
     <span v-if="icon" class="icon" v-html="icon"></span>
     {{ buttonText }}
   </a>
 </template>
 
 <style scoped>
-a {
-  background-color: var(--green1200);
-  color: var(--green300);
-}
-a:hover {
-  background-color: var(--green600);
-  color: var(--black);
-}
-a:active {
-  background-color: var(--green400);
-}
 a:focus-visible {
   outline: 2px solid #272727;
   outline-offset: 3px;
