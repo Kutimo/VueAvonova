@@ -1,6 +1,16 @@
 <script lang="ts">
 export default {
   name: "Navigation",
+  data() {
+    return {
+      isMobileMenuOpen: false,
+    };
+  },
+  methods: {
+    toggleMobileMenu() {
+      this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    },
+  },
 };
 </script>
 
@@ -8,6 +18,7 @@ export default {
   <nav class="flex w-full items-center justify-between px-18 py-16">
     <div class="flex items-center">
       <button
+        @click="toggleMobileMenu"
         class="rounded-full laptop:hidden z-20 mr-40 flex h-32 w-[57px] items-center justify-center bg-green-600 px-[22px] active:bg-green-1200"
       >
         <img
@@ -87,19 +98,67 @@ export default {
         />
       </button>
     </div>
+    <!-- mobile nav -->
+    <div
+      v-if="isMobileMenuOpen"
+      class="absolute bottom-[0px] left-[0px] top-[0px] z-50 w-full bg-green-1200 text-white"
+    >
+      <div class="m-10 flex">
+        <button
+          @click="toggleMobileMenu"
+          class="rounded-full laptop:hidden z-20 mr-40 flex h-32 w-[57px] items-center justify-center bg-green-600 px-[22px] active:bg-green-1200"
+        >
+          <img
+            src="../../assets/icons/IconCloseMenu.svg"
+            alt="close menu"
+            height="26"
+            width="20"
+          />
+        </button>
+        <img
+          src="../../assets/logo-white.svg"
+          alt="logo"
+          height="21"
+          width="143"
+        />
+      </div>
+      <ul class="flex flex-col items-start gap-10 p-20">
+        <li class="list flex items-center">
+          <a
+            class="text-xl font-normal hover:underline"
+            href="https://digital.avonova.com/index"
+            >Digital HR og HMS</a
+          >
+        </li>
+        <li class="list flex items-center">
+          <a
+            class="text-xl font-normal hover:underline"
+            href="https://www.avonova.no/kurs"
+            >Kurs</a
+          >
+          <img
+            src="../../assets/icons/IconArrow-White.svg"
+            alt="Kurs icon"
+            height="10"
+            width="15"
+          />
+        </li>
+        <li class="list flex items-center">
+          <a
+            class="text-xl font-normal hover:underline"
+            href="https://www.avonova.no/ansattegoder/helseforsikring"
+            >Helseforsikring</a
+          >
+          <img
+            src="../../assets/icons/IconArrow-White.svg"
+            alt="Helseforsikring icon"
+            height="10"
+            width="15"
+          />
+        </li>
+      </ul>
+    </div>
   </nav>
 </template>
 
-<style scoped>
-@media only screen and (max-width: 960px) {
-  .nav-link {
-    display: none;
-  }
-  .buttons-right {
-    display: none;
-  }
-  .nav-menu {
-    display: block;
-  }
-}
-</style>
+<style scoped></style>
