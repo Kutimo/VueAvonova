@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import ProductCard from '@/components/ProductCard.vue'
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from "vue";
+import ProductCard from "@/components/ProductCard.vue";
+import HelloWorld from "./components/HelloWorld.vue";
 
 //Måtte legge productCardIcons i public mappen for at det skulle funke
 //Se på måte for og importere ikonene fra assets mappen (@/assets/productCardIcons)
@@ -9,17 +9,17 @@ import HelloWorld from './components/HelloWorld.vue'
 const cards = ref([
   {
     id: 1,
-    cardIcon: './public/productCardIcons/hospital.svg',
-    cardHeader: 'Helsesjekk',
-    cardContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    cardIcon: "/public/productCardIcons/hospital.svg",
+    cardHeader: "Helsesjekk",
+    cardContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   },
   {
     id: 2,
-    cardIcon: './public/productCardIcons/notepad.svg',
-    cardHeader: 'Helseattest',
-    cardContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-  }
-])
+    cardIcon: "/public/productCardIcons/notepad.svg",
+    cardHeader: "Helseattest",
+    cardContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  },
+]);
 </script>
 
 <template>

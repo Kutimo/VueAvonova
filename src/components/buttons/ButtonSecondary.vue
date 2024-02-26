@@ -1,22 +1,22 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'ButtonSecondary',
+  name: "ButtonSecondary",
   props: {
     buttonText: {
       type: String,
-      required: true
+      required: true,
     },
     icon: {
       type: String,
-      default: ''
+      default: "",
     },
     to: {
       type: [String, Object],
-      default: ''
-    }
-  }
+      default: "",
+    },
+  },
   // methods: {
   // handleClick() {
   //   if (this.to) {
@@ -24,30 +24,16 @@ export default defineComponent({
   //     console.log('Navigating to:', this.to)
   //   }
   // }
-})
+});
 </script>
 
 <template>
-  <a to="handleClick" tabindex="0">
+  <a
+    to="handleClick"
+    tabindex="0"
+    class="rounded-28 active:bg-green-[#00382e] cursor-pointer select-none bg-green-200 px-24 py-12 font-body text-base font-medium leading-5 text-black outline-none ring-black ring-offset-2 transition-all duration-500 hover:bg-green-1200 hover:text-white focus-visible:ring-2"
+  >
     <span v-if="icon" class="icon" v-html="icon"></span>
     {{ buttonText }}
   </a>
 </template>
-
-<style scoped>
-a {
-  background-color: var(--green200);
-  color: var(--black);
-}
-a:hover {
-  background-color: var(--green1200);
-  color: var(--white);
-}
-a:active {
-  background-color: #00382e;
-}
-a:focus-visible {
-  outline: 2px solid #272727;
-  outline-offset: 3px;
-}
-</style>

@@ -1,113 +1,71 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 export default defineComponent({
-  name: 'Input',
+  name: "Input",
   props: {
     label: {
       type: String,
-      required: true
+      required: true,
     },
     name: {
       type: String,
-      required: true
+      required: true,
     },
     placeholder: {
       type: String,
-      default: ''
+      default: "",
     },
     descriptiveText: {
       type: String,
-      default: ''
+      default: "",
     },
     icon: {
       type: Boolean,
-      default: false
+      default: false,
     },
     error: {
       type: Boolean,
-      default: false
+      default: false,
     },
     errorText: {
       type: String,
-      default: ''
-    }
-  }
-})
+      default: "",
+    },
+  },
+});
 </script>
 
 <template>
-  <div class="input">
-    <div class="input__label">
-      <label for="{{name}}">
+  <div class="flex flex-col gap-10">
+    <div class="flex gap-8">
+      <label for="{{name}}" class="text-base font-medium">
         {{ label }}
       </label>
       <img
         v-if="icon"
-        src="../icons/IconQuestion.svg"
+        src="@/assets/icons/IconQuestion.svg"
         alt="Question icon"
         width="24"
         height="24"
-        class="input__label-icon"
+        class="cursor-pointer"
       />
     </div>
-    <p>{{ descriptiveText }}</p>
-    <input id="{{name}}" type="text" :placeholder="placeholder" />
-    <div v-if="error" class="input__error">
+    <p class="font-medium">{{ descriptiveText }}</p>
+    <input
+      class="h-40 w-[260px] rounded-md border-[1px] border-gray600 px-10 py-8 hover:border-2 hover:border-green-1100 active:border-2 active:border-green-1100"
+      id="{{name}}"
+      type="text"
+      :placeholder="placeholder"
+    />
+    <div v-if="error" class="flex items-center gap-8">
       <img
         class="input__error-img"
-        src="../icons/IconError.svg"
+        src="@/assets/icons/IconError.svg"
         alt="error icon"
         height="12"
         width="12"
       />
-      <p class="input__error-text">{{ errorText }}</p>
+      <p class="h-18 text-sm text-red">{{ errorText }}</p>
     </div>
   </div>
 </template>
-
-<style scoped>
-.input {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-input {
-  width: 260px;
-  height: 40px;
-  padding: 8px 10px;
-  border: 1px solid var(--gray600);
-  border-radius: 6px;
-}
-
-input:hover,
-input:active {
-  border: 2px solid;
-  border-color: var(--green1100);
-}
-
-.input__label {
-  display: flex;
-  gap: 8px;
-}
-label {
-  font-size: 16px;
-  font-weight: 500;
-}
-p {
-  font-size: 16px;
-}
-.input__label-icon {
-  cursor: pointer;
-}
-.input__error {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.input__error-text {
-  color: var(--red);
-  font-size: 14px;
-  height: 18px;
-}
-</style>
