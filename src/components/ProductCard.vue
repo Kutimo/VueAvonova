@@ -18,7 +18,7 @@ const onBookAppointment = () => {
 
 <template>
   <div
-    class="rounded-4 m-10 flex w-[250px] flex-col items-center overflow-hidden bg-green-600 p-4 shadow-md"
+    class="m-10 flex w-[250px] flex-col items-center overflow-hidden rounded-4 bg-green-600 p-4 shadow-md"
   >
     <img
       v-if="cardIcon"

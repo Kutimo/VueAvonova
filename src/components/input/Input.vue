@@ -52,7 +52,7 @@ export default defineComponent({
     </div>
     <p class="font-medium">{{ descriptiveText }}</p>
     <input
-      class="h-40 w-[260px] rounded-md border-[1px] border-gray600 px-10 py-8 hover:border-2 hover:border-green-1100 active:border-2 active:border-green-1100"
+      class="rounded-md h-40 w-[260px] border-[1px] border-gray600 px-10 py-8 hover:border-2 hover:border-green-1100 active:border-2 active:border-green-1100"
       id="{{name}}"
       type="text"
       :placeholder="placeholder"

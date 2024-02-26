@@ -1,17 +1,27 @@
 <script lang="ts">
 export default {
-  name: 'Nav'
-}
+  name: "Nav",
+};
 </script>
 
 <template>
   <nav>
     <div class="nav-links">
       <button class="nav-menu">
-        <img src="../icons/IconOpenMenu.svg" alt="Meny" height="16" width="12" />
+        <img
+          src="../icons/IconOpenMenu.svg"
+          alt="Meny"
+          height="16"
+          width="12"
+        />
       </button>
       <a href="https://digital.avonova.com/services">
-        <img src="@/assets/logo.svg" alt="Avonova logo" height="21" width="143" />
+        <img
+          src="@/assets/logo.svg"
+          alt="Avonova logo"
+          height="21"
+          width="143"
+        />
       </a>
       <ul>
         <li class="nav-link">
@@ -19,20 +29,42 @@ export default {
         </li>
         <li class="nav-link">
           <a href="https://www.avonova.no/kurs">Kurs</a>
-          <img src="../icons/IconArrow.svg" alt="Kurs icon" height="10" width="15" />
+          <img
+            src="../icons/IconArrow.svg"
+            alt="Kurs icon"
+            height="10"
+            width="15"
+          />
         </li>
         <li class="nav-link">
-          <a href="https://www.avonova.no/ansattegoder/helseforsikring">Helseforsikring</a>
-          <img src="../icons/IconArrow.svg" alt="Helseforsikring icon" height="10" width="15" />
+          <a href="https://www.avonova.no/ansattegoder/helseforsikring"
+            >Helseforsikring</a
+          >
+          <img
+            src="../icons/IconArrow.svg"
+            alt="Helseforsikring icon"
+            height="10"
+            width="15"
+          />
         </li>
       </ul>
     </div>
     <div class="buttons-right">
       <button class="button-right">
-        <img src="../icons/IconUser.svg" alt="Brukermeny" height="18" width="20" />
+        <img
+          src="../icons/IconUser.svg"
+          alt="Brukermeny"
+          height="18"
+          width="20"
+        />
       </button>
       <button class="button-right">
-        <img src="../icons/IconQuestion.svg" alt="hjelpemeny" height="40" width="40" />
+        <img
+          src="../icons/IconQuestion.svg"
+          alt="hjelpemeny"
+          height="40"
+          width="40"
+        />
       </button>
     </div>
   </nav>
@@ -123,7 +155,7 @@ a:hover {
 }
 
 .button-right:focus:before {
-  content: ' ';
+  content: " ";
   position: absolute;
   top: -6px;
   left: -6px;
