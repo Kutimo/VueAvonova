@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import Nav from '@/components/Layout/Nav.vue'
-import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
-import ButtonSecondary from './buttons/ButtonSecondary.vue'
-import Input from './input/Input.vue'
+import ButtonPrimary from "@/components/buttons/ButtonPrimary.vue";
+import ButtonSecondary from "./buttons/ButtonSecondary.vue";
+import Input from "./input/Input.vue";
 </script>
 
 <template>
@@ -26,9 +25,26 @@ import Input from './input/Input.vue'
   </div>
   <div>
     <p>inputs:</p>
-    <Input label="Text" name="lastName" descriptive-text="hello" error error-text="test" />
-    <Input label="with error" name="lastName" descriptive-text="hello" error error-text="test" />
-    <Input label="with question icon" name="lastName" descriptive-text="hello" icon />
+    <Input
+      label="Text"
+      name="lastName"
+      descriptive-text="hello"
+      error
+      error-text="test"
+    />
+    <Input
+      label="with error"
+      name="lastName"
+      descriptive-text="hello"
+      error
+      error-text="test"
+    />
+    <Input
+      label="with question icon"
+      name="lastName"
+      descriptive-text="hello"
+      icon
+    />
   </div>
 </template>
 
