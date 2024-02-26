@@ -36,8 +36,8 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="input">
-    <div class="input__label">
+  <div class="flex flex-col gap-10">
+    <div class="flex gap-6">
       <label for="{{name}}">
         {{ label }}
       </label>
@@ -66,11 +66,7 @@ export default defineComponent({
 </template>
 
 <style scoped>
-.input {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+
 input {
   width: 260px;
   height: 40px;
