@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import Navigation from "@/components/Layout/Navigation.vue";
 import ProductCard from "@/components/ProductCard.vue";
 import HelloWorld from "./components/HelloWorld.vue";
 
@@ -23,6 +24,7 @@ const cards = ref([
 </script>
 
 <template>
+  <Navigation />
   <main>
     <ProductCard
       v-for="card in cards"
