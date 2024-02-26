@@ -31,7 +31,7 @@ export default defineComponent({
   <a
     to="handleClick"
     tabindex="0"
-    class="rounded-28 active:bg-green-[#00382e] cursor-pointer select-none bg-green-200 px-24 py-12 font-body text-base font-medium leading-5 text-black outline-none ring-black ring-offset-2 transition-all duration-500 hover:bg-green-1200 hover:text-white focus-visible:ring-2"
+    class="active:bg-green-[#00382e] cursor-pointer select-none rounded-28 bg-green-200 px-24 py-12 font-body text-base font-medium leading-5 text-black outline-none ring-black ring-offset-2 transition-all duration-500 hover:bg-green-1200 hover:text-white focus-visible:ring-2"
   >
     <span v-if="icon" class="icon" v-html="icon"></span>
     {{ buttonText }}
