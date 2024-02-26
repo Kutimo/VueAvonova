@@ -24,8 +24,15 @@ export default {
           1200: "#00211b",
         },
         secondary: "#b4e0d1",
-        gray: "#f0f4f3",
-        gray600: "#595959",
+        gray: {
+          100: "#FAFAFA",
+          200: "#F5F5F5",
+          300: "#DADADA",
+          400: "#B0B0B0",
+          500: "#7D7D7D",
+          600: "#595959",
+
+        },
         neutral: {
           100: "#faf7f6",
           200: "#f5e7e1",
