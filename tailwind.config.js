@@ -77,13 +77,13 @@ export default {
       "160": "160px"
     },
     radius: {
-      // --radius - 4: 0.25rem;
-      // --radius - 6: 0.375rem;
-      // --radius - 8: 0.5rem;
-      // --radius - 10: 0.625rem;
-      // --radius - 16: 1rem;
-      // --radius - 24: 1.5rem;
-      // --radius - 28: 1.75rem;
+      "4": "4px",
+      "6": "6px",
+      "8": "8px",
+      "10": "10px",
+      "16": "16px",
+      "24": "24px",
+      "28": "28px"
     }
   },
   plugins: [],
