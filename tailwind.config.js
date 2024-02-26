@@ -34,7 +34,6 @@ export default {
           400: "#B0B0B0",
           500: "#7D7D7D",
           600: "#595959",
-
         },
         neutral: {
           100: "#faf7f6",

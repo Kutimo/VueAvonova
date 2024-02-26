@@ -19,7 +19,7 @@ export default {
     <div class="flex items-center">
       <button
         @click="toggleMobileMenu"
-        class="rounded-full laptop:hidden z-20 mr-40 flex h-32 w-[57px] items-center justify-center bg-green-600 px-[22px] active:bg-green-1200"
+        class="z-20 mr-40 flex h-32 w-[57px] items-center justify-center rounded-full bg-green-600 px-[22px] active:bg-green-1200 laptop:hidden"
       >
         <img
           src="../../assets/icons/IconOpenMenu.svg"
@@ -40,7 +40,7 @@ export default {
           width="143"
         />
       </a>
-      <ul class="laptop:flex hidden gap-32">
+      <ul class="hidden gap-32 laptop:flex">
         <li class="list flex items-center">
           <a
             class="text-xl font-normal text-green-1100 hover:underline"
@@ -76,9 +76,9 @@ export default {
         </li>
       </ul>
     </div>
-    <div class="laptop:flex hidden gap-10">
+    <div class="hidden gap-10 laptop:flex">
       <button
-        class="bg-gray-200 hover:bg-gray-300 rounded-full flex h-40 w-40 items-center justify-center border-2 border-green-1100 ring-offset-2 hover:cursor-pointer focus:ring-2 focus:ring-green-1100"
+        class="flex h-40 w-40 items-center justify-center rounded-full border-2 border-green-1100 bg-gray-200 ring-offset-2 hover:cursor-pointer hover:bg-gray-300 focus:ring-2 focus:ring-green-1100"
       >
         <img
           src="../../assets/icons/IconUser.svg"
@@ -88,7 +88,7 @@ export default {
         />
       </button>
       <button
-        class="bg-gray-200 hover:bg-gray-300 rounded-full flex h-40 w-40 items-center justify-center border-2 border-green-1100 ring-offset-2 focus-within:ring-2 hover:cursor-pointer focus:ring-green-1100"
+        class="flex h-40 w-40 items-center justify-center rounded-full border-2 border-green-1100 bg-gray-200 ring-offset-2 focus-within:ring-2 hover:cursor-pointer hover:bg-gray-300 focus:ring-green-1100"
       >
         <img
           src="../../assets/icons/IconQuestion.svg"
@@ -106,7 +106,7 @@ export default {
       <div class="m-10 flex">
         <button
           @click="toggleMobileMenu"
-          class="rounded-full laptop:hidden z-20 mr-40 flex h-32 w-[57px] items-center justify-center bg-green-600 px-[22px] active:bg-green-1200"
+          class="z-20 mr-40 flex h-32 w-[57px] items-center justify-center rounded-full bg-green-600 px-[22px] active:bg-green-1200 laptop:hidden"
         >
           <img
             src="../../assets/icons/IconCloseMenu.svg"
