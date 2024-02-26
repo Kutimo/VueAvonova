@@ -5,7 +5,6 @@ import Input from "./input/Input.vue";
 </script>
 
 <template>
-  <Nav />
   <div class="greetings">
     <h1>h1 Lorem ipsum dolor sit amet.</h1>
     <h2>h2 Lorem ipsum dolor sit amet.</h2>

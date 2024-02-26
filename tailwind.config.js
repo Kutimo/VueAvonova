@@ -6,6 +6,9 @@ export default {
       header: [" Vollkorn", "Cambria", "Times New Roman"],
       body: ["GT-Walsheim", "Helvetica", "sans-serif"],
     },
+    screens: {
+      laptop: "960px",
+    },
     extend: {
       colors: {
         primary: "#028655",
@@ -91,6 +94,7 @@ export default {
       16: "16px",
       24: "24px",
       28: "28px",
+      full: "9999px",
     },
   },
   plugins: [],

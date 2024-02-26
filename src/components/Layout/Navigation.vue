@@ -7,12 +7,15 @@ export default {
 <template>
   <nav class="flex w-full items-center justify-between px-18 py-16">
     <div class="flex items-center">
-      <button class="z-20 mr-40 hidden h-32 w-56">
+      <button
+        class="rounded-full laptop:hidden z-20 mr-40 flex h-32 w-[57px] items-center justify-center bg-green-600 px-[22px] active:bg-green-1200"
+      >
         <img
           src="../../assets/icons/IconOpenMenu.svg"
           alt="Meny"
-          height="16"
-          width="12"
+          height="18"
+          width="13"
+          class="h-full w-full"
         />
       </button>
       <a
@@ -26,7 +29,7 @@ export default {
           width="143"
         />
       </a>
-      <ul class="flex gap-32">
+      <ul class="laptop:flex hidden gap-32">
         <li class="list flex items-center">
           <a
             class="text-xl font-normal text-green-1100 hover:underline"
@@ -62,8 +65,10 @@ export default {
         </li>
       </ul>
     </div>
-    <div class="flex gap-10">
-      <button class="button-right">
+    <div class="laptop:flex hidden gap-10">
+      <button
+        class="bg-gray-200 hover:bg-gray-300 rounded-full flex h-40 w-40 items-center justify-center border-2 border-green-1100 ring-offset-2 hover:cursor-pointer focus:ring-2 focus:ring-green-1100"
+      >
         <img
           src="../../assets/icons/IconUser.svg"
           alt="Brukermeny"
@@ -71,7 +76,9 @@ export default {
           width="20"
         />
       </button>
-      <button class="flex justify-center items-center bg-gray">
+      <button
+        class="bg-gray-200 hover:bg-gray-300 rounded-full flex h-40 w-40 items-center justify-center border-2 border-green-1100 ring-offset-2 focus-within:ring-2 hover:cursor-pointer focus:ring-green-1100"
+      >
         <img
           src="../../assets/icons/IconQuestion.svg"
           alt="hjelpemeny"
@@ -84,35 +91,6 @@ export default {
 </template>
 
 <style scoped>
-.button-right {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--gray200);
-  border: 2px solid var(--green1100);
-  border-radius: 100px;
-  height: 40px;
-  width: 40px;
-}
-
-.button-right:hover {
-  background-color: var(--gray300);
-  cursor: pointer;
-}
-
-.button-right:focus:before {
-  content: " ";
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border: 1.5px solid #01332a;
-  border-radius: 50%;
-  opacity: 1;
-  background-color: transparent;
-}
 @media only screen and (max-width: 960px) {
   .nav-link {
     display: none;
