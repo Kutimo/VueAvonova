@@ -43,7 +43,7 @@ export default defineComponent({
       </label>
       <img
         v-if="icon"
-        src="@/assets/icons/IconQuestion.svg"
+        src="@/assets/icons/IconQuestionBlue.svg"
         alt="Question icon"
         width="24"
         height="24"
@@ -52,7 +52,7 @@ export default defineComponent({
     </div>
     <p class="font-medium">{{ descriptiveText }}</p>
     <input
-      class="rounded-md border-gray600 h-40 w-[260px] border-[1px] px-10 py-8 hover:border-2 hover:border-green-1100 active:border-2 active:border-green-1100"
+      class="active::border-green-1100 h-40 w-[260px] rounded-8 border-[1px] border-gray-600 px-10 py-8 hover:border-2 hover:border-green-1100 focus-visible:border-2 focus-visible:outline-none active:border-2"
       id="{{name}}"
       type="text"
       :placeholder="placeholder"
