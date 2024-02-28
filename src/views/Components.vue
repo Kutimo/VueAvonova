@@ -5,6 +5,11 @@ import Input from "@/components/input/Input.vue";
 
 export default {
   name: "Components",
+  components: {
+    Input,
+    ButtonPrimary,
+    ButtonSecondary,
+  },
 };
 </script>
 
