@@ -24,4 +24,4 @@ jobs:
         run: npm install
 
       - name: Run lint script
-        run: npm run lint
+        run: npm run lint-format
