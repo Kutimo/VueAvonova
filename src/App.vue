@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import Navigation from "@/components/Layout/Navigation.vue";
+import Footer from "./components/Layout/Footer.vue";
 import ProductCard from "@/components/ProductCard.vue";
 import HelloWorld from "./components/HelloWorld.vue";
 
@@ -38,6 +39,7 @@ const cards = ref([
   <section>
     <HelloWorld />
   </section>
+  <Footer />
 </template>
 
 <style scoped></style>
