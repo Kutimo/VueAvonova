@@ -1,0 +1,27 @@
+name: Lint/Format on Merge
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14 # Adjust the Node.js version as needed
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run lint script
+        run: npm run lint
