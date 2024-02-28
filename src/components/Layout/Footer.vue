@@ -7,7 +7,6 @@ export default {
 <template>
   <footer>
     <ul>
-      
       <li>
         <router-link to="/typography">typography</router-link>
       </li>
