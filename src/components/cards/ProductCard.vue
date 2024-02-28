@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import ButtonPrimary from "@/components/buttons/ButtonPrimary.vue";
+import { defineProps } from "vue";
 
-const cardProps = defineProps({
+const { cardIcon, cardHeader, cardContent } = defineProps({
   cardIcon: String,
   cardHeader: String,
   cardContent: String,
@@ -36,5 +37,3 @@ const onBookAppointment = () => {
     </div>
   </div>
 </template>
-
-<style scoped></style>
