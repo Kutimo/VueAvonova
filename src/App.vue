@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import Navigation from "@/components/Layout/Navigation.vue";
-import Footer from "./components/Layout/Footer.vue";
+import PageFooter from "./components/Layout/PageFooter.vue";
 </script>
 
 <template>
   <Navigation />
   <router-view></router-view>
-  <Footer />
+  <PageFooter />
 </template>
-
-<style scoped></style>
