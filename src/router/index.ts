@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "@/views/Home.vue";
-import Typography from "@/views/Typography.vue";
-import Components from "@/views/Components.vue";
+import ViewHome from "../views/ViewHome.vue";
+import ViewTypography from "../views/ViewTypography.vue";
+import ViewComponents from "@/views/ViewComponents.vue";
 
 const routes = [
-  { path: "/", name: "Home", component: Home },
-  { path: "/Typography", name: "About", component: Typography },
-  { path: "/Components", name: "Components", component: Components },
+  { path: "/", name: "Home", component: ViewHome },
+  { path: "/Typography", name: "About", component: ViewTypography },
+  { path: "/Components", name: "Components", component: ViewComponents },
 ];
 
 const router = createRouter({
@@ -15,3 +15,4 @@ const router = createRouter({
 });
 
 export default router;
+ 

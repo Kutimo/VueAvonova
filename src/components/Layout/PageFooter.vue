@@ -1,6 +1,6 @@
 <script lang="ts">
 export default {
-  name: "Footer",
+  name: "PageFooter",
 };
 </script>
 
@@ -16,5 +16,3 @@ export default {
     </ul>
   </footer>
 </template>
-
-<style scoped></style>

@@ -1,12 +1,12 @@
 <script lang="ts">
 import ButtonPrimary from "@/components/buttons/ButtonPrimary.vue";
 import ButtonSecondary from "@/components/buttons/ButtonSecondary.vue";
-import Input from "@/components/input/Input.vue";
+import TextInput from "@/components/input/TextInput.vue";
 
 export default {
-  name: "Components",
+  name: "ViewComponents",
   components: {
-    Input,
+    TextInput,
     ButtonPrimary,
     ButtonSecondary,
   },
@@ -21,21 +21,21 @@ export default {
     </div>
     <div class="m-10 flex flex-col gap-10">
       <p class="text-lg">inputs:</p>
-      <Input
+      <TextInput
         label="Text"
         name="lastName"
         descriptive-text="hello"
         error
         error-text="test"
       />
-      <Input
+      <TextInput
         label="with error"
         name="lastName"
         descriptive-text="hello"
         error
         error-text="test"
       />
-      <Input
+      <TextInput
         label="with question icon"
         name="lastName"
         descriptive-text="hello"
