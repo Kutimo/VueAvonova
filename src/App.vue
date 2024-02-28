@@ -25,6 +25,7 @@ const cards = ref([
 
 <template>
   <Navigation />
+  <router-view></router-view>
   <main>
     <ProductCard
       v-for="card in cards"
