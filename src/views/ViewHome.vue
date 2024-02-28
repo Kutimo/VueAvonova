@@ -7,6 +7,7 @@ export default defineComponent({
   components: {
     ProductCard,
   },
+
   setup() {
     const cards = ref([
       {
