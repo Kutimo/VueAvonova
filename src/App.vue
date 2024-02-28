@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import Navigation from "@/components/Layout/Navigation.vue";
+import PageNavigation from "@/components/Layout/PageNavigation.vue";
 import PageFooter from "./components/Layout/PageFooter.vue";
 </script>
 
 <template>
-  <Navigation />
+  <PageNavigation />
   <router-view></router-view>
   <PageFooter />
 </template>

@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import ProductCard from "@/components/ProductCard.vue";
+import ProductCard from "@/components/cards/ProductCard.vue";
 
 export default defineComponent({
-  name: "Home",
+  name: "ViewHome",
   components: {
     ProductCard,
   },

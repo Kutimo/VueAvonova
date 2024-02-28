@@ -16,5 +16,3 @@ export default {
     </ul>
   </footer>
 </template>
-
-<style scoped></style>
