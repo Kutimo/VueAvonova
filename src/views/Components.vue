@@ -14,13 +14,13 @@ export default {
 </script>
 
 <template>
-  <main id="Components">
+  <main id="Components" class="m-10 flex flex-col gap-10">
     <div class="buttons">
       <ButtonPrimary button-text="Buy now" />
       <ButtonSecondary button-text="secondary" />
     </div>
-    <div>
-      <p>inputs:</p>
+    <div class="m-10 flex flex-col gap-10">
+      <p class="text-lg">inputs:</p>
       <Input
         label="Text"
         name="lastName"
