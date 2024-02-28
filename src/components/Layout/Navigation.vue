@@ -29,7 +29,8 @@ export default {
           class="h-full w-full"
         />
       </button>
-      <a
+      <router-link
+        to="/"
         class="mr-64 flex items-center"
         href="https://digital.avonova.com/services"
       >
@@ -39,7 +40,7 @@ export default {
           height="21"
           width="143"
         />
-      </a>
+      </router-link>
       <ul class="hidden gap-32 laptop:flex">
         <li class="list flex items-center">
           <a
@@ -115,12 +116,14 @@ export default {
             width="20"
           />
         </button>
-        <img
-          src="../../assets/logo-white.svg"
-          alt="logo"
-          height="21"
-          width="143"
-        />
+        <router-link to="/" @click="toggleMobileMenu">
+          <img
+            src="../../assets/logo-white.svg"
+            alt="logo"
+            height="21"
+            width="143"
+          />
+        </router-link>
       </div>
       <ul class="flex flex-col items-start gap-10 p-20">
         <li class="list flex items-center">
