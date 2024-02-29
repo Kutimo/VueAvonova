@@ -13,14 +13,12 @@
         <p>Email: {{ contact.email }}</p>
         <p>Phone: {{ contact.phone }}</p>
       </div>
-      <div class="mt-8 CallBtn"><ButtonPrimary :button-text="'Ring Meg'" /></div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import ButtonPrimary from './buttons/ButtonPrimary.vue'
 
 export default defineComponent({
   name: 'ContactCardPFA',
@@ -32,17 +30,6 @@ export default defineComponent({
         phone: '123-456-7890'
       }
     }
-  },
-  components: { ButtonPrimary }
+  }
 })
 </script>
-
-<style scoped>
-/* Responsivitet */
-@media screen and (max-width: 768px) {
-  .flex.flex-col.items-center > * {
-    margin-top: 0 !important;
-    text-align: center;
-  }
-}
-</style>
