@@ -4,7 +4,7 @@
       <img
         src="/Users/rubengrytten/Documents/Skole/VueAvonova/src/assets/PFA Dummy Profile Picture/DummyProfilePicturePFA.png"
         alt="DummyPFA"
-        class="h-auto w-44"
+        class="w-32 h-32"
       />
     </div>
     <div class="flex flex-col ml-8">
