@@ -30,7 +30,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <main>
+  <main class="m-10 h-screen">
     <ProductCard
       v-for="card in cards"
       :key="card.id"
