@@ -1,18 +1,10 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import PageNavigation from "@/components/Layout/PageNavigation.vue";
+import PageFooter from "./components/Layout/PageFooter.vue";
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <HelloWorld />
-    </div>
-  </header>
-  <main></main>
+  <PageNavigation />
+  <router-view></router-view>
+  <PageFooter />
 </template>
-
-<style scoped>
-.wrapper {
-  margin: 10px;
-}
-</style>
