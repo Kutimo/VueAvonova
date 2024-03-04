@@ -1,0 +1,14 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ProductCard > renders the component 1`] = `
+"<div class="m-10 flex w-[250px] flex-col items-center overflow-hidden rounded-4 bg-green-600 p-4 shadow-md">
+  <!--v-if-->
+  <!--v-if-->
+  <p class="body-md px-20 text-center"></p>
+  <div class="flex w-full justify-around p-4"><a to="handleClick" tabindex="0" class="cursor-pointer select-none rounded-28 bg-green-1200 px-24 py-12 font-body text-base font-medium leading-5 text-green-300 outline-none ring-black ring-offset-2 transition-all duration-500 hover:bg-green-600 hover:text-black focus-visible:ring-2 active:bg-green-400">
+      <!--v-if--> Les mer
+    </a><a to="handleClick" tabindex="0" class="cursor-pointer select-none rounded-28 bg-green-1200 px-24 py-12 font-body text-base font-medium leading-5 text-green-300 outline-none ring-black ring-offset-2 transition-all duration-500 hover:bg-green-600 hover:text-black focus-visible:ring-2 active:bg-green-400">
+      <!--v-if--> Bestill
+    </a></div>
+</div>"
+`;
