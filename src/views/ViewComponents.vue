@@ -2,13 +2,14 @@
 import ButtonPrimary from "@/components/buttons/ButtonPrimary.vue";
 import ButtonSecondary from "@/components/buttons/ButtonSecondary.vue";
 import TextInput from "@/components/input/TextInput.vue";
-
+import DatePicker from "@/components/DatePicker.vue";
 export default {
   name: "ViewComponents",
   components: {
     TextInput,
     ButtonPrimary,
     ButtonSecondary,
+    DatePicker,
   },
 };
 </script>
@@ -41,6 +42,10 @@ export default {
         descriptive-text="hello"
         icon
       />
+    </div>
+    <div>
+      <p>date picker:</p>
+      <DatePicker />
     </div>
   </main>
 </template>
