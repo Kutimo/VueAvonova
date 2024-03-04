@@ -1,7 +1,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 export default defineComponent({
-  name: "Input",
+  name: "TextInput",
+  data() {
+    return {
+      iconClicked: false,
+    };
+  },
   props: {
     label: {
       type: String,
@@ -23,6 +28,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    iconText: {
+      type: String,
+      default: "test",
+    },
     error: {
       type: Boolean,
       default: false,
@@ -41,14 +50,22 @@ export default defineComponent({
       <label for="{{name}}" class="text-base font-medium">
         {{ label }}
       </label>
-      <img
-        v-if="icon"
-        src="@/assets/icons/IconQuestionBlue.svg"
-        alt="Question icon"
-        width="24"
-        height="24"
-        class="cursor-pointer"
-      />
+      <div @click="iconClicked = !iconClicked" v-if="icon" class="relative">
+        <img
+          v-if="icon"
+          src="@/assets/icons/IconQuestionBlue.svg"
+          alt="Question icon"
+          width="24"
+          height="24"
+          class="cursor-pointer"
+        />
+        <p
+          class="absolute top-24 m-4 rounded-6 bg-purple-100 p-16 font-body text-base"
+          v-if="iconClicked"
+        >
+          {{ iconText }}
+        </p>
+      </div>
     </div>
     <p class="font-medium">{{ descriptiveText }}</p>
     <input

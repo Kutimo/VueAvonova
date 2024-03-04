@@ -7,3 +7,4 @@
 #Add absolute paths to ts config and vite config
 #Add github ci/cd 
 #Login page
+#Slots for components
