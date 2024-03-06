@@ -47,7 +47,6 @@ npm run lint
 
 ## Testing
 
-
 ## Unit testing components with [Vitest](https://vitest.dev/)
 
 The following command will run unit tests for all component tests in the `src/components` directory.
@@ -66,7 +65,14 @@ Clear Naming: Well-named tests convey their purpose and expected outcome, making
 
 Assertion of Expected Behavior: Each test should include assertions that verify the expected behavior of the code being tested. These assertions define the criteria for passing or failing the test, this includes error messages, checking of conditions and that props are being passed correctly.
 
+**Requirements for testing:**
+
+- Check that all components are working and children nodes are rendering as expected
+- That all props and data are being passed correctly
+- That all functions are working as expected
 
 ## Integration testing
+
+For integration testing we use [vue-test-utils](https://test-utils.vuejs.org/)
 
 ## End to end testing
