@@ -26,7 +26,7 @@ describe("CardComponent", () => {
     expect(wrapper.find("img").exists()).toBe(true);
     expect(wrapper.find("img").attributes("src")).toBe(cardIcon);
     expect(wrapper.find("h4").text()).toBe(cardHeader);
-    expect(wrapper.find(".body-md").text()).toBe(cardContent);
+    expect(wrapper.find("p").text()).toBe(cardContent);
 
     // Check if buttons are rendered and emit correct events
     const buttons = wrapper.findAllComponents(ButtonPrimary);
