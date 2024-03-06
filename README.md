@@ -13,8 +13,8 @@ TypeScript cannot handle type information for `.vue` imports by default, so we r
 If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
 
 1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
 2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
 
 ## Customize configuration
@@ -44,3 +44,29 @@ npm run build
 ```sh
 npm run lint
 ```
+
+## Testing
+
+
+## Unit testing components with [Vitest](https://vitest.dev/)
+
+The following command will run unit tests for all component tests in the `src/components` directory.
+
+```sh
+npm run test:unit
+```
+
+-**Test Coverage:**
+
+Unit testing of code is done to ensure that the smaller pieces of code behaves as expected ie. components, functions, etc.
+
+Isolation of Units: Testing units in isolation from other components helps in identifying and debugging failures more effectively. It also promotes modular design and improves maintainability.
+
+Clear Naming: Well-named tests convey their purpose and expected outcome, making it easier to understand their intent and identify failures.
+
+Assertion of Expected Behavior: Each test should include assertions that verify the expected behavior of the code being tested. These assertions define the criteria for passing or failing the test, this includes error messages, checking of conditions and that props are being passed correctly.
+
+
+## Integration testing
+
+## End to end testing
