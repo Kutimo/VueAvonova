@@ -19,18 +19,20 @@ const onBookAppointment = () => {
 
 <template>
   <div
-    class="m-10 flex w-[250px] flex-col items-center overflow-hidden rounded-4 bg-green-600 p-4 shadow-md"
+    class="m-10 flex h-[397px] w-[250px] flex-col overflow-hidden rounded-4 bg-green-200 p-4 shadow-md"
   >
-    <img
-      v-if="cardIcon"
-      :src="cardIcon"
-      class="p-4"
-      alt="Card Icon"
-      height="75"
-      width="75"
-    />
-    <h4 v-if="cardHeader" class="p-4 text-center">{{ cardHeader }}</h4>
-    <p class="body-md px-20 text-center" v-html="cardContent"></p>
+    <div class="flex items-center justify-center">
+      <img
+        v-if="cardIcon"
+        :src="cardIcon"
+        class="p-4"
+        alt="Card Icon"
+        height="119"
+        width="138"
+      />
+    </div>
+    <h4 v-if="cardHeader" class="p-4 text-left text-xl">{{ cardHeader }}</h4>
+    <p class="p-4 text-sm" v-html="cardContent"></p>
     <div class="flex w-full justify-around p-4">
       <ButtonPrimary buttonText="Les mer" @click="onReadMore" />
       <ButtonPrimary buttonText="Bestill" @click="onBookAppointment" />
