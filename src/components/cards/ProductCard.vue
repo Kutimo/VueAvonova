@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import ButtonPrimary from "@/components/buttons/ButtonPrimary.vue";
-import { defineProps } from "vue";
 
 const { cardIcon, cardHeader, cardContent } = defineProps({
   cardIcon: String,
