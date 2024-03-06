@@ -12,13 +12,13 @@ export default defineComponent({
     const cards = ref([
       {
         id: 1,
-        cardIcon: "/public/productCardIcons/hospital.svg",
+        cardIcon: "productCardIcons/hospital.svg",
         cardHeader: "Helsesjekk",
         cardContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       {
         id: 2,
-        cardIcon: "/public/productCardIcons/notepad.svg",
+        cardIcon: "productCardIcons/notepad.svg",
         cardHeader: "Helseattest",
         cardContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },

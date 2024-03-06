@@ -1,7 +1,5 @@
 <script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
+export default {
   name: "ContactCardPFA",
   data() {
     return {
@@ -12,7 +10,7 @@ export default defineComponent({
       },
     };
   },
-});
+};
 </script>
 
 <template>
