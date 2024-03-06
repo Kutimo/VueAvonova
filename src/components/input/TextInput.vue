@@ -60,14 +60,14 @@ export default defineComponent({
           class="cursor-pointer"
         />
         <p
-          class="absolute top-24 m-4 rounded-6 bg-purple-100 p-16 font-body text-base"
+          class="absolute top-24 m-4 rounded-6 bg-purple-100 p-16 font-body text-base {{iconText}}"
           v-if="iconClicked"
         >
           {{ iconText }}
         </p>
       </div>
     </div>
-    <p class="font-medium">{{ descriptiveText }}</p>
+    <p class="font-medium {{ descriptiveText }}">{{ descriptiveText }}</p>
     <input
       class="active::border-green-1100 h-40 w-[260px] rounded-8 border-[1px] border-gray-600 px-10 py-8 hover:border-2 hover:border-green-1100 focus-visible:border-2 focus-visible:outline-none active:border-2"
       id="{{name}}"

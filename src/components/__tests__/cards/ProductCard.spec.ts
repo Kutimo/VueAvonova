@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { mount } from "@vue/test-utils";
-import CardComponent from "../cards/ProductCard.vue";
-import ButtonPrimary from "../buttons/ButtonPrimary.vue";
+import CardComponent from "../../cards/ProductCard.vue";
+import ButtonPrimary from "../../buttons/ButtonPrimary.vue";
 
 describe("CardComponent", () => {
   it("renders card with correct props and buttons", async () => {
