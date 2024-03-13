@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-  <div class="flex h-[50px] max-w-[360px] flex-col gap-8">
+  <div class="mt-30 flex h-[50px] max-w-[360px] flex-col gap-30">
     <label for="password" class="font-body text-xl font-normal">
       Passord
     </label>
