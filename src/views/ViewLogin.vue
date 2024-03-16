@@ -33,10 +33,11 @@ export default defineComponent({
       v-if="!showForgotPasswordForm"
       @showForgotPassword="toggleForgotPasswordForm"
     />
-    <ForgotPasswordForm v-if="showForgotPasswordForm" 
-    @showForgotPassword="toggleForgotPasswordForm"
+    <ForgotPasswordForm
+      v-if="showForgotPasswordForm"
+      @showForgotPassword="toggleForgotPasswordForm"
     />
-    <div class="desktop:block relative hidden">
+    <div class="relative hidden desktop:block">
       <img
         src="@/assets/img/ImageLogin.jpg"
         alt=""

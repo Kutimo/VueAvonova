@@ -1,5 +1,4 @@
 <script lang="ts">
-import { defineComponent, ref } from "vue";
 import ButtonPrimary from "../buttons/ButtonPrimary.vue";
 import EmailInput from "../input/EmailInput.vue";
 import PasswordInput from "../input/PasswordInput.vue";

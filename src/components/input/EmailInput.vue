@@ -9,8 +9,9 @@ export default {
   },
   methods: {
     sanitizeEmail() {
+      // Regex to match a basic email format
       const regex =
-        /^[-!#-'*+\/-9=?^-~]+(?:\.[-!#-'*+\/-9=?^-~]+)*@[-!#-'*+\/-9=?^-~]+(?:\.[-!#-'*+\/-9=?^-~]+)+$/i; // Regex to match a basic email format
+        /^[-!#-'*+/-9=?^-~]+(?:\.[-!#-'*+/-9=?^-~]+)*@[-!#-'*+/-9=?^-~]+(?:\.[-!#-'*+/-9=?^-~]+)+$/i;
       if (!regex.test(this.email)) {
         this.emailError = "Skriv inn en gyldig epost adresse";
       } else {

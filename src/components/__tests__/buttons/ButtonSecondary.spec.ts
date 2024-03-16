@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import ButtonSecondary from "../../buttons/ButtonSecondary.vue";
 
 describe("ButtonSecondary", () => {
