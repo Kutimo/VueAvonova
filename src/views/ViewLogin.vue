@@ -1,9 +1,11 @@
 <script lang="ts">
+import ForgotPasswordForm from "@/components/Layout/ForgotPasswordForm.vue";
 import LoginForm from "@/components/Layout/LoginForm.vue";
 export default {
   name: "ViewLogin",
   components: {
     LoginForm,
+    ForgotPasswordForm,
   },
 };
 </script>
@@ -14,6 +16,7 @@ export default {
   </header>
   <main class="flex h-screen items-center justify-evenly gap-10 bg-neutral-100">
     <LoginForm />
+    <ForgotPasswordForm />
     <div class="desktop:block relative hidden">
       <img
         src="@/assets/img/ImageLogin.jpg"

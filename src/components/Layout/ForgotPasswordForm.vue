@@ -1,14 +1,14 @@
 <script lang="ts">
-import ButtonPrimary from "../buttons/ButtonPrimary.vue";
 import EmailInput from "../input/EmailInput.vue";
-import PasswordInput from "../input/PasswordInput.vue";
+import ButtonPrimary from "../buttons/ButtonPrimary.vue";
+import ButtonSecondary from "../buttons/ButtonSecondary.vue";
 
 export default {
-  name: "LoginForm",
+  name: "ForgotPasswordForm",
   components: {
     EmailInput,
-    PasswordInput,
     ButtonPrimary,
+    ButtonSecondary,
   },
 };
 </script>
@@ -19,16 +19,17 @@ export default {
     class="flex h-fit w-[560px] flex-col rounded-10 bg-white px-30 py-[50px] drop-shadow-lg"
   >
     <form action="" class="flex w-fit flex-col gap-30">
-      <h2 class="mb-10 mt-10 font-body text-[40px]">Logg inn</h2>
-      <EmailInput />
-      <PasswordInput />
-      <!-- TODO: Add logic for forgot password -->
-      <a
-        href=""
-        class="font-body text-sm text-green-1000 underline hover:text-black hover:no-underline"
-        >Glemt passord?</a
+      <p class="font-body text-[30px] text-green-1200">
+        Vennligst oppgi følgende detaljer
+      </p>
+      <span class="font-body text-sm"
+        >Skriv inn Eposten din for å få tilsendt en bekreftleseskode.</span
       >
-      <ButtonPrimary button-text="Login" />
+      <EmailInput />
+      <div class="mt-10 flex gap-10">
+        <ButtonSecondary button-text="Avbryt" />
+        <ButtonPrimary button-text="Login" />
+      </div>
       <ul class="flex flex-col gap-10">
         <li><strong>Trenger du hjelp?</strong></li>
         <li class="flex items-center gap-10">
