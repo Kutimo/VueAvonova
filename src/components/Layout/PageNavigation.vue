@@ -1,15 +1,18 @@
 <script lang="ts">
+import QuestionMenu from "./navMenu/QuestionMenu.vue";
 import UserMenu from "./navMenu/UserMenu.vue";
 
 export default {
   name: "PageNavigation",
   components: {
     UserMenu,
+    QuestionMenu,
   },
   data() {
     return {
       isMobileMenuOpen: false,
       isUserMenuOpen: false,
+      isHelpMenuOpen: false,
     };
   },
   methods: {
@@ -98,16 +101,20 @@ export default {
         </button>
         <UserMenu v-if="isUserMenuOpen" />
       </div>
-      <button
-        class="flex h-40 w-40 items-center justify-center rounded-full border-2 border-green-1100 bg-gray-200 ring-offset-2 focus-within:ring-2 hover:cursor-pointer hover:bg-gray-300 focus:ring-green-1100"
-      >
-        <img
-          src="../../assets/icons/IconQuestion.svg"
-          alt="hjelpemeny"
-          height="40"
-          width="40"
-        />
-      </button>
+      <div class="relative">
+        <button
+          @click="isHelpMenuOpen = !isHelpMenuOpen"
+          class="flex h-40 w-40 items-center justify-center rounded-full border-2 border-green-1100 bg-gray-200 ring-offset-2 focus-within:ring-2 hover:cursor-pointer hover:bg-gray-300 focus:ring-green-1100"
+        >
+          <img
+            src="../../assets/icons/IconQuestion.svg"
+            alt="hjelpemeny"
+            height="40"
+            width="40"
+          />
+        </button>
+        <QuestionMenu v-if="isHelpMenuOpen" />
+      </div>
     </div>
     <!-- mobile nav -->
     <div
