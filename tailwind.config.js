@@ -8,6 +8,7 @@ export default {
     },
     screens: {
       laptop: "960px",
+      desktop: "1280px",
     },
     extend: {
       colors: {

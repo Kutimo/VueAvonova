@@ -16,7 +16,7 @@ export default {
 <template>
   <!--TODO: Add logic for form submission -->
   <div
-    class="flex w-[560px] flex-col rounded-10 bg-white px-30 py-[50px] drop-shadow-lg"
+    class="flex h-fit w-[560px] flex-col rounded-10 bg-white px-30 py-[50px] drop-shadow-lg"
   >
     <form action="" class="flex w-fit flex-col gap-30">
       <h2 class="mb-10 mt-10 font-body text-[40px]">Logg inn</h2>
