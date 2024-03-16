@@ -9,7 +9,7 @@ export default {
 </script>
 
 <template>
-  <main class="flex h-screen gap-10">
+  <main class="flex h-screen gap-10 bg-neutral-100">
     <LoginForm />
   </main>
 </template>
