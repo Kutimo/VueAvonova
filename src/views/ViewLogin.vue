@@ -1,13 +1,27 @@
 <script lang="ts">
+import { defineComponent, ref } from "vue";
+
 import ForgotPasswordForm from "@/components/Layout/ForgotPasswordForm.vue";
 import LoginForm from "@/components/Layout/LoginForm.vue";
-export default {
+export default defineComponent({
   name: "ViewLogin",
   components: {
     LoginForm,
     ForgotPasswordForm,
   },
-};
+  setup() {
+    const showForgotPasswordForm = ref(false);
+
+    const toggleForgotPasswordForm = () => {
+      showForgotPasswordForm.value = !showForgotPasswordForm.value;
+    };
+
+    return {
+      showForgotPasswordForm,
+      toggleForgotPasswordForm,
+    };
+  },
+});
 </script>
 
 <template>
@@ -15,8 +29,13 @@ export default {
     <img src="@/assets/logo.svg" alt="avonova logo" height="21" width="150" />
   </header>
   <main class="flex h-screen items-center justify-evenly gap-10 bg-neutral-100">
-    <LoginForm />
-    <ForgotPasswordForm />
+    <LoginForm
+      v-if="!showForgotPasswordForm"
+      @showForgotPassword="toggleForgotPasswordForm"
+    />
+    <ForgotPasswordForm v-if="showForgotPasswordForm" 
+    @showForgotPassword="toggleForgotPasswordForm"
+    />
     <div class="desktop:block relative hidden">
       <img
         src="@/assets/img/ImageLogin.jpg"

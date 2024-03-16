@@ -27,7 +27,10 @@ export default {
       >
       <EmailInput />
       <div class="mt-10 flex gap-10">
-        <ButtonSecondary button-text="Avbryt" />
+        <ButtonSecondary
+          button-text="Avbryt"
+          @click="$emit('showForgotPassword')"
+        />
         <ButtonPrimary button-text="Login" />
       </div>
       <ul class="flex flex-col gap-10">

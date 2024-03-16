@@ -1,4 +1,5 @@
 <script lang="ts">
+import { defineComponent, ref } from "vue";
 import ButtonPrimary from "../buttons/ButtonPrimary.vue";
 import EmailInput from "../input/EmailInput.vue";
 import PasswordInput from "../input/PasswordInput.vue";
@@ -24,7 +25,8 @@ export default {
       <PasswordInput />
       <!-- TODO: Add logic for forgot password -->
       <a
-        href=""
+        href="#"
+        @click="$emit('showForgotPassword')"
         class="font-body text-sm text-green-1000 underline hover:text-black hover:no-underline"
         >Glemt passord?</a
       >
