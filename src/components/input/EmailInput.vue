@@ -22,10 +22,12 @@ export default {
 </script>
 
 <template>
-  <div class="mt-30 flex h-[50px] max-w-[360px] flex-col gap-30">
-    <label for="email" class="font-body text-xl font-normal"> Epost </label>
+  <div class="flex w-full flex-col gap-30">
+    <label for="email" class="font-body text-xl font-normal text-green-1200">
+      Epost
+    </label>
     <input
-      class="active::border-green-1100 h-40 w-[260px] rounded-8 border-[1px] border-gray-600 px-10 py-8 text-base hover:border-2 hover:border-green-1100 focus-visible:border-2 focus-visible:outline-none active:border-2"
+      class="active::border-green-1100 h-[50px] w-[380px] rounded-8 border-[1px] border-gray-600 px-10 py-8 text-base hover:border-2 hover:border-green-1100 focus-visible:border-2 focus-visible:outline-none active:border-2"
       id="email"
       type="email"
       v-model.trim="email"
