@@ -1,9 +1,18 @@
 <script lang="ts">
+import QuestionMenu from "./navMenu/QuestionMenu.vue";
+import UserMenu from "./navMenu/UserMenu.vue";
+
 export default {
   name: "PageNavigation",
+  components: {
+    UserMenu,
+    QuestionMenu,
+  },
   data() {
     return {
       isMobileMenuOpen: false,
+      isUserMenuOpen: false,
+      isHelpMenuOpen: false,
     };
   },
   methods: {
@@ -78,26 +87,34 @@ export default {
       </ul>
     </div>
     <div class="hidden gap-10 laptop:flex">
-      <button
-        class="flex h-40 w-40 items-center justify-center rounded-full border-2 border-green-1100 bg-gray-200 ring-offset-2 hover:cursor-pointer hover:bg-gray-300 focus:ring-2 focus:ring-green-1100"
-      >
-        <img
-          src="../../assets/icons/IconUser.svg"
-          alt="Brukermeny"
-          height="18"
-          width="20"
-        />
-      </button>
-      <button
-        class="flex h-40 w-40 items-center justify-center rounded-full border-2 border-green-1100 bg-gray-200 ring-offset-2 focus-within:ring-2 hover:cursor-pointer hover:bg-gray-300 focus:ring-green-1100"
-      >
-        <img
-          src="../../assets/icons/IconQuestion.svg"
-          alt="hjelpemeny"
-          height="40"
-          width="40"
-        />
-      </button>
+      <div class="relative">
+        <button
+          @click="isUserMenuOpen = !isUserMenuOpen"
+          class="flex h-40 w-40 items-center justify-center rounded-full border-2 border-green-1100 bg-gray-200 ring-offset-2 hover:cursor-pointer hover:bg-gray-300 focus:ring-2 focus:ring-green-1100"
+        >
+          <img
+            src="../../assets/icons/IconUser.svg"
+            alt="Brukermeny"
+            height="18"
+            width="20"
+          />
+        </button>
+        <UserMenu v-if="isUserMenuOpen" />
+      </div>
+      <div class="relative">
+        <button
+          @click="isHelpMenuOpen = !isHelpMenuOpen"
+          class="flex h-40 w-40 items-center justify-center rounded-full border-2 border-green-1100 bg-gray-200 ring-offset-2 focus-within:ring-2 hover:cursor-pointer hover:bg-gray-300 focus:ring-green-1100"
+        >
+          <img
+            src="../../assets/icons/IconQuestion.svg"
+            alt="hjelpemeny"
+            height="40"
+            width="40"
+          />
+        </button>
+        <QuestionMenu v-if="isHelpMenuOpen" />
+      </div>
     </div>
     <!-- mobile nav -->
     <div
