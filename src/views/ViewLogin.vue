@@ -25,7 +25,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <header class="ml-52 flex w-full">
+  <header class="my-10 ml-52 flex">
     <img src="@/assets/logo.svg" alt="avonova logo" height="21" width="150" />
   </header>
   <main class="flex h-screen items-center justify-evenly gap-10 bg-neutral-100">
