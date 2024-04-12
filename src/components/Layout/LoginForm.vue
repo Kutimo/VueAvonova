@@ -1,4 +1,5 @@
 <script lang="ts">
+import { ref } from "vue";
 import ButtonPrimary from "../buttons/ButtonPrimary.vue";
 import EmailInput from "../input/EmailInput.vue";
 import PasswordInput from "../input/PasswordInput.vue";
@@ -10,7 +11,21 @@ export default {
     PasswordInput,
     ButtonPrimary,
   },
+  data() {
+    return {
+      email: ref(""),
+      password: ref(""),
+    };
+  },
+  methods: {
+    handleEmailUpdate(email: string) {
+      console.log("Email received in parent component:", email);
+    },
+  },
 };
+
+let email = ref("");
+let password = ref("");
 </script>
 
 <template>
@@ -20,7 +35,7 @@ export default {
   >
     <form action="" class="flex w-fit flex-col gap-30">
       <h2 class="mb-10 mt-10 font-body text-[40px]">Logg inn</h2>
-      <EmailInput />
+      <EmailInput @email-updated="handleEmailUpdate" />
       <PasswordInput />
       <!-- TODO: Add logic for forgot password -->
       <a
