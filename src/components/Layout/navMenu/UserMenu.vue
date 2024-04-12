@@ -11,8 +11,9 @@ export default {
         class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2"
       >
         <a href="#" class="flex gap-20">
+          <!-- IconUsername.svg" -->
           <img
-            src="@/assets/icons/IconUsername.svg"
+            src="../../../assets/icons/IconUsername.svg"
             alt="user icon"
             draggable="false"
           />
@@ -24,7 +25,7 @@ export default {
       >
         <a href="#" class="flex gap-20">
           <img
-            src="@/assets/icons/IconLogout.svg"
+            src="../../../assets/icons/IconLogOut.svg"
             alt="Logg ut"
             draggable="false"
           />
