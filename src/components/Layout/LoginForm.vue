@@ -25,7 +25,6 @@ export default {
     };
 
     const handleSignIn = async () => {
-      console.log("clicked");
       try {
         // Use the Supabase provided method to handle the sign in
         const { error } = await supabase.auth.signInWithPassword({
