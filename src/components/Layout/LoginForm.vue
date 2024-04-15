@@ -31,8 +31,8 @@ export default {
           email: emailRef.value,
           password: passwordRef.value,
         });
-        alert("success");
         if (error) throw error;
+        window.location.reload();
       } catch (error: unknown) {
         alert(error);
       }
