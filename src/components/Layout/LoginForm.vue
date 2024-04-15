@@ -1,5 +1,6 @@
 <script lang="ts">
 import { ref } from "vue";
+import { supabase } from "@/lib/supabaseClient";
 import ButtonPrimary from "../buttons/ButtonPrimary.vue";
 import EmailInput from "../input/EmailInput.vue";
 import PasswordInput from "../input/PasswordInput.vue";
@@ -11,21 +12,42 @@ export default {
     PasswordInput,
     ButtonPrimary,
   },
-  data() {
+  setup() {
+    const passwordRef = ref("");
+    const emailRef = ref("");
+
+    const handleEmailSubmission = (email: string) => {
+      emailRef.value = email;
+    };
+
+    const handlePasswordSubmission = (password: string) => {
+      passwordRef.value = password;
+    };
+
+    const handleSignIn = async () => {
+      console.log("clicked");
+      try {
+        // Use the Supabase provided method to handle the sign in
+        const { error } = await supabase.auth.signInWithPassword({
+          email: emailRef.value,
+          password: passwordRef.value,
+        });
+        alert("success");
+        if (error) throw error;
+      } catch (error: unknown) {
+        alert(error);
+      }
+    };
+
     return {
-      email: ref(""),
-      password: ref(""),
+      emailRef,
+      passwordRef,
+      handleEmailSubmission,
+      handlePasswordSubmission,
+      handleSignIn,
     };
   },
-  methods: {
-    handleEmailUpdate(email: string) {
-      console.log("Email received in parent component:", email);
-    },
-  },
 };
-
-let email = ref("");
-let password = ref("");
 </script>
 
 <template>
@@ -35,8 +57,8 @@ let password = ref("");
   >
     <form action="" class="flex w-fit flex-col gap-30">
       <h2 class="mb-10 mt-10 font-body text-[40px]">Logg inn</h2>
-      <EmailInput @email-updated="handleEmailUpdate" />
-      <PasswordInput />
+      <EmailInput @emailSubmitted="handleEmailSubmission" />
+      <PasswordInput @passwordSubmitted="handlePasswordSubmission" />
       <!-- TODO: Add logic for forgot password -->
       <a
         href="#"
@@ -44,7 +66,7 @@ let password = ref("");
         class="font-body text-sm text-green-1000 underline hover:text-black hover:no-underline"
         >Glemt passord?</a
       >
-      <ButtonPrimary button-text="Login" />
+      <ButtonPrimary button-text="Login" @click="handleSignIn" />
       <ul class="flex flex-col gap-10">
         <li><strong>Trenger du hjelp?</strong></li>
         <li class="flex items-center gap-10">
