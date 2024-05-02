@@ -13,6 +13,9 @@ export default {
         this.$emit("passwordSubmitted", this.password);
       }
     },
+    emitSignInEvent() {
+      this.$emit("signIn");
+    },
   },
 };
 </script>
@@ -29,6 +32,7 @@ export default {
       type="password"
       v-model="password"
       @blur="handlePasswordSubmission"
+      @keyup.enter="emitSignInEvent"
     />
   </div>
 </template>

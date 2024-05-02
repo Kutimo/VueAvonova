@@ -57,7 +57,10 @@ export default {
     <form action="" class="flex w-fit flex-col gap-30">
       <h2 class="mb-10 mt-10 font-body text-[40px]">Logg inn</h2>
       <EmailInput @emailSubmitted="handleEmailSubmission" />
-      <PasswordInput @passwordSubmitted="handlePasswordSubmission" />
+      <PasswordInput
+        @passwordSubmitted="handlePasswordSubmission"
+        @signIn="handleSignIn"
+      />
       <!-- TODO: Add logic for forgot password -->
       <a
         href="#"
