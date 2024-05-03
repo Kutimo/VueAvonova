@@ -2,9 +2,24 @@
 import EmailInput from "../input/EmailInput.vue";
 import ButtonPrimary from "../buttons/ButtonPrimary.vue";
 import ButtonSecondary from "../buttons/ButtonSecondary.vue";
+import { supabase } from "@/lib/supabaseClient";
+import { ref } from "vue";
 
 export default {
   name: "ForgotPasswordForm",
+
+  const { sendPasswordRestEmail } = useAuthUser();
+
+// keep up with email
+const email = ref("");
+
+// function to call on submit of the form
+// triggers sending the reset email to the user
+const handlePasswordReset = async () => {
+  await sendPasswordRestEmail(email.value);
+  alert(Password reset email sent to: ${email.value});
+};
+
   components: {
     EmailInput,
     ButtonPrimary,
@@ -18,13 +33,18 @@ export default {
   <div
     class="flex h-fit w-[560px] flex-col rounded-10 bg-white px-30 py-[50px] drop-shadow-lg"
   >
-    <form action="" class="flex w-fit flex-col gap-30">
+    <form
+      action=""
+      class="flex w-fit flex-col gap-30"
+      @submit.prevent="handlePasswordReset()"
+    >
       <p class="font-body text-[30px] text-green-1200">
         Vennligst oppgi følgende detaljer
       </p>
       <span class="font-body text-sm"
         >Skriv inn Eposten din for å få tilsendt en bekreftleseskode.</span
       >
+      <!-- TODO: hoist the value of email input -->
       <EmailInput />
       <div class="mt-10 flex gap-10">
         <ButtonSecondary
