@@ -4,6 +4,7 @@ import { supabase } from "@/lib/supabaseClient";
 import ButtonPrimary from "../buttons/ButtonPrimary.vue";
 import EmailInput from "../input/EmailInput.vue";
 import PasswordInput from "../input/PasswordInput.vue";
+import { useToast } from "vue-toastification";
 
 export default {
   name: "LoginForm",
@@ -15,6 +16,7 @@ export default {
   setup() {
     const passwordRef = ref("");
     const emailRef = ref("");
+    const toast = useToast();
 
     const handleEmailSubmission = (email: string) => {
       emailRef.value = email;
@@ -32,9 +34,9 @@ export default {
           password: passwordRef.value,
         });
         if (error) throw error;
-        window.location.reload();
+        // window.location.reload();
       } catch (error: unknown) {
-        alert(error);
+        toast.error("Feil passord eller brukernavn");
       }
     };
 
@@ -44,6 +46,7 @@ export default {
       handleEmailSubmission,
       handlePasswordSubmission,
       handleSignIn,
+      toast,
     };
   },
 };

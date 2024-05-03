@@ -18,17 +18,27 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
-  const authData = await supabase.auth.getUser();
-
-  if (to.name !== "Login" && !authData.data.user) {
-    // If trying to access a protected route and user is not logged in, redirect to login
+  try {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (!user && to.name !== "Login") {
+      // If user is not authenticated and trying to access a protected route,
+      // redirect to the login page
+      next({ name: "Login" });
+    } else if (user && to.name === "Login") {
+      // If user is authenticated and trying to access the login page,
+      // redirect to the home page
+      next({ name: "Home" });
+    } else {
+      // Continue to the requested route
+      next();
+    }
+  } catch (error: any) {
+    // If an error occurs asynchronously (e.g., user not authenticated),
+    // handle it silently and redirect to the login page or another appropriate page
+    console.error("Error fetching user data:", error.message);
     next({ name: "Login" });
-  } else if (to.name === "Login" && authData.data.user) {
-    // If trying to access the login page and user is already logged in, redirect to home
-    next({ name: "Home" });
-  } else {
-    // Continue to the requested route
-    next();
   }
 });
 
