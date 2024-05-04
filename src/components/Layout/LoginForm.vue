@@ -27,6 +27,7 @@ export default {
     };
 
     const handleSignIn = async () => {
+      console.log(passwordRef.value);
       try {
         // Use the Supabase provided method to handle the sign in
         const { error } = await supabase.auth.signInWithPassword({
@@ -34,7 +35,7 @@ export default {
           password: passwordRef.value,
         });
         if (error) throw error;
-        // window.location.reload();
+        window.location.reload();
       } catch (error: unknown) {
         toast.error("Feil passord eller brukernavn");
       }

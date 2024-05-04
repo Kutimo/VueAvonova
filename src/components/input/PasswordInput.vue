@@ -14,6 +14,7 @@ export default {
       }
     },
     emitSignInEvent() {
+      this.$emit("passwordSubmitted", this.password);
       this.$emit("signIn");
     },
   },
