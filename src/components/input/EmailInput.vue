@@ -16,6 +16,8 @@ export default {
         this.emailError = "Skriv inn en gyldig epost adresse";
       } else {
         this.emailError = "";
+        // Emit an event to send the email to the parent component
+        this.$emit("emailSubmitted", this.email);
       }
     },
   },
@@ -31,6 +33,7 @@ export default {
       class="active::border-green-1100 h-[50px] w-[380px] rounded-8 border-[1px] border-gray-600 px-10 py-8 text-base hover:border-2 hover:border-green-1100 focus-visible:border-2 focus-visible:outline-none active:border-2"
       id="email"
       type="email"
+      autocomplete="username"
       v-model.trim="email"
       @blur="sanitizeEmail"
     />
