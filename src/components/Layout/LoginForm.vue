@@ -54,7 +54,6 @@ export default {
 </script>
 
 <template>
-  <!--TODO: Add logic for form submission -->
   <div
     class="flex h-fit w-[560px] flex-col rounded-10 bg-white px-30 py-[50px] drop-shadow-lg"
   >
@@ -65,7 +64,6 @@ export default {
         @passwordSubmitted="handlePasswordSubmission"
         @signIn="handleSignIn"
       />
-      <!-- TODO: Add logic for forgot password -->
       <a
         href="#"
         @click="$emit('showForgotPassword')"
