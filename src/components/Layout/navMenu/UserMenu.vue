@@ -1,8 +1,22 @@
 <script lang="ts">
 import { supabase } from "@/lib/supabaseClient";
+import { ref } from "vue";
+import { useToast } from "vue-toastification";
 export default {
   name: "UserMenu",
   setup() {
+    const toast = useToast();
+    const firstName = ref("");
+
+    const fetchDataFromLocalStorage = async () => {
+      const { data, error } = await supabase.auth.getSession();
+      if (error) {
+        toast.error(error);
+      }
+      firstName.value = data.session?.user.user_metadata.firstName;
+    };
+    fetchDataFromLocalStorage();
+
     const signOut = async () => {
       try {
         const { error } = await supabase.auth.signOut();
@@ -12,10 +26,10 @@ export default {
           window.location.reload();
         }
       } catch (error) {
-        alert(error);
+        toast.error(error);
       }
     };
-    return { signOut };
+    return { signOut, fetchDataFromLocalStorage, firstName };
   },
 };
 </script>
@@ -32,7 +46,7 @@ export default {
             alt="user icon"
             draggable="false"
           />
-          User name
+          {{ firstName }}
         </a>
       </li>
       <li
