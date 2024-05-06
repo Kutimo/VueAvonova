@@ -1,41 +1,52 @@
-<script lang="ts">
-import { defineComponent } from "vue";
+<script>
+import { ref } from "vue";
+import { useToast } from "vue-toastification";
+import EmailInput from "@/components/input/EmailInput.vue";
 
-interface EmailFormData {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
-}
-
-export default defineComponent({
+export default {
   name: "EmailForm",
-  data(): EmailFormData {
-    return {
+  components: {
+    EmailInput,
+  },
+  setup() {
+    const formData = ref({
       name: "",
       email: "",
       phone: "",
       message: "",
-    };
-  },
-  methods: {
-    sendEmail() {
-      (window as any).Email.send({
-        SecureToken: "43790b23-27f6-4cde-abd5-4cdf2b2c75e7",
-        To: "anders-wroldsen@live.com",
-        From: this.email,
-        Subject: "Epost fra Avonova assist bedrifthelsetjenester",
-        Body: `Name: ${this.name}<br>Email: ${this.email}<br>Phone: ${this.phone}<br>Message: ${this.message}`,
-      }).then((message: string) => alert(message));
+    });
+    const toast = useToast();
 
-      // Reset the form fields after sending the email
-      this.name = "";
-      this.email = "";
-      this.phone = "";
-      this.message = "";
-    },
+    const sendEmail = async () => {
+      if (!formData.value.email) {
+        toast.error("Vennligst fyll ut epostfeltet");
+        return;
+      }
+      try {
+        await window.Email.send({
+          SecureToken: "43790b23-27f6-4cde-abd5-4cdf2b2c75e7",
+          To: "anders-wroldsen@live.com",
+          From: formData.value.email,
+          Subject: "Epost fra Avonova assist bedrifthelsetjenester",
+          Body: `Name: ${formData.value.name}<br>Email: ${formData.value.email}<br>Phone: ${formData.value.phone}<br>Message: ${formData.value.message}`,
+        });
+        toast.success("Eposten ble sendt");
+      } catch (error) {
+        toast.error("Eposten ble ikke sendt, kontakt administrator");
+      }
+      formData.value.name = "";
+      formData.value.email = "";
+      formData.value.phone = "";
+      formData.value.message = "";
+    };
+
+    const handleEmailSubmission = (email) => {
+      formData.value.email = email;
+    };
+
+    return { formData, sendEmail, handleEmailSubmission };
   },
-});
+};
 </script>
 
 <template>
@@ -44,19 +55,19 @@ export default defineComponent({
     <form @submit.prevent="sendEmail">
       <div>
         <label for="name">Navn:</label>
-        <input type="text" id="name" v-model="name" required />
+        <input type="text" id="name" v-model="formData.name" required />
       </div>
       <div>
         <label for="email">Epost:</label>
-        <input type="email" id="email" v-model="email" required />
+        <EmailInput @emailSubmitted="handleEmailSubmission" />
       </div>
       <div>
         <label for="phone">Tlf Nummer:</label>
-        <input type="tel" id="phone" v-model="phone" required />
+        <input type="tel" id="phone" v-model="formData.phone" required />
       </div>
       <div>
         <label for="message">Din melding:</label>
-        <textarea id="message" v-model="message" required></textarea>
+        <textarea id="message" v-model="formData.message" required></textarea>
       </div>
       <button type="submit">Send Epost</button>
     </form>
