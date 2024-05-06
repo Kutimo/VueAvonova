@@ -4,10 +4,12 @@ import ButtonSecondary from "@/components/buttons/ButtonSecondary.vue";
 import TextInput from "@/components/input/TextInput.vue";
 import DatePicker from "@/components/DatePicker.vue";
 import ContactCardPFA from "@/components/cards/ContactCardPFA.vue";
+import CheckBox from "@/components/checkbox/CheckBox.vue";
 
 export default {
   name: "ViewComponents",
   components: {
+    CheckBox,
     TextInput,
     ButtonPrimary,
     ButtonSecondary,
@@ -53,6 +55,10 @@ export default {
     <div>
       <p>contact card:</p>
       <ContactCardPFA />
+    </div>
+    <div>
+      <p>Checkbox</p>
+      <CheckBox />
     </div>
   </main>
 </template>
