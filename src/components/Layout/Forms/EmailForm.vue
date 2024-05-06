@@ -1,4 +1,4 @@
-<!-- <script lang="ts">
+<script lang="ts">
 import { defineComponent, ref } from "vue";
 
 interface EmailFormData {
@@ -61,4 +61,4 @@ export default defineComponent({
       <button type="submit">Send Epost</button>
     </form>
   </div>
-</template> -->
+</template>
