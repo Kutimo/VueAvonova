@@ -1,11 +1,12 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import ProductCard from "@/components/cards/ProductCard.vue";
-
+import EmailForm from "@/components/Layout/Forms/EmailForm.vue";
 export default defineComponent({
   name: "ViewHome",
   components: {
     ProductCard,
+    EmailForm,
   },
 
   setup() {
@@ -30,6 +31,7 @@ export default defineComponent({
 </script>
 
 <template>
+  <EmailForm />
   <main class="m-10 h-screen">
     <ProductCard
       v-for="card in cards"

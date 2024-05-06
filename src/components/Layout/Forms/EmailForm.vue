@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 interface EmailFormData {
     name: string;
@@ -34,6 +34,7 @@ interface EmailFormData {
 }
 
 export default defineComponent({
+    name: "EmailForm",
     data(): EmailFormData {
         return {
             name: '',
@@ -52,6 +53,7 @@ export default defineComponent({
                 Body: `Name: ${this.name}<br>Email: ${this.email}<br>Phone: ${this.phone}<br>Message: ${this.message}`
             }).then((message: string) => alert(message));
 
+            // Reset the form fields after sending the email
             this.name = '';
             this.email = '';
             this.phone = '';
@@ -61,4 +63,6 @@ export default defineComponent({
 });
 </script>
 
-
+<style scoped>
+/* Add any component-specific styles here */
+</style>
