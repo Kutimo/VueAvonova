@@ -1,15 +1,22 @@
-<script>
+<script lang="ts">
 import { ref } from "vue";
 import { useToast } from "vue-toastification";
-import EmailInput from "@/components/input/EmailInput.vue";
+import EmailInput from "@/components/input/EmailInput.vue"; // Importer EmailInput-komponenten
+
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}
 
 export default {
   name: "EmailForm",
   components: {
-    EmailInput,
+    EmailInput, // Legg til EmailInput-komponenten som en komponent i denne filen
   },
   setup() {
-    const formData = ref({
+    const formData = ref<FormData>({
       name: "",
       email: "",
       phone: "",
@@ -18,21 +25,17 @@ export default {
     const toast = useToast();
 
     const sendEmail = async () => {
-      if (!formData.value.email) {
-        toast.error("Vennligst fyll ut epostfeltet");
-        return;
-      }
       try {
-        await window.Email.send({
+        await (window as any).Email.send({
           SecureToken: "43790b23-27f6-4cde-abd5-4cdf2b2c75e7",
           To: "anders-wroldsen@live.com",
           From: formData.value.email,
           Subject: "Epost fra Avonova assist bedrifthelsetjenester",
           Body: `Name: ${formData.value.name}<br>Email: ${formData.value.email}<br>Phone: ${formData.value.phone}<br>Message: ${formData.value.message}`,
         });
-        toast.success("Eposten ble sendt");
+        toast.success("Epost sendt!");
       } catch (error) {
-        toast.error("Eposten ble ikke sendt, kontakt administrator");
+        toast.error("Noe gikk galt, prøv igjen senere.");
       }
       formData.value.name = "";
       formData.value.email = "";
@@ -40,7 +43,7 @@ export default {
       formData.value.message = "";
     };
 
-    const handleEmailSubmission = (email) => {
+    const handleEmailSubmission = (email: string) => {
       formData.value.email = email;
     };
 
