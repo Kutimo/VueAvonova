@@ -1,6 +1,6 @@
 <script lang="ts">
 import { supabase } from "@/lib/supabaseClient";
-
+// const { data: { user } } = await supabase.auth.getUser()
 export default {
   name: "UserMenu",
   methods: {
@@ -27,7 +27,6 @@ export default {
         class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2"
       >
         <a href="#" class="flex gap-20">
-          <!-- IconUsername.svg" -->
           <img
             src="../../../assets/icons/IconUsername.svg"
             alt="user icon"
