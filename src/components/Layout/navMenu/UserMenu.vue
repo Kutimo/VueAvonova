@@ -1,10 +1,9 @@
 <script lang="ts">
 import { supabase } from "@/lib/supabaseClient";
-// const { data: { user } } = await supabase.auth.getUser()
 export default {
   name: "UserMenu",
-  methods: {
-    async signOut() {
+  setup() {
+    const signOut = async () => {
       try {
         const { error } = await supabase.auth.signOut();
         if (error) {
@@ -15,7 +14,8 @@ export default {
       } catch (error) {
         alert(error);
       }
-    },
+    };
+    return { signOut };
   },
 };
 </script>
