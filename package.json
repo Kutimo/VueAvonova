@@ -17,6 +17,7 @@
   "dependencies": {
     "@vuepic/vue-datepicker": "^8.2.0",
     "happy-dom": "^6.0.4",
+    "smtpjs": "^0.0.1",
     "vue": "^3.4.15",
     "vue-router": "^4.3.0"
   },
