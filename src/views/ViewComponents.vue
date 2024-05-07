@@ -4,8 +4,7 @@ import ButtonSecondary from "@/components/buttons/ButtonSecondary.vue";
 import TextInput from "@/components/input/TextInput.vue";
 import DatePicker from "@/components/DatePicker.vue";
 import ContactCardPFA from "@/components/cards/ContactCardPFA.vue";
-import CheckBox from "@/components/checkbox/CheckBox.vue";
-import TextArea from "@/components/input/TextArea.vue";
+import TextAreaField from "@/components/input/TextAreaField.vue";
 import SelectField from "@/components/select/SelectField.vue";
 import CheckBoxField from "@/components/checkbox/CheckBoxField.vue";
 
@@ -13,7 +12,7 @@ export default {
   name: "ViewComponents",
   components: {
     SelectField,
-    TextArea,
+    TextAreaField,
     CheckBoxField,
     TextInput,
     ButtonPrimary,
@@ -66,7 +65,7 @@ export default {
     </div>
     <div>
       <p>Textarea:</p>
-      <TextArea />
+      <TextAreaField />
     </div>
     <div>
       <p>Select</p>
