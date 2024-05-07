@@ -13,7 +13,7 @@ interface FormData {
 export default {
   name: "EmailForm",
   components: {
-    EmailInput, // Legg til EmailInput-komponenten som en komponent i denne filen
+    EmailInput,
   },
   setup() {
     const formData = ref<FormData>({
