@@ -1,11 +1,6 @@
-<template>
-  <label class="space-x-2 flex items-center">
-    <input type="checkbox" v-model="checked" class="form-checkbox" />
-    <span>{{ label }}</span>
-  </label>
-</template>
-
 <script lang="ts">
+import { ref, watch } from "vue";
+
 export default {
   props: {
     label: {
@@ -17,15 +12,23 @@ export default {
       default: false,
     },
   },
-  data() {
+  setup(props, { emit }) {
+    const checked = ref(props.value);
+
+    watch(checked, (newValue) => {
+      emit("update:value", newValue);
+    });
+
     return {
-      checked: this.value,
+      checked,
     };
-  },
-  watch: {
-    checked(newValue) {
-      this.$emit("input", newValue);
-    },
   },
 };
 </script>
+
+<template>
+  <label class="space-x-2 flex items-center">
+    <input type="checkbox" v-model="checked" class="form-checkbox" />
+    <span>{{ label }}</span>
+  </label>
+</template>

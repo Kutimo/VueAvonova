@@ -61,8 +61,7 @@ export default {
       <ContactCardPFA />
     </div>
     <div>
-      <p>Checkbox:</p>
-      <CheckBox />
+      <CheckBox label="Checkbox" />
     </div>
     <div>
       <p>Textarea:</p>
