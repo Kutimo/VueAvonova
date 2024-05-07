@@ -4,17 +4,16 @@ import ButtonSecondary from "@/components/buttons/ButtonSecondary.vue";
 import TextInput from "@/components/input/TextInput.vue";
 import DatePicker from "@/components/DatePicker.vue";
 import ContactCardPFA from "@/components/cards/ContactCardPFA.vue";
-import CheckBox from "@/components/checkbox/CheckBox.vue";
-import TextArea from "@/components/input/TextArea.vue";
-import Select from "@/components/select/Select.vue";
-import { ref } from "vue";
+import TextAreaField from "@/components/input/TextAreaField.vue";
+import SelectField from "@/components/select/SelectField.vue";
+import CheckBoxField from "@/components/checkbox/CheckBoxField.vue";
 
 export default {
   name: "ViewComponents",
   components: {
-    Select,
-    TextArea,
-    CheckBox,
+    SelectField,
+    TextAreaField,
+    CheckBoxField,
     TextInput,
     ButtonPrimary,
     ButtonSecondary,
@@ -82,21 +81,15 @@ export default {
       <ContactCardPFA />
     </div>
     <div>
-      <p>Checkbox:</p>
-      <CheckBox label="Checkbox" />
+      <CheckBoxField label="Checkbox" />
     </div>
     <div>
       <p>Textarea:</p>
-      <TextArea />
+      <TextAreaField />
     </div>
     <div>
       <p>Select</p>
-      <Select
-        placeholder="Select an option"
-        :data="options"
-        :selectedValue="selectedValue"
-        @update:selectedValue="updateSelectedValue"
-      />
+      <SelectField />
     </div>
   </main>
 </template>
