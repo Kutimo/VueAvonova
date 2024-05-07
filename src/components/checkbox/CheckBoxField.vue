@@ -28,7 +28,11 @@ export default {
 
 <template>
   <label class="space-x-2 flex items-center">
-    <input type="checkbox" v-model="checked" class="form-checkbox" />
+    <input
+      type="checkbox"
+      v-model="checked"
+      class="form-checkbox h-24 w-24 rounded-6"
+    />
     <span>{{ label }}</span>
   </label>
 </template>
