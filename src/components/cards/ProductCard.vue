@@ -19,7 +19,7 @@ const onBookAppointment = () => {
 
 <template>
   <div
-    class="m-10 h-[225px] w-[643px] flex justify-center overflow-hidden rounded-10 bg-neutral-100 shadow-md"
+    class="m-10 h-[225px] w-[643px] flex justify-center overflow-hidden rounded-10 shadow-md"
   >
     <div class="flex justify-between px-48 py-[38px] w-full">
       <div class="flex-col">
