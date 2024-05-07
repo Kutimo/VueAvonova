@@ -7,6 +7,7 @@ import ContactCardPFA from "@/components/cards/ContactCardPFA.vue";
 import TextAreaField from "@/components/input/TextAreaField.vue";
 import SelectField from "@/components/select/SelectField.vue";
 import CheckBoxField from "@/components/checkbox/CheckBoxField.vue";
+import { ref } from "vue";
 
 export default {
   name: "ViewComponents",
@@ -89,7 +90,11 @@ export default {
     </div>
     <div>
       <p>Select</p>
-      <SelectField />
+      <SelectField
+        placeholder="Select a option:"
+        :data="options"
+        @change="updateSelectedValue"
+      />
     </div>
   </main>
 </template>
