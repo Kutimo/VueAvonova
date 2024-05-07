@@ -7,6 +7,7 @@ import ContactCardPFA from "@/components/cards/ContactCardPFA.vue";
 import CheckBox from "@/components/checkbox/CheckBox.vue";
 import TextArea from "@/components/input/TextArea.vue";
 import Select from "@/components/select/Select.vue";
+import { ref } from "vue";
 
 export default {
   name: "ViewComponents",
@@ -19,6 +20,26 @@ export default {
     ButtonSecondary,
     DatePicker,
     ContactCardPFA,
+  },
+  setup() {
+    const options = ref([
+      { label: "Option 1", value: "option1" },
+      { label: "Option 2", value: "option2" },
+      { label: "Option 3", value: "option3" },
+    ]);
+
+    const selectedValue = ref("");
+
+    const updateSelectedValue = (value: string) => {
+      selectedValue.value = value;
+      console.log(selectedValue.value);
+    };
+
+    return {
+      options,
+      selectedValue,
+      updateSelectedValue,
+    };
   },
 };
 </script>
@@ -62,7 +83,7 @@ export default {
     </div>
     <div>
       <p>Checkbox:</p>
-      <CheckBox />
+      <CheckBox label="Checkbox" />
     </div>
     <div>
       <p>Textarea:</p>
@@ -70,9 +91,12 @@ export default {
     </div>
     <div>
       <p>Select</p>
-      <Select />
+      <Select
+        placeholder="Select an option"
+        :data="options"
+        :selectedValue="selectedValue"
+        @update:selectedValue="updateSelectedValue"
+      />
     </div>
   </main>
 </template>
-
-<style scoped></style>

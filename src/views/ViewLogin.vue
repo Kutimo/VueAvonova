@@ -1,9 +1,9 @@
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { ref } from "vue";
 
 import ForgotPasswordForm from "@/components/Layout/ForgotPasswordForm.vue";
 import LoginForm from "@/components/Layout/LoginForm.vue";
-export default defineComponent({
+export default {
   name: "ViewLogin",
   components: {
     LoginForm,
@@ -21,7 +21,7 @@ export default defineComponent({
       toggleForgotPasswordForm,
     };
   },
-});
+};
 </script>
 
 <template>
