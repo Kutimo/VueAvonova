@@ -7,11 +7,13 @@ import ContactCardPFA from "@/components/cards/ContactCardPFA.vue";
 import TextAreaField from "@/components/input/TextAreaField.vue";
 import SelectField from "@/components/select/SelectField.vue";
 import CheckBoxField from "@/components/checkbox/CheckBoxField.vue";
+import ConfirmationDialog from "@/components/Layout/modal/ConfirmationDialog.vue";
 import { ref } from "vue";
 
 export default {
   name: "ViewComponents",
   components: {
+    ConfirmationDialog,
     SelectField,
     TextAreaField,
     CheckBoxField,
@@ -95,6 +97,9 @@ export default {
         :data="options"
         @change="updateSelectedValue"
       />
+    </div>
+    <div>
+      <ConfirmationDialog />
     </div>
   </main>
 </template>
