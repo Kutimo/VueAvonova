@@ -6,12 +6,12 @@ import DatePicker from "@/components/DatePicker.vue";
 import ContactCardPFA from "@/components/cards/ContactCardPFA.vue";
 import CheckBox from "@/components/checkbox/CheckBox.vue";
 import TextArea from "@/components/input/TextArea.vue";
-import Select from "@/components/select/Select.vue";
+import SelectField from "@/components/select/SelectField.vue";
 
 export default {
   name: "ViewComponents",
   components: {
-    Select,
+    SelectField,
     TextArea,
     CheckBox,
     TextInput,
@@ -69,7 +69,7 @@ export default {
     </div>
     <div>
       <p>Select</p>
-      <Select />
+      <SelectField />
     </div>
   </main>
 </template>
