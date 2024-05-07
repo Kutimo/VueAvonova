@@ -7,13 +7,14 @@ import ContactCardPFA from "@/components/cards/ContactCardPFA.vue";
 import CheckBox from "@/components/checkbox/CheckBox.vue";
 import TextArea from "@/components/input/TextArea.vue";
 import SelectField from "@/components/select/SelectField.vue";
+import CheckBoxField from "@/components/checkbox/CheckBoxField.vue";
 
 export default {
   name: "ViewComponents",
   components: {
     SelectField,
     TextArea,
-    CheckBox,
+    CheckBoxField,
     TextInput,
     ButtonPrimary,
     ButtonSecondary,
@@ -61,7 +62,7 @@ export default {
       <ContactCardPFA />
     </div>
     <div>
-      <CheckBox label="Checkbox" />
+      <CheckBoxField label="Checkbox" />
     </div>
     <div>
       <p>Textarea:</p>
