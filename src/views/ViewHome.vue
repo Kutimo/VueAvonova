@@ -1,10 +1,14 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import ProductCard from "@/components/cards/ProductCard.vue";
+import EmailForm from "@/components/Layout/Forms/EmailForm.vue";
+
+
 export default defineComponent({
   name: "ViewHome",
   components: {
     ProductCard,
+    EmailForm,
   },
 
   setup() {
@@ -23,14 +27,22 @@ export default defineComponent({
       },
     ]);
 
-    return { cards };
+    const formFields = ref([
+      { name: 'name', label: 'Navn:', props: { type: 'text', id: 'name', required: true } },
+      { name: 'phone', label: 'Telefon:', props: { type: 'tel', id: 'phone', required: true } },
+      { name: 'email', label: 'Epost:', props: { type: 'email', id: 'email', required: true } },
+      { name: 'message', label: 'Melding:', component: 'textarea', props: { id: 'message', required: true } },
+    ]);
+
+    return { cards, formFields };
   },
+
 });
 </script>
 
 <template>
-  <TestForm />
   <main class="m-10 h-screen">
+    <EmailForm :fields="formFields" />
     <ProductCard v-for="card in cards" :key="card.id" :cardIcon="card.cardIcon" :cardHeader="card.cardHeader"
       :cardContent="card.cardContent" />
   </main>
