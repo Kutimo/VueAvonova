@@ -29,10 +29,14 @@ export default defineComponent({
 
     const formFields = ref([
       { name: 'name', label: 'Navn:', props: { type: 'text', id: 'name', required: true } },
+      { name: 'lastname', label: 'Etternavn:', props: { type: 'text', id: 'lastname', required: true } },
       { name: 'phone', label: 'Telefon:', props: { type: 'tel', id: 'phone', required: true } },
       { name: 'email', label: 'Epost:', props: { type: 'email', id: 'email', required: true } },
       { name: 'message', label: 'Melding:', component: 'textarea', props: { id: 'message', required: true } },
+      { name: 'preferred_contact', label: 'Foretrukket kontaktmetode:', component: 'select', props: { options: ['Epost', 'Telefon'] } },
+      { name: 'newsletter', label: 'Meld deg på nyhetsbrev:', component: 'checkbox' }
     ]);
+
 
     return { cards, formFields };
   },
