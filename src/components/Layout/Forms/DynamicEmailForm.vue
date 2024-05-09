@@ -50,7 +50,7 @@ interface FormData {
   [key: string]: string;
 }
 
-export default defineComponent({
+export default {
   name: "EmailForm",
   components: {
     ButtonPrimary,
@@ -117,5 +117,5 @@ export default defineComponent({
 
     return { formData, sendEmail };
   },
-});
+};
 </script>
