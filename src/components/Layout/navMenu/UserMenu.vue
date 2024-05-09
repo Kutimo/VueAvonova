@@ -2,12 +2,12 @@
 import { supabase } from "@/lib/supabaseClient";
 import { ref } from "vue";
 import { useToast } from "vue-toastification";
+
 export default {
   name: "UserMenu",
   setup() {
     const toast = useToast();
     const firstName = ref("");
-
     const fetchDataFromLocalStorage = async () => {
       const { data, error } = await supabase.auth.getSession();
       if (error) {
@@ -35,7 +35,9 @@ export default {
 </script>
 
 <template>
-  <div class="absolute right-10 top-30 w-[200px] rounded-6 shadow-xl">
+  <div
+    class="absolute right-10 top-30 w-[200px] rounded-6 shadow-xl"
+  >
     <ul class="flex select-none flex-col gap-12 p-16">
       <li
         class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2"
