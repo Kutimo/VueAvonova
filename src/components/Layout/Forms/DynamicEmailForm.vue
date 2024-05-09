@@ -4,16 +4,22 @@
     <form @submit.prevent="sendEmail">
       <div v-for="field in fields" :key="field.name">
         <label :for="field.name">{{ field.label }}</label>
+        <!-- Vis standard inputfelt hvis ikke spesifikk 'component' er definert -->
         <input v-if="!field.component" v-bind="field.props" v-model="formData[field.name]" />
+        <!-- Behandle 'select' komponent -->
         <select v-else-if="field.component === 'select'" v-model="formData[field.name]">
           <option v-for="option in (field.props?.options || [])" :value="option">{{ option }}</option>
         </select>
+        <!-- Behandle 'checkbox' komponent -->
         <input v-else-if="field.component === 'checkbox'" type="checkbox" v-model="formData[field.name]" />
+        <!-- Legge til en fallback for udefinerte komponenttyper, viser et standard tekstfelt -->
+        <input v-else v-bind="field.props" v-model="formData[field.name]" />
       </div>
       <button type="submit">Send Epost</button>
     </form>
   </div>
 </template>
+
 
 <!-- Sjekke hvorfor ikke tekst inputen kommer med nå? -->
 
@@ -46,13 +52,16 @@ export default defineComponent({
   setup(props) {
     const formData: Ref<FormData> = ref({} as FormData);
 
-    watch(() => props.fields, (newFields) => {
-      newFields?.forEach(field => {
-        formData.value[field.name] = formData.value[field.name] || "";
-        field.props = field.props || {};  // Sørge for at props alltid er et objekt
-        field.listeners = field.listeners || {};
-      });
-    }, { immediate: true });
+      watch(() => props.fields, (newFields) => {
+  console.log('Oppdaterer formData basert på fields:', newFields);
+  newFields?.forEach(field => {
+    formData.value[field.name] = formData.value[field.name] || "";
+    console.log(`Sett ${field.name} til ${formData.value[field.name]}`);
+    field.props = field.props || {};
+    field.listeners = field.listeners || {};
+  });
+}, { immediate: true });
+
 
 
     const toast = useToast();

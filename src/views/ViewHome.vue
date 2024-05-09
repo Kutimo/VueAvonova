@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import ProductCard from "@/components/cards/ProductCard.vue";
-import EmailForm from "@/components/Layout/Forms/EmailForm.vue";
+import EmailForm from "@/components/Layout/Forms/DynamicEmailForm.vue";
 
 
 export default defineComponent({
