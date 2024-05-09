@@ -76,3 +76,7 @@ Assertion of Expected Behavior: Each test should include assertions that verify 
 For integration testing we use [vue-test-utils](https://test-utils.vuejs.org/)
 
 ## End to end testing
+
+
+## UseVue
+ --onClickOutside
