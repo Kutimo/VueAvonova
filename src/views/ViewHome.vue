@@ -10,7 +10,6 @@ export default defineComponent({
     ProductCard,
     EmailForm,
   },
-
   setup() {
     const cards = ref([
       {
@@ -26,21 +25,16 @@ export default defineComponent({
         cardContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
     ]);
-
     const formFields = ref([
       { name: 'name', label: 'Navn:', props: { type: 'text', id: 'name', required: true } },
-      { name: 'lastname', label: 'Etternavn:', props: { type: 'text', id: 'lastname', required: true } },
-      { name: 'phone', label: 'Telefon:', props: { type: 'tel', id: 'phone', required: true } },
       { name: 'email', label: 'Epost:', props: { type: 'email', id: 'email', required: true } },
       { name: 'message', label: 'Melding:', component: 'textarea', props: { id: 'message', required: true } },
-      { name: 'preferred_contact', label: 'Foretrukket kontaktmetode:', component: 'select', props: { options: ['Epost', 'Telefon'] } },
-      { name: 'newsletter', label: 'Meld deg på nyhetsbrev:', component: 'checkbox' }
+      { name: 'preferred_contact', label: 'Foretrukket kontaktmetode:', component: 'select', props: { options: ['Epost', 'Telefon', 'På døra'] } },
+      { name: 'newsletter', label: 'Meld deg på nyhetsbrev:', component: 'checkbox' },
+      { name: 'date', label: 'Velg dato:', component: 'datepicker', props: {} }
     ]);
-
-
     return { cards, formFields };
   },
-
 });
 </script>
 
