@@ -1,6 +1,7 @@
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import ProductCard from "@/components/cards/ProductCard.vue";
+import { supabase } from "@/lib/supabaseClient";
 
 export default defineComponent({
   name: "ViewHome",
@@ -24,7 +25,29 @@ export default defineComponent({
       },
     ]);
 
-    return { cards };
+    const employees = ref();
+
+    const fetchEmployees = async () => {
+      try {
+        let { data: Employee, error } = await supabase
+          .from("Employee")
+          .select("*");
+        console.log(Employee);
+        if (error) {
+          console.error(error.message);
+          return [];
+        }
+
+        return Employee;
+      } catch (error: any) {
+        console.error("Error fetching users:", error.message);
+        return [];
+      }
+    };
+
+    onMounted(fetchEmployees);
+
+    return { cards, employees };
   },
 });
 </script>
