@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-export default defineComponent({
+export default {
   name: "ButtonPrimary",
   props: {
     buttonText: {
@@ -24,15 +24,12 @@ export default defineComponent({
   //     console.log('Navigating to:', this.to)
   //   }
   // }
-});
+};
 </script>
 
 <template>
-  <a
-    to="handleClick"
-    tabindex="0"
-    class="w-fit cursor-pointer select-none rounded-28 bg-green-1200 px-28 py-10 font-body text-base font-medium leading-5 text-green-300 outline-none ring-black ring-offset-2 transition-all duration-500 hover:bg-green-600 hover:text-black focus-visible:ring-2 active:bg-green-400"
-  >
+  <a to="handleClick" tabindex="0"
+    class="w-fit cursor-pointer select-none rounded-28 bg-green-1200 px-28 py-10 font-body text-base font-medium leading-5 text-green-300 outline-none ring-black ring-offset-2 transition-all duration-500 hover:bg-green-600 hover:text-black focus-visible:ring-2 active:bg-green-400">
     <span v-if="icon" class="icon" v-html="icon"></span>
     {{ buttonText }}
   </a>

@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { useToast } from "vue-toastification";
 import type { Ref, PropType } from 'vue';
 import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue';
