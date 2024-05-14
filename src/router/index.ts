@@ -4,12 +4,14 @@ import ViewTypography from "../views/ViewTypography.vue";
 import ViewComponents from "@/views/ViewComponents.vue";
 import ViewLogin from "@/views/ViewLogin.vue";
 import { supabase } from "@/lib/supabaseClient";
+import ViewAdmin from "@/views/ViewAdmin.vue";
 
 const routes = [
   { path: "/", name: "Home", component: ViewHome },
-  { path: "/Typography", name: "About", component: ViewTypography },
-  { path: "/Components", name: "Components", component: ViewComponents },
+  { path: "/typography", name: "About", component: ViewTypography },
+  { path: "/components", name: "Components", component: ViewComponents },
   { path: "/login", name: "Login", component: ViewLogin },
+  { path: "/admin", name: "Admin", component: ViewAdmin },
 ];
 
 const router = createRouter({
