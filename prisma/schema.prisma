@@ -1,0 +1,72 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
+  binaryTargets   = ["native"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+  schemas   = ["public"]
+}
+
+// Define the model for the services table
+model Services {
+  service_id    Int       @id
+  name          String
+  description   String
+  category      String
+
+  // Add this line if you want to enforce uniqueness on the name
+  @@unique([name])
+  @@schema("public")
+
+}
+
+// Define the model for the businesses table
+model Businesses {
+  business_id          Int       @id
+  name                 String
+  legal_name           String
+  registration_number  String
+  address              String
+  postal_code          String
+  city                 String
+  country              String
+  phone                String
+  email                String
+  website              String
+  founding_date        DateTime
+  industry             String
+  annual_revenue       Int
+  number_of_employees  Int
+  technology_stack     String
+  status               String
+  comment              String?
+
+  employees            Employee[]   @relation("CompanyEmployees")
+
+  @@unique([registration_number])
+  @@schema("public")
+
+}
+
+// Define the model for the employee table
+model Employee {
+  employee_id  Int      @id
+  first_name   String
+  last_name    String
+  email        String   
+  gender       String
+  birthdate    DateTime
+  position     String
+  department   String
+  company_id   Int
+  company_name String 
+
+  company      Businesses @relation("CompanyEmployees", fields: [company_id], references: [business_id])
+
+  @@schema("public")
+}
+
