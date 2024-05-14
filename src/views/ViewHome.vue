@@ -1,10 +1,10 @@
 <template>
-  <main class="m-10 h-screen">
-    <!-- <EmailForm :fields="formFields" /> -->
-    <div class="app">
-      <h1>Alle produkter</h1>
-      <ProductsTable :data="products" :headers="productHeaders" />
-    </div>
+  <main class="m-10 h-screen relative">
+    <!-- Modal -->
+    <ButtonPrimaryVue buttonText="Bestill nå!" @click="showModal = true" />
+    <Modal :showModal="showModal" @update:showModal="value => showModal = value">
+      <EmailForm :fields="formFields" :closeModal="() => showModal = false" @email-sent="handleEmailSent" />
+    </Modal>
     <ProductCard v-for="card in cards" :key="card.id" :cardIcon="card.cardIcon" :cardHeader="card.cardHeader"
       :cardContent="card.cardContent" />
   </main>
@@ -13,19 +13,26 @@
 <script lang="ts">
 import { ref } from "vue";
 import ProductCard from "@/components/cards/ProductCard.vue";
-/* import EmailForm from "@/components/Layout/Forms/DynamicEmailForm.vue"; */
+import EmailForm from "@/components/Layout/Forms/DynamicEmailForm.vue";
 import ProductsTable from "@/components/Layout/Table/ProductsTable.vue";
-
+import Modal from "@/components/Layout/Modal/DynamicModal.vue";
+import ButtonPrimaryVue from "@/components/buttons/ButtonPrimary.vue";
 
 
 export default {
-  name: "ViewHome",
   components: {
+    Modal,
     ProductCard,
-    ProductsTable
-    /* EmailForm */
+    ProductsTable,
+    EmailForm,
+    ButtonPrimaryVue
   },
   setup() {
+
+    const showModal = ref(false);
+    function handleEmailSent() {
+      showModal.value = false;
+    }
 
     const products = ref([
       { id: 1, name: 'Helsekontroll', description: 'Regelmessig medisinsk sjekk for å overvåke ansattes helse.' },
@@ -70,15 +77,17 @@ export default {
         cardContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
     ]);
-    /* const formFields = ref([
+    const formFields = ref([
       { name: 'name', label: 'Navn:', props: { type: 'text', id: 'name', required: true } },
       { name: 'email', label: 'Epost:', props: { type: 'email', id: 'email', required: true } },
       { name: 'message', label: 'Melding:', component: 'textarea', props: { id: 'message', required: true } },
       { name: 'preferred_contact', label: 'Foretrukket kontaktmetode:', component: 'select', props: { options: ['Epost', 'Telefon', 'På døra'] } },
       { name: 'newsletter', label: 'Meld deg på nyhetsbrev:', component: 'checkbox' },
       { name: 'date', label: 'Velg dato:', component: 'datepicker', props: {} }
-    ]); */
-    return { cards, productHeaders, products /* , formFields  */ };
+    ]);
+    return {
+      cards, productHeaders, products, showModal, formFields, handleEmailSent
+    };
   },
 };
 </script>

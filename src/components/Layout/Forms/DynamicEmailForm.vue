@@ -1,7 +1,8 @@
 <template>
   <div class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center p-4">
     <div class="relative bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-lg p-80">
-      <h2 class="text-2xl font-bold mb-6">Contact Form</h2>
+      <h2 class="text-2xl font-bold mb-6">Legg inn din bestilling</h2>
+      <p>Fyll ut feltene og klikk bestill</p>
       <form @submit.prevent="sendEmail" class="space-y-4">
         <div v-for="field in fields" :key="field.name" class="flex flex-col">
           <label :for="field.name" class="font-body text-lg font-normal mb-2">
@@ -20,9 +21,9 @@
             class="h-5 w-5" />
           <VueDatePicker v-else-if="field.component === 'datepicker'" v-model="formData[field.name]" class="w-full" />
         </div>
-        <div class="flex justify-end gap-4">
-          <ButtonSecondary buttonText="Avbryt" /> <!-- Add @click handler to close modal -->
-          <ButtonPrimary buttonText="Send Epost" @click="sendEmail" />
+        <div class="flex justify-end gap-10 pt-10">
+          <ButtonSecondary buttonText="Avbryt" @click="closeModal" />
+          <ButtonPrimary buttonText="Bestill nå!" @click="sendEmail" />
         </div>
       </form>
     </div>
@@ -61,9 +62,15 @@ export default {
     fields: {
       type: Array as PropType<Field[]>,
       required: true
-    }
+    },
+    closeModal: Function as PropType<() => void> // Legger til closeModal prop
   },
-  setup(props) {
+  emits: ['email-sent'],
+  setup(props, { emit }) {
+
+    function closeForm() {
+
+    }
     const formData: Ref<FormData> = ref({} as FormData);
     const date = ref(null);
 
@@ -102,6 +109,7 @@ export default {
         if (confirmationEmailResponse !== "OK") throw new Error("Failed to send confirmation email");
 
         toast.success(`Takk for bestillingen ${formData.value.name}! En bekreftelse er sendt til epost ${formData.value.email}`);
+        emit('email-sent');
         for (const key in formData.value) {
           formData.value[key] = "";
         }
@@ -110,7 +118,7 @@ export default {
         toast.error("Noe gikk galt, prøv igjen senere eller kontakt administrator.");
       }
     };
-    return { formData, date, sendEmail };
+    return { formData, date, sendEmail, closeForm };
   },
 };
 </script>
