@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ref, watch } from "vue";
+import { ref } from "vue";
 
 interface Option {
   label: string;

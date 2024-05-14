@@ -3,6 +3,7 @@ import { supabase } from "@/lib/supabaseClient";
 import ButtonPrimary from "@/components/buttons/ButtonPrimary.vue";
 import ButtonSecondary from "@/components/buttons/ButtonSecondary.vue";
 import { ref } from "vue";
+import { useToast } from "vue-toastification";
 
 type User = {
   id: string;
@@ -21,6 +22,7 @@ export default {
     const firstName = ref<string>("");
     const lastName = ref<string>("");
     const age = ref<number>(0);
+    const Toast = useToast();
 
     const getUserData = async (): Promise<void> => {
       const {
@@ -30,13 +32,25 @@ export default {
     };
 
     const sendMetaData = async (): Promise<void> => {
-      const { data, error } = await supabase.auth.updateUser({
-        data: {
-          firstName: firstName.value,
-          lastName: lastName.value,
-          age: age.value,
-        },
-      });
+      try {
+        const { error } = await supabase.auth.updateUser({
+          data: {
+            firstName: firstName.value,
+            lastName: lastName.value,
+            age: age.value,
+          },
+        });
+
+        if (error) {
+          Toast.error(`Feil ved oppdatering av bruker:", ${error.message}`);
+        } else {
+          Toast.success(
+            `Brukernavnet er endret: ${firstName.value + " " + lastName.value}`,
+          );
+        }
+      } catch (error) {
+        Toast.error(`En ukjent feil oppstod:, ${error}`);
+      }
     };
 
     return {
@@ -44,6 +58,7 @@ export default {
       lastName,
       age,
       sendMetaData,
+      Toast,
       getUserData,
     };
   },
