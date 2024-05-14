@@ -55,6 +55,17 @@ The following command will run unit tests for all component tests in the `src/co
 npm run test:unit
 ```
 
+-**Login page:**
+
+Login is done with supabase where the user is already authenticated beforehand just like it would be in the case of a Avonova customer, and is then redirected to the home page if the user session is validated from supabase.
+There are 5 customer email accounts in the DB;
+info@greenenergy.as
+sales@techsolutions.as
+support@healthcorp.as
+info@ecobuild.as
+contact@novatech.no
+password is **admin** for all of them.
+
 -**Test Coverage:**
 
 Unit testing of code is done to ensure that the smaller pieces of code behaves as expected ie. components, functions, etc.
@@ -77,6 +88,16 @@ For integration testing we use [vue-test-utils](https://test-utils.vuejs.org/)
 
 ## End to end testing
 
+<!-- TODO: add end to end testing -->
+
+For end to end testing we use [cypress.io](https://www.cypress.io/)
 
 ## UseVue
- --onClickOutside
+
+--onClickOutside
+
+## Prisma
+
+## Supabase
+
+##

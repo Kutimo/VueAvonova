@@ -19,7 +19,7 @@ const router = createRouter({
   routes,
 });
 
-/* router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   try {
     const {
       data: { user },
@@ -42,6 +42,6 @@ const router = createRouter({
     console.error("Error fetching user data:", error.message);
     next({ name: "Login" });
   }
-}); */
+});
 
 export default router;

@@ -35,12 +35,10 @@ export default {
 </script>
 
 <template>
-  <div
-    class="absolute right-10 top-30 w-[200px] rounded-6 shadow-xl"
-  >
+  <div class="absolute right-10 top-30 w-[200px] rounded-6 shadow-xl">
     <ul class="flex select-none flex-col gap-12 p-16">
       <li
-        class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2"
+        class="z-50 px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2"
       >
         <a href="#" class="flex gap-20">
           <img
@@ -54,7 +52,7 @@ export default {
       <li
         class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2"
       >
-        <a href="#" class="flex gap-20" @click.prevent="signOut">
+        <a href="#" class="flex gap-20" @click="signOut">
           <img
             src="../../../assets/icons/IconLogOut.svg"
             alt="Logg ut"
