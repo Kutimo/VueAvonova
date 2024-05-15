@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import ProductCard from '@/components/cards/ProductCard.vue'
 import EmailForm from '@/components/Layout/Forms/DynamicEmailForm.vue'
 import ProductsTable from '@/components/Layout/Table/ProductsTable.vue'
@@ -110,27 +110,38 @@ export default {
   },
 }
 </script>
+
 <template>
   <main class="m-10 h-screen">
+    <div class="container mx-auto px-4 py-10 mt-40 mb-20">
+      <div class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">Våre Tjenester</h1>
+        <p class="text-center text-lg ">Oppdag vårt utvalg av tjenester som kan hjelpe deg med å nå dine mål.
+          Bla gjennom
+          våre tjenester nedenfor og finn den perfekte løsningen for dine behov.</p>
+      </div>
+    </div>
     <!-- Modal -->
-    <ButtonPrimaryVue buttonText="Bestill nå!" @click="showModal = true" />
-    <DynamicModal
-      :showModal="showModal"
-      @update:showModal="(value) => (showModal = value)"
-    >
-      <EmailForm
-        :fields="formFields"
-        :closeModal="() => (showModal = false)"
-        @email-sent="handleEmailSent"
-      />
-    </DynamicModal>
-    <ProductCard
-      v-for="service in includedServices"
-      :key="service.service_id"
-      :cardIcon="`../../public/productCardIcons/${service.category}.svg`"
-      :cardHeader="service.name"
-      :cardContent="service.description"
-    />
+    <!--    <ButtonPrimaryVue buttonText="Bestill nå!" @click="showModal = true" />
+    <DynamicModal :showModal="showModal" @update:showModal="(value) => (showModal = value)">
+      <EmailForm :fields="formFields" :closeModal="() => (showModal = false)" @email-sent="handleEmailSent" />
+    </DynamicModal> -->
+
+    <!-- Product Cards -->
+    <div class="flex justify-center">
+      <div class="flex flex-wrap justify-center items-center -m-10 mb-28">
+        <div v-for="service in includedServices" :key="service.service_id" class="m-4">
+          <ProductCard :cardIcon="`../../public/productCardIcons/${service.category}.svg`" :cardHeader="service.name"
+            :cardContent="service.description" />
+        </div>
+      </div>
+    </div>
+    <div class="mx-auto px-4 py-10">
+      <div class="mb-8 text-center">
+        <h1 class="text-4xl font-bold mb-4">Alle tjenester</h1>
+        <p class="text-lg ">Her er alle våre tjenester, søk i tjenestene og bestill ønsket tjeneste</p>
+      </div>
+    </div>
     <ProductsTable :headers="productHeaders" :data="excludedServices" />
   </main>
 </template>
