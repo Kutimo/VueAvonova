@@ -1,17 +1,17 @@
 <script lang="ts">
-import ButtonPrimary from "@/components/buttons/ButtonPrimary.vue";
-import ButtonSecondary from "@/components/buttons/ButtonSecondary.vue";
-import TextInput from "@/components/input/TextInput.vue";
-import DatePicker from "@/components/DatePicker.vue";
-import ContactCardPFA from "@/components/cards/ContactCardPFA.vue";
-import TextAreaField from "@/components/input/TextAreaField.vue";
-import SelectField from "@/components/select/SelectField.vue";
-import CheckBoxField from "@/components/checkbox/CheckBoxField.vue";
-import ConfirmationDialog from "@/components/Layout/modal/ConfirmationDialog.vue";
-import { ref } from "vue";
+import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
+import ButtonSecondary from '@/components/buttons/ButtonSecondary.vue'
+import TextInput from '@/components/input/TextInput.vue'
+import DatePicker from '@/components/DatePicker.vue'
+import ContactCardPFA from '@/components/cards/ContactCardPFA.vue'
+import TextAreaField from '@/components/input/TextAreaField.vue'
+import SelectField from '@/components/select/SelectField.vue'
+import CheckBoxField from '@/components/checkbox/CheckBoxField.vue'
+import ConfirmationDialog from '@/components/Layout/modal/ConfirmationDialog.vue'
+import { ref } from 'vue'
 
 export default {
-  name: "ViewComponents",
+  name: 'ViewComponents',
   components: {
     ConfirmationDialog,
     SelectField,
@@ -25,25 +25,25 @@ export default {
   },
   setup() {
     const options = ref([
-      { label: "Option 1", value: "option1" },
-      { label: "Option 2", value: "option2" },
-      { label: "Option 3", value: "option3" },
-    ]);
+      { label: 'Option 1', value: 'option1' },
+      { label: 'Option 2', value: 'option2' },
+      { label: 'Option 3', value: 'option3' },
+    ])
 
-    const selectedValue = ref("");
+    const selectedValue = ref('')
 
     const updateSelectedValue = (value: string) => {
-      selectedValue.value = value;
-      console.log(selectedValue.value);
-    };
+      selectedValue.value = value
+      console.log(selectedValue.value)
+    }
 
     return {
       options,
       selectedValue,
       updateSelectedValue,
-    };
+    }
   },
-};
+}
 </script>
 
 <template>

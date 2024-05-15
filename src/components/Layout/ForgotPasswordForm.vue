@@ -1,49 +1,49 @@
 <script lang="ts">
-import { ref } from "vue";
-import EmailInput from "../input/EmailInput.vue";
-import ButtonPrimary from "../buttons/ButtonPrimary.vue";
-import ButtonSecondary from "../buttons/ButtonSecondary.vue";
-import { supabase } from "@/lib/supabaseClient";
-import { useToast } from "vue-toastification";
+import { ref } from 'vue'
+import EmailInput from '../input/EmailInput.vue'
+import ButtonPrimary from '../buttons/ButtonPrimary.vue'
+import ButtonSecondary from '../buttons/ButtonSecondary.vue'
+import { supabase } from '@/lib/supabaseClient'
+import { useToast } from 'vue-toastification'
 
 export default {
-  name: "ForgotPasswordForm",
+  name: 'ForgotPasswordForm',
   components: {
     EmailInput,
     ButtonPrimary,
     ButtonSecondary,
   },
   setup() {
-    const emailRef = ref("");
-    const toast = useToast();
+    const emailRef = ref('')
+    const toast = useToast()
 
     const handlePasswordReset = async () => {
       try {
         const { error: resetError } = await supabase.auth.resetPasswordForEmail(
           emailRef.value,
           {},
-        );
+        )
         if (resetError) {
-          return toast.error(resetError.message);
+          return toast.error(resetError.message)
         }
-        toast.success("Eposten er sendt til deg");
+        toast.success('Eposten er sendt til deg')
       } catch (error: any) {
-        toast.error(error.message);
+        toast.error(error.message)
       }
-    };
+    }
 
     const handleEmailSubmission = (email: string) => {
-      emailRef.value = email;
-    };
+      emailRef.value = email
+    }
 
     return {
       emailRef,
       handlePasswordReset,
       handleEmailSubmission,
       toast,
-    };
+    }
   },
-};
+}
 </script>
 
 <template>
@@ -63,14 +63,8 @@ export default {
       >
       <EmailInput @emailSubmitted="handleEmailSubmission" />
       <div class="mt-10 flex gap-10">
-        <ButtonSecondary
-          button-text="Avbryt"
-          @click="$emit('showForgotPassword')"
-        />
-        <ButtonPrimary
-          button-text="Send meg lenken"
-          @click="handlePasswordReset"
-        />
+        <ButtonSecondary button-text="Avbryt" @click="$emit('showForgotPassword')" />
+        <ButtonPrimary button-text="Send meg lenken" @click="handlePasswordReset" />
       </div>
       <ul class="flex flex-col gap-10">
         <li><strong>Trenger du hjelp?</strong></li>

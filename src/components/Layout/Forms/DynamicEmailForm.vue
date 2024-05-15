@@ -57,28 +57,28 @@
 </template>
 
 <script lang="ts">
-import { ref, watch } from "vue";
-import { useToast } from "vue-toastification";
-import type { Ref, PropType } from "vue";
-import ButtonPrimary from "@/components/buttons/ButtonPrimary.vue";
-import ButtonSecondary from "@/components/buttons/ButtonSecondary.vue";
-import VueDatePicker from "@vuepic/vue-datepicker";
-import "@vuepic/vue-datepicker/dist/main.css";
+import { ref, watch } from 'vue'
+import { useToast } from 'vue-toastification'
+import type { Ref, PropType } from 'vue'
+import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
+import ButtonSecondary from '@/components/buttons/ButtonSecondary.vue'
+import VueDatePicker from '@vuepic/vue-datepicker'
+import '@vuepic/vue-datepicker/dist/main.css'
 
-const emailSecureKey: string = import.meta.env.VITE_EMAIL_SECURE_KEY || "";
+const emailSecureKey: string = import.meta.env.VITE_EMAIL_SECURE_KEY || ''
 
 interface Field {
-  name: string;
-  label: string;
-  component?: string;
-  props?: { [key: string]: any };
-  listeners?: { [key: string]: Function };
+  name: string
+  label: string
+  component?: string
+  props?: { [key: string]: any }
+  listeners?: { [key: string]: Function }
 }
 interface FormData {
-  [key: string]: string;
+  [key: string]: string
 }
 export default {
-  name: "EmailForm",
+  name: 'EmailForm',
   components: {
     ButtonPrimary,
     ButtonSecondary,
@@ -91,76 +91,73 @@ export default {
     },
     closeModal: Function as PropType<() => void>, // Legger til closeModal prop
   },
-  emits: ["email-sent"],
+  emits: ['email-sent'],
   setup(props, { emit }) {
     function closeForm() {}
-    const formData: Ref<FormData> = ref({} as FormData);
-    const date = ref(null);
+    const formData: Ref<FormData> = ref({} as FormData)
+    const date = ref(null)
 
     watch(
       () => props.fields,
       (newFields) => {
         newFields?.forEach((field) => {
-          formData.value[field.name] = formData.value[field.name] || "";
-          field.props = field.props || {};
-          field.listeners = field.listeners || {};
-        });
+          formData.value[field.name] = formData.value[field.name] || ''
+          field.props = field.props || {}
+          field.listeners = field.listeners || {}
+        })
       },
       { immediate: true },
-    );
+    )
 
-    const toast = useToast();
+    const toast = useToast()
     const prepareEmail = (to: string, subject: string, body: string) => ({
       SecureToken: emailSecureKey,
       To: to,
-      From: "Anders-wroldsen@live.com",
+      From: 'Anders-wroldsen@live.com',
       Subject: subject,
       Body: body,
-    });
+    })
     const sendEmail = async () => {
       try {
-        let emailBody = "";
+        let emailBody = ''
         for (const key in formData.value) {
-          emailBody += `${key}: ${formData.value[key]}<br>`;
+          emailBody += `${key}: ${formData.value[key]}<br>`
         }
 
         const mainEmail = prepareEmail(
-          "Anders-wroldsen@live.com",
-          "Fra avonova assist.",
+          'Anders-wroldsen@live.com',
+          'Fra avonova assist.',
           emailBody,
-        );
+        )
 
         const confirmationEmail = prepareEmail(
           formData.value.email,
-          "Vi har motatt din bestilling!",
-          `Hei ${formData.value.name || "Kjære kunde"},<br><br>Takk for din bestilling.<br> Den vil bli behandlet av en av våre kundeveiledere så fort som mulig.<br><br>Med vennlig hilsen,<br>avonova`,
-        );
+          'Vi har motatt din bestilling!',
+          `Hei ${formData.value.name || 'Kjære kunde'},<br><br>Takk for din bestilling.<br> Den vil bli behandlet av en av våre kundeveiledere så fort som mulig.<br><br>Med vennlig hilsen,<br>avonova`,
+        )
 
-        const mainEmailResponse = await (window as any).Email.send(mainEmail);
-        if (mainEmailResponse !== "OK")
-          throw new Error("Failed to send order email");
+        const mainEmailResponse = await (window as any).Email.send(mainEmail)
+        if (mainEmailResponse !== 'OK') throw new Error('Failed to send order email')
 
         const confirmationEmailResponse = await (window as any).Email.send(
           confirmationEmail,
-        );
-        if (confirmationEmailResponse !== "OK")
-          throw new Error("Failed to send confirmation email");
+        )
+        if (confirmationEmailResponse !== 'OK')
+          throw new Error('Failed to send confirmation email')
 
         toast.success(
           `Takk for bestillingen ${formData.value.name}! En bekreftelse er sendt til epost ${formData.value.email}`,
-        );
-        emit("email-sent");
+        )
+        emit('email-sent')
         for (const key in formData.value) {
-          formData.value[key] = "";
+          formData.value[key] = ''
         }
       } catch (error) {
-        console.error(error);
-        toast.error(
-          "Noe gikk galt, prøv igjen senere eller kontakt administrator.",
-        );
+        console.error(error)
+        toast.error('Noe gikk galt, prøv igjen senere eller kontakt administrator.')
       }
-    };
-    return { formData, date, sendEmail, closeForm };
+    }
+    return { formData, date, sendEmail, closeForm }
   },
-};
+}
 </script>

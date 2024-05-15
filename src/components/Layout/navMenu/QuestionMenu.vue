@@ -1,15 +1,13 @@
 <script lang="ts">
 export default {
-  name: "QuestionMenu",
-};
+  name: 'QuestionMenu',
+}
 </script>
 
 <template>
   <div class="absolute right-10 top-30 w-[250px] rounded-6 shadow-xl">
     <ul class="flex select-none flex-col gap-12 p-16">
-      <li
-        class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2"
-      >
+      <li class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2">
         <a href="#" class="flex gap-20">
           <img
             src="@/assets/icons/IconAbout.svg"
@@ -19,21 +17,13 @@ export default {
           About Avonova assist
         </a>
       </li>
-      <li
-        class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2"
-      >
+      <li class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2">
         <a href="#" class="flex gap-20">
-          <img
-            src="@/assets/icons/IconNews.svg"
-            alt="Nyheter icon"
-            draggable="false"
-          />
+          <img src="@/assets/icons/IconNews.svg" alt="Nyheter icon" draggable="false" />
           News
         </a>
       </li>
-      <li
-        class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2"
-      >
+      <li class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2">
         <a href="#" class="flex gap-20">
           <img
             src="@/assets/icons/IconHelp.svg"
@@ -43,9 +33,7 @@ export default {
           Help and contact
         </a>
       </li>
-      <li
-        class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2"
-      >
+      <li class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2">
         <a href="#" class="flex gap-20">
           <img
             src="@/assets/icons/IconTermsAndConditions.svg"

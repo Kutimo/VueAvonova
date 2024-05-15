@@ -1,45 +1,45 @@
 <script lang="ts">
-import { ref } from "vue";
-import { supabase } from "@/lib/supabaseClient";
-import ButtonPrimary from "../buttons/ButtonPrimary.vue";
-import EmailInput from "../input/EmailInput.vue";
-import PasswordInput from "../input/PasswordInput.vue";
-import { useToast } from "vue-toastification";
+import { ref } from 'vue'
+import { supabase } from '@/lib/supabaseClient'
+import ButtonPrimary from '../buttons/ButtonPrimary.vue'
+import EmailInput from '../input/EmailInput.vue'
+import PasswordInput from '../input/PasswordInput.vue'
+import { useToast } from 'vue-toastification'
 
 export default {
-  name: "LoginForm",
+  name: 'LoginForm',
   components: {
     EmailInput,
     PasswordInput,
     ButtonPrimary,
   },
   setup() {
-    const passwordRef = ref("");
-    const emailRef = ref("");
-    const toast = useToast();
+    const passwordRef = ref('')
+    const emailRef = ref('')
+    const toast = useToast()
 
     const handleEmailSubmission = (email: string) => {
-      emailRef.value = email;
-    };
+      emailRef.value = email
+    }
 
     const handlePasswordSubmission = (password: string) => {
-      passwordRef.value = password;
-    };
+      passwordRef.value = password
+    }
 
     const handleSignIn = async () => {
-      console.log(passwordRef.value);
+      console.log(passwordRef.value)
       try {
         // Use the Supabase provided method to handle the sign in
         const { error } = await supabase.auth.signInWithPassword({
           email: emailRef.value,
           password: passwordRef.value,
-        });
-        if (error) throw error;
-        window.location.reload();
+        })
+        if (error) throw error
+        window.location.reload()
       } catch (error: unknown) {
-        toast.error("Feil passord eller brukernavn");
+        toast.error('Feil passord eller brukernavn')
       }
-    };
+    }
 
     return {
       emailRef,
@@ -48,9 +48,9 @@ export default {
       handlePasswordSubmission,
       handleSignIn,
       toast,
-    };
+    }
   },
-};
+}
 </script>
 
 <template>
