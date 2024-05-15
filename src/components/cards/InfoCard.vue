@@ -31,14 +31,20 @@ export default defineComponent({
     <h4 class="flex justify-center">Kartlegging og risikovurdering</h4>
 
     <div class="flex px-6 py-4 mt-20">
-      <p class="text-base text-gray-700 w-[700px]">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit cupiditate
-        veniam, enim nostrum ut illo maiores id aperiam assumenda molestiae excepturi
-        deleniti hic, accusantium quae? Quis minima sapiente, voluptas ea beatae amet,
-        aliquid ofte, ut nobis est fuga natus. Autem numquam totam aliquam optio ab ad
-        quis ea odit voluptate.
+      <p class="text-base text-gray-700 w-[500px]">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio pariatur commodi at
+        minima similique dolorem fugit mollitia? Reprehenderit laborum omnis error
+        expedita ullam minus doloremque harum molestias quas sequi quasi cupiditate
+        deserunt, iusto eaque nisi eos nulla <br />
+        <br />
+        voluptatibus accusamus, at culpa maiores, dolorum ea incidunt impedit? Dicta
+        necessitatibus quod inventore laborum laboriosam vitae id sapiente tenetur
+        excepturi eligendi, autem minus doloremque libero accusantium? Ab, vero voluptas
+        necessitatibus deserunt vitae ducimus.
       </p>
-      <img class="w-full" :src="image" alt="Image" />
+      <div>
+        <img class="w-full" src="../../assets/img/ImageLogin.jpg" alt="Image" />
+      </div>
     </div>
     <div class="flex justify-center mt-20">
       <ButtonSecondary button-text="Tilbake" />
