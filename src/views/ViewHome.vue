@@ -132,7 +132,7 @@ export default {
 }
 </script>
 <template>
-  <main class="m-10 h-screen">
+  <main class="m-10 h-fit">
     <!-- Modal -->
     <ButtonPrimaryVue buttonText="Bestill nå!" @click="showModal = true" />
     <DynamicModal

@@ -91,6 +91,7 @@ export default {
     ButtonPrimary,
     ButtonSecondary,
     VueDatePicker,
+    DropdownWithCheckboxes,
   },
   props: {
     fields: {
