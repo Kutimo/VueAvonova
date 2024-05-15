@@ -1,16 +1,16 @@
 <script lang="ts">
-import ButtonPrimary from "../buttons/ButtonPrimary.vue";
-import EmailInput from "../input/EmailInput.vue";
-import PasswordInput from "../input/PasswordInput.vue";
+import ButtonPrimary from '../buttons/ButtonPrimary.vue'
+import EmailInput from '../input/EmailInput.vue'
+import PasswordInput from '../input/PasswordInput.vue'
 
 export default {
-  name: "LoginForm",
+  name: 'LoginForm',
   components: {
     EmailInput,
     PasswordInput,
     ButtonPrimary,
   },
-};
+}
 </script>
 
 <template>

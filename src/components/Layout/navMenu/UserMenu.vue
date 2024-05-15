@@ -1,37 +1,37 @@
 <script lang="ts">
-import { supabase } from "@/lib/supabaseClient";
-import { ref } from "vue";
-import { useToast } from "vue-toastification";
+import { supabase } from '@/lib/supabaseClient'
+import { ref } from 'vue'
+import { useToast } from 'vue-toastification'
 
 export default {
-  name: "UserMenu",
+  name: 'UserMenu',
   setup() {
-    const toast = useToast();
-    const firstName = ref("");
+    const toast = useToast()
+    const firstName = ref('')
     const fetchDataFromLocalStorage = async () => {
-      const { data, error } = await supabase.auth.getSession();
+      const { data, error } = await supabase.auth.getSession()
       if (error) {
-        toast.error(error);
+        toast.error(error)
       }
-      firstName.value = data.session?.user.user_metadata.firstName;
-    };
-    fetchDataFromLocalStorage();
+      firstName.value = data.session?.user.user_metadata.firstName
+    }
+    fetchDataFromLocalStorage()
 
     const signOut = async () => {
       try {
-        const { error } = await supabase.auth.signOut();
+        const { error } = await supabase.auth.signOut()
         if (error) {
-          alert(error.message);
+          alert(error.message)
         } else {
-          window.location.reload();
+          window.location.reload()
         }
       } catch (error) {
-        toast.error(error);
+        toast.error(error)
       }
-    };
-    return { signOut, fetchDataFromLocalStorage, firstName };
+    }
+    return { signOut, fetchDataFromLocalStorage, firstName }
   },
-};
+}
 </script>
 
 <template>
@@ -49,9 +49,7 @@ export default {
           {{ firstName }}
         </a>
       </li>
-      <li
-        class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2"
-      >
+      <li class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2">
         <a href="#" class="flex gap-20" @click="signOut">
           <img
             src="../../../assets/icons/IconLogOut.svg"

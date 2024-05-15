@@ -1,31 +1,30 @@
-@import "./base.css";
+@import './base.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @font-face {
   font-family: vollkorn;
-  src: url(../assets/fonts/Vollkorn/Vollkorn-VariableFont_wght.ttf)
-    format("truetype");
+  src: url(../assets/fonts/Vollkorn/Vollkorn-VariableFont_wght.ttf) format('truetype');
 }
 
 @font-face {
   font-family: GT-Walsheim;
-  src: url(../assets/fonts/GT-walsheim/GT-Walsheim-Regular.otf) format(".otf");
+  src: url(../assets/fonts/GT-walsheim/GT-Walsheim-Regular.otf) format('.otf');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: GT-Walsheim;
-  src: url(../assets/fonts/GT-Walsheim/GT-Walsheim-Medium.otf) format(".otf");
+  src: url(../assets/fonts/GT-Walsheim/GT-Walsheim-Medium.otf) format('.otf');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: GT-Walsheim;
-  src: url(../assets/fonts/GT-walsheim/GT-Walsheim-Bold.otf) format(".otf");
+  src: url(../assets/fonts/GT-walsheim/GT-Walsheim-Bold.otf) format('.otf');
   font-weight: 700;
   font-style: normal;
 }

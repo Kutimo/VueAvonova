@@ -1,9 +1,9 @@
 <script lang="ts">
-import { defineComponent, ref } from "vue";
-import ProductCard from "@/components/cards/ProductCard.vue";
+import { defineComponent, ref } from 'vue'
+import ProductCard from '@/components/cards/ProductCard.vue'
 
 export default defineComponent({
-  name: "ViewHome",
+  name: 'ViewHome',
   components: {
     ProductCard,
   },
@@ -12,21 +12,21 @@ export default defineComponent({
     const cards = ref([
       {
         id: 1,
-        cardIcon: "productCardIcons/hospital.svg",
-        cardHeader: "Helsesjekk",
-        cardContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        cardIcon: 'productCardIcons/hospital.svg',
+        cardHeader: 'Helsesjekk',
+        cardContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       },
       {
         id: 2,
-        cardIcon: "productCardIcons/notepad.svg",
-        cardHeader: "Helseattest",
-        cardContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        cardIcon: 'productCardIcons/notepad.svg',
+        cardHeader: 'Helseattest',
+        cardContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       },
-    ]);
+    ])
 
-    return { cards };
+    return { cards }
   },
-});
+})
 </script>
 
 <template>

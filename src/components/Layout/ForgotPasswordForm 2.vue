@@ -1,16 +1,16 @@
 <script lang="ts">
-import EmailInput from "../input/EmailInput.vue";
-import ButtonPrimary from "../buttons/ButtonPrimary.vue";
-import ButtonSecondary from "../buttons/ButtonSecondary.vue";
+import EmailInput from '../input/EmailInput.vue'
+import ButtonPrimary from '../buttons/ButtonPrimary.vue'
+import ButtonSecondary from '../buttons/ButtonSecondary.vue'
 
 export default {
-  name: "ForgotPasswordForm",
+  name: 'ForgotPasswordForm',
   components: {
     EmailInput,
     ButtonPrimary,
     ButtonSecondary,
   },
-};
+}
 </script>
 
 <template>
@@ -27,10 +27,7 @@ export default {
       >
       <EmailInput />
       <div class="mt-10 flex gap-10">
-        <ButtonSecondary
-          button-text="Avbryt"
-          @click="$emit('showForgotPassword')"
-        />
+        <ButtonSecondary button-text="Avbryt" @click="$emit('showForgotPassword')" />
         <ButtonPrimary button-text="Login" />
       </div>
       <ul class="flex flex-col gap-10">

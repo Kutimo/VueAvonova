@@ -1,11 +1,11 @@
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue'
 export default defineComponent({
-  name: "TextInput",
+  name: 'TextInput',
   data() {
     return {
       iconClicked: false,
-    };
+    }
   },
   props: {
     label: {
@@ -18,11 +18,11 @@ export default defineComponent({
     },
     placeholder: {
       type: String,
-      default: "",
+      default: '',
     },
     descriptiveText: {
       type: String,
-      default: "",
+      default: '',
     },
     icon: {
       type: Boolean,
@@ -30,7 +30,7 @@ export default defineComponent({
     },
     iconText: {
       type: String,
-      default: "test",
+      default: 'test',
     },
     error: {
       type: Boolean,
@@ -38,10 +38,10 @@ export default defineComponent({
     },
     errorText: {
       type: String,
-      default: "",
+      default: '',
     },
   },
-});
+})
 </script>
 
 <template>

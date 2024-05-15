@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import ButtonPrimary from "@/components/buttons/ButtonPrimary.vue";
+import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
 
 const { cardIcon, cardHeader, cardContent } = defineProps({
   cardIcon: String,
   cardHeader: String,
   cardContent: String,
-});
+})
 
 const onReadMore = () => {
-  console.log("Read more action");
-};
+  console.log('Read more action')
+}
 
 const onBookAppointment = () => {
-  console.log("Book appointment action");
-};
+  console.log('Book appointment action')
+}
 </script>
 
 <template>

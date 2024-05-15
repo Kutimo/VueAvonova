@@ -1,6 +1,6 @@
 <script lang="ts">
 export default {
-  name: "ButtonPrimary",
+  name: 'ButtonPrimary',
   props: {
     buttonText: {
       type: String,
@@ -8,14 +8,14 @@ export default {
     },
     icon: {
       type: String,
-      default: "",
+      default: '',
     },
     to: {
       type: [String, Object],
-      default: "",
+      default: '',
     },
   },
-};
+}
 </script>
 
 <template>

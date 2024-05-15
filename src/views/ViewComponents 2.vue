@@ -1,12 +1,12 @@
 <script lang="ts">
-import ButtonPrimary from "@/components/buttons/ButtonPrimary.vue";
-import ButtonSecondary from "@/components/buttons/ButtonSecondary.vue";
-import TextInput from "@/components/input/TextInput.vue";
-import DatePicker from "@/components/DatePicker.vue";
-import ContactCardPFA from "@/components/cards/ContactCardPFA.vue";
+import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
+import ButtonSecondary from '@/components/buttons/ButtonSecondary.vue'
+import TextInput from '@/components/input/TextInput.vue'
+import DatePicker from '@/components/DatePicker.vue'
+import ContactCardPFA from '@/components/cards/ContactCardPFA.vue'
 
 export default {
-  name: "ViewComponents",
+  name: 'ViewComponents',
   components: {
     TextInput,
     ButtonPrimary,
@@ -14,7 +14,7 @@ export default {
     DatePicker,
     ContactCardPFA,
   },
-};
+}
 </script>
 
 <template>

@@ -46,9 +46,9 @@
 </template>
 
 <script lang="ts">
-import { ref, computed } from "vue";
-import type { PropType } from "vue";
-import ButtonPrimary from "@/components/buttons/ButtonPrimary.vue";
+import { ref, computed } from 'vue'
+import type { PropType } from 'vue'
+import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
 
 export default {
   props: {
@@ -59,30 +59,30 @@ export default {
     headers: {
       type: Array as PropType<
         Array<{
-          key: string;
-          label: string;
+          key: string
+          label: string
         }>
       >,
       required: true,
     },
   },
   setup(props) {
-    const searchQuery = ref("");
+    const searchQuery = ref('')
     const filteredData = computed(() => {
       return props.data.filter((item) => {
         return props.headers.some((header) => {
           return item[header.key]
             .toString()
             .toLowerCase()
-            .includes(searchQuery.value.toLowerCase());
-        });
-      });
-    });
+            .includes(searchQuery.value.toLowerCase())
+        })
+      })
+    })
     function orderProduct(item: any) {
-      alert(`Bestilling for ${item.name} initiert!`);
+      alert(`Bestilling for ${item.name} initiert!`)
     }
-    return { searchQuery, filteredData, orderProduct };
+    return { searchQuery, filteredData, orderProduct }
   },
   components: { ButtonPrimary },
-};
+}
 </script>

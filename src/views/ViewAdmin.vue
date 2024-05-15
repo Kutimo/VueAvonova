@@ -1,35 +1,35 @@
 <script lang="ts">
-import { supabase } from "@/lib/supabaseClient";
-import ButtonPrimary from "@/components/buttons/ButtonPrimary.vue";
-import ButtonSecondary from "@/components/buttons/ButtonSecondary.vue";
-import { ref } from "vue";
-import { useToast } from "vue-toastification";
+import { supabase } from '@/lib/supabaseClient'
+import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
+import ButtonSecondary from '@/components/buttons/ButtonSecondary.vue'
+import { ref } from 'vue'
+import { useToast } from 'vue-toastification'
 
 type User = {
-  id: string;
-  email: string;
+  id: string
+  email: string
   user_metadata: {
-    name: string;
-    age: number;
-  };
-};
+    name: string
+    age: number
+  }
+}
 
 export default {
-  name: "ViewAdmin",
+  name: 'ViewAdmin',
   components: { ButtonPrimary, ButtonSecondary },
 
   setup() {
-    const firstName = ref<string>("");
-    const lastName = ref<string>("");
-    const age = ref<number>(0);
-    const Toast = useToast();
+    const firstName = ref<string>('')
+    const lastName = ref<string>('')
+    const age = ref<number>(0)
+    const Toast = useToast()
 
     const getUserData = async (): Promise<void> => {
       const {
         data: { user },
-      } = (await supabase.auth.getUser()) as { data: { user: User | null } };
-      console.log(user);
-    };
+      } = (await supabase.auth.getUser()) as { data: { user: User | null } }
+      console.log(user)
+    }
 
     const sendMetaData = async (): Promise<void> => {
       try {
@@ -39,19 +39,19 @@ export default {
             lastName: lastName.value,
             age: age.value,
           },
-        });
+        })
 
         if (error) {
-          Toast.error(`Feil ved oppdatering av bruker:", ${error.message}`);
+          Toast.error(`Feil ved oppdatering av bruker:", ${error.message}`)
         } else {
           Toast.success(
-            `Brukernavnet er endret: ${firstName.value + " " + lastName.value}`,
-          );
+            `Brukernavnet er endret: ${firstName.value + ' ' + lastName.value}`,
+          )
         }
       } catch (error) {
-        Toast.error(`En ukjent feil oppstod:, ${error}`);
+        Toast.error(`En ukjent feil oppstod:, ${error}`)
       }
-    };
+    }
 
     return {
       firstName,
@@ -60,9 +60,9 @@ export default {
       sendMetaData,
       Toast,
       getUserData,
-    };
+    }
   },
-};
+}
 </script>
 
 <template>

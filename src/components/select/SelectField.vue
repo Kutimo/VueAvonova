@@ -1,9 +1,9 @@
 <script lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue'
 
 interface Option {
-  label: string;
-  value: string;
+  label: string
+  value: string
 }
 
 export default {
@@ -14,31 +14,31 @@ export default {
     },
     placeholder: {
       type: String,
-      default: "",
+      default: '',
     },
     selectedValue: {
       type: [String, Number],
-      default: "",
+      default: '',
     },
   },
   setup(props, { emit }) {
-    const localSelectedValue = ref(props.selectedValue);
+    const localSelectedValue = ref(props.selectedValue)
 
     const handleChange = (event: Event) => {
-      const target = event.target as HTMLSelectElement;
+      const target = event.target as HTMLSelectElement
       if (target) {
-        const value = target.value;
-        localSelectedValue.value = value;
-        emit("update:selectedValue", value);
+        const value = target.value
+        localSelectedValue.value = value
+        emit('update:selectedValue', value)
       }
-    };
+    }
 
     return {
       localSelectedValue,
       handleChange,
-    };
+    }
   },
-};
+}
 </script>
 
 <template>

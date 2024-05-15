@@ -1,9 +1,9 @@
 <script lang="ts">
-import QuestionMenu from "./navMenu/QuestionMenu.vue";
-import UserMenu from "./navMenu/UserMenu.vue";
+import QuestionMenu from './navMenu/QuestionMenu.vue'
+import UserMenu from './navMenu/UserMenu.vue'
 
 export default {
-  name: "PageNavigation",
+  name: 'PageNavigation',
   components: {
     UserMenu,
     QuestionMenu,
@@ -13,14 +13,14 @@ export default {
       isMobileMenuOpen: false,
       isUserMenuOpen: false,
       isHelpMenuOpen: false,
-    };
+    }
   },
   methods: {
     toggleMobileMenu() {
-      this.isMobileMenuOpen = !this.isMobileMenuOpen;
+      this.isMobileMenuOpen = !this.isMobileMenuOpen
     },
   },
-};
+}
 </script>
 
 <template>
@@ -43,12 +43,7 @@ export default {
         class="mr-64 flex items-center"
         href="https://digital.avonova.com/services"
       >
-        <img
-          src="../../assets/logo.svg"
-          alt="Avonova logo"
-          height="21"
-          width="143"
-        />
+        <img src="../../assets/logo.svg" alt="Avonova logo" height="21" width="143" />
       </router-link>
       <ul class="hidden gap-32 laptop:flex">
         <li class="list flex items-center">
@@ -134,12 +129,7 @@ export default {
           />
         </button>
         <router-link to="/" @click="toggleMobileMenu">
-          <img
-            src="../../assets/logo-white.svg"
-            alt="logo"
-            height="21"
-            width="143"
-          />
+          <img src="../../assets/logo-white.svg" alt="logo" height="21" width="143" />
         </router-link>
       </div>
       <ul class="flex flex-col items-start gap-10 p-20">

@@ -1,7 +1,7 @@
 <script lang="ts">
 export default {
-  name: "PasswordInput",
-};
+  name: 'PasswordInput',
+}
 </script>
 
 <template>

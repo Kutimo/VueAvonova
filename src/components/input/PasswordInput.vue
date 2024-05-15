@@ -1,24 +1,24 @@
 <script lang="ts">
 export default {
-  name: "PasswordInput",
+  name: 'PasswordInput',
   data() {
     return {
-      password: "",
-    };
+      password: '',
+    }
   },
   methods: {
     handlePasswordSubmission() {
       // Emit an event to send the password to the parent component
       if (this.password) {
-        this.$emit("passwordSubmitted", this.password);
+        this.$emit('passwordSubmitted', this.password)
       }
     },
     emitSignInEvent() {
-      this.$emit("passwordSubmitted", this.password);
-      this.$emit("signIn");
+      this.$emit('passwordSubmitted', this.password)
+      this.$emit('signIn')
     },
   },
-};
+}
 </script>
 
 <template>

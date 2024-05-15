@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import QuestionMenu from "./navMenu/QuestionMenu.vue";
-import UserMenu from "./navMenu/UserMenu.vue";
-import { onClickOutside } from "@vueuse/core";
+import { ref } from 'vue'
+import QuestionMenu from './navMenu/QuestionMenu.vue'
+import UserMenu from './navMenu/UserMenu.vue'
+import { onClickOutside } from '@vueuse/core'
 
-const isMobileMenuOpen = ref(false);
-const isUserMenuOpen = ref(false);
-const isHelpMenuOpen = ref(false);
-const targetUserMenu = ref(null);
-const targetHelpMenu = ref(null);
-onClickOutside(targetUserMenu, () => (isUserMenuOpen.value = false));
-onClickOutside(targetHelpMenu, () => (isHelpMenuOpen.value = false));
+const isMobileMenuOpen = ref(false)
+const isUserMenuOpen = ref(false)
+const isHelpMenuOpen = ref(false)
+const targetUserMenu = ref(null)
+const targetHelpMenu = ref(null)
+onClickOutside(targetUserMenu, () => (isUserMenuOpen.value = false))
+onClickOutside(targetHelpMenu, () => (isHelpMenuOpen.value = false))
 
 const toggleMobileMenu = () => {
-  isMobileMenuOpen.value = !isMobileMenuOpen.value;
-};
+  isMobileMenuOpen.value = !isMobileMenuOpen.value
+}
 </script>
 
 <template>
@@ -37,12 +37,7 @@ const toggleMobileMenu = () => {
         class="mr-64 flex items-center"
         href="https://digital.avonova.com/services"
       >
-        <img
-          src="../../assets/logo.svg"
-          alt="Avonova logo"
-          height="21"
-          width="143"
-        />
+        <img src="../../assets/logo.svg" alt="Avonova logo" height="21" width="143" />
       </router-link>
       <ul class="hidden gap-32 laptop:flex">
         <li class="list flex items-center">
@@ -128,12 +123,7 @@ const toggleMobileMenu = () => {
           />
         </button>
         <router-link to="/" @click="toggleMobileMenu">
-          <img
-            src="../../assets/logo-white.svg"
-            alt="logo"
-            height="21"
-            width="143"
-          />
+          <img src="../../assets/logo-white.svg" alt="logo" height="21" width="143" />
         </router-link>
       </div>
       <ul class="flex flex-col items-start gap-10 p-20">

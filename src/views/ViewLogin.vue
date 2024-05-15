@@ -1,27 +1,27 @@
 <script lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue'
 
-import ForgotPasswordForm from "@/components/Layout/ForgotPasswordForm.vue";
-import LoginForm from "@/components/Layout/LoginForm.vue";
+import ForgotPasswordForm from '@/components/Layout/ForgotPasswordForm.vue'
+import LoginForm from '@/components/Layout/LoginForm.vue'
 export default {
-  name: "ViewLogin",
+  name: 'ViewLogin',
   components: {
     LoginForm,
     ForgotPasswordForm,
   },
   setup() {
-    const showForgotPasswordForm = ref(false);
+    const showForgotPasswordForm = ref(false)
 
     const toggleForgotPasswordForm = () => {
-      showForgotPasswordForm.value = !showForgotPasswordForm.value;
-    };
+      showForgotPasswordForm.value = !showForgotPasswordForm.value
+    }
 
     return {
       showForgotPasswordForm,
       toggleForgotPasswordForm,
-    };
+    }
   },
-};
+}
 </script>
 
 <template>
@@ -45,9 +45,7 @@ export default {
         width="400"
         height="425"
       />
-      <div
-        class="absolute left-36 top-52 h-36 w-36 rounded-full bg-[#FFBAAE]"
-      ></div>
+      <div class="absolute left-36 top-52 h-36 w-36 rounded-full bg-[#FFBAAE]"></div>
       <div
         class="absolute left-[210px] top-[381px] h-64 w-64 rounded-full bg-[#FF6C62]"
       ></div>

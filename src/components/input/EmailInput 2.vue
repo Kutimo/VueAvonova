@@ -1,25 +1,25 @@
 <script lang="ts">
 export default {
-  name: "EmailInput",
+  name: 'EmailInput',
   data() {
     return {
-      email: "",
-      emailError: "",
-    };
+      email: '',
+      emailError: '',
+    }
   },
   methods: {
     sanitizeEmail() {
       // Regex to match a basic email format
       const regex =
-        /^[-!#-'*+/-9=?^-~]+(?:\.[-!#-'*+/-9=?^-~]+)*@[-!#-'*+/-9=?^-~]+(?:\.[-!#-'*+/-9=?^-~]+)+$/i;
+        /^[-!#-'*+/-9=?^-~]+(?:\.[-!#-'*+/-9=?^-~]+)*@[-!#-'*+/-9=?^-~]+(?:\.[-!#-'*+/-9=?^-~]+)+$/i
       if (!regex.test(this.email)) {
-        this.emailError = "Skriv inn en gyldig epost adresse";
+        this.emailError = 'Skriv inn en gyldig epost adresse'
       } else {
-        this.emailError = "";
+        this.emailError = ''
       }
     },
   },
-};
+}
 </script>
 
 <template>

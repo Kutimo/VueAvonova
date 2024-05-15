@@ -8,17 +8,17 @@
 
 <script lang="ts">
 export default {
-  name: "DynamicModal",
+  name: 'DynamicModal',
   props: {
     showModal: Boolean,
   },
-  emits: ["update:showModal"],
+  emits: ['update:showModal'],
   setup(props, { emit }) {
     function closeModal() {
-      emit("update:showModal", false);
+      emit('update:showModal', false)
     }
 
-    return { closeModal };
+    return { closeModal }
   },
-};
+}
 </script>

@@ -1,16 +1,16 @@
 <script lang="ts">
 export default {
-  name: "ContactCardPFA",
+  name: 'ContactCardPFA',
   data() {
     return {
       contact: {
-        name: "Navn Navnesen",
-        email: "navnnavnesen@example.com",
-        phone: "123-456-7890",
+        name: 'Navn Navnesen',
+        email: 'navnnavnesen@example.com',
+        phone: '123-456-7890',
       },
-    };
+    }
   },
-};
+}
 </script>
 
 <template>
