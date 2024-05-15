@@ -127,7 +127,7 @@ export default {
     <ProductCard
       v-for="service in includedServices"
       :key="service.service_id"
-      :cardIcon="`../../public/productCardIcons/${service.category}.svg`"
+      :cardIcon="`../../productCardIcons/${service.category}.svg`"
       :cardHeader="service.name"
       :cardContent="service.description"
     />

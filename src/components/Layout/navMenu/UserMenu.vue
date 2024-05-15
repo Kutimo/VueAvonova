@@ -2,20 +2,13 @@
 import { supabase } from '@/lib/supabaseClient'
 import { ref } from 'vue'
 import { useToast } from 'vue-toastification'
+import { userNameStore } from '@/lib/store'
 
 export default {
   name: 'UserMenu',
   setup() {
-    const toast = useToast()
-    const firstName = ref('')
-    const fetchDataFromLocalStorage = async () => {
-      const { data, error } = await supabase.auth.getSession()
-      if (error) {
-        toast.error(error)
-      }
-      firstName.value = data.session?.user.user_metadata.firstName
-    }
-    fetchDataFromLocalStorage()
+    let firstName = ref({})
+    firstName.value = userNameStore.state.user.user_metadata.firstName
 
     const signOut = async () => {
       try {
@@ -29,7 +22,7 @@ export default {
         toast.error(error)
       }
     }
-    return { signOut, fetchDataFromLocalStorage, firstName }
+    return { signOut, firstName }
   },
 }
 </script>
