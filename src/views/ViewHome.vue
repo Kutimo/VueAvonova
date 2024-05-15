@@ -8,24 +8,8 @@ import ButtonPrimaryVue from '@/components/buttons/ButtonPrimary.vue'
 import { supabase } from '@/lib/supabaseClient'
 import { userNameStore } from '@/lib/store'
 import { useToast } from 'vue-toastification'
-
-interface Service {
-  service_id: number
-  name: string
-  description: string
-  category: string
-  included: boolean
-}
-
-interface Employee {
-  employee_id: number
-  birthdate: string
-  company_name: string
-  email: string
-  first_name: string
-  gender: string
-  last_name: string
-}
+import type { Employee } from '@/types/employeeType'
+import type { Service } from '@/types/servicesType'
 
 export default {
   components: {
@@ -125,7 +109,7 @@ export default {
         name: 'ansatte',
         label: 'Anstatte:',
         component: 'MultiCheckbox',
-        props: { options: [1, 2, 3] },
+        props: { options: [1, 2] },
       },
       { name: 'date', label: 'Velg dato:', component: 'datepicker', props: {} },
     ])
@@ -141,6 +125,7 @@ export default {
       handleEmailSent,
       includedServices,
       excludedServices,
+      employees,
       toast,
     }
   },
