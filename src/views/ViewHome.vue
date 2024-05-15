@@ -86,6 +86,12 @@ export default {
         label: 'Meld deg på nyhetsbrev:',
         component: 'checkbox',
       },
+      {
+        name: 'ansatte',
+        label: 'Anstatte:',
+        component: 'MultiCheckbox',
+        props: { options: [1, 2, 3] },
+      },
       { name: 'date', label: 'Velg dato:', component: 'datepicker', props: {} },
     ])
 
