@@ -1,3 +1,40 @@
+<template>
+  <div class="flex items-center justify-center bg-gray-600 bg-opacity-50 p-4">
+    <div class="rounded-lg relative w-full max-w-lg overflow-hidden bg-white p-80 shadow-lg">
+      <h2 class="mb-6 text-2xl font-bold">Legg inn din bestilling</h2>
+      <p>Fyll ut feltene og klikk bestill</p>
+      <form @submit.prevent="sendEmail" class="space-y-4">
+        <div v-for="field in fields" :key="field.name" class="flex flex-col">
+          <label :for="field.name" class="mb-2 font-body text-lg font-normal">
+            {{ field.label }}
+          </label>
+          <input v-if="!field.component" v-bind="field.props" v-model="formData[field.name]"
+            class="rounded-lg h-[50px] w-full border border-gray-300 px-4 text-base hover:border-2 hover:border-green-1100 focus-visible:border-2 focus-visible:outline-none active:border-2 active:border-green-1100" />
+          <select v-else-if="field.component === 'select'" v-model="formData[field.name]"
+            class="rounded-lg h-[50px] w-full border border-gray-300 text-base">
+            <option v-for="option in field.props?.options || []" :key="option" :value="option">
+              {{ option }}
+            </option>
+          </select>
+          <textarea v-else-if="field.component === 'textarea'" v-model="formData[field.name]"
+            class="rounded-lg h-[100px] w-full border border-gray-300 px-4 text-base">
+          </textarea>
+          <input v-else-if="field.component === 'checkbox'" type="checkbox" v-model="formData[field.name]"
+            class="h-5 w-5" />
+          <VueDatePicker v-else-if="field.component === 'datepicker'" v-model="formData[field.name]" class="w-full" />
+
+          <DropdownWithCheckboxes v-else-if="field.component === 'multicheckbox'" :options="field.props?.options"
+            v-model="formData[field.name]" />
+        </div>
+        <div class="flex justify-end gap-10 pt-10">
+          <ButtonSecondary buttonText="Avbryt" @click="closeModal" />
+          <ButtonPrimary buttonText="Bestill nå!" @click="sendEmail" />
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
+
 <script lang="ts">
 import { ref, watch } from 'vue'
 import { useToast } from 'vue-toastification'
@@ -21,14 +58,12 @@ interface Field {
 interface FormData {
   [key: string]: string
 }
-
 export default {
   name: 'EmailForm',
   components: {
     ButtonPrimary,
     ButtonSecondary,
     VueDatePicker,
-    DropdownWithCheckboxes,
   },
   props: {
     fields: {
@@ -37,10 +72,9 @@ export default {
     },
     closeModal: Function as PropType<() => void>,
   },
-  
   emits: ['email-sent'],
   setup(props, { emit }) {
-    function closeForm() {}
+    function closeForm() { }
     const formData: Ref<FormData> = ref({} as FormData)
     const date = ref(null)
 
@@ -108,67 +142,3 @@ export default {
   },
 }
 </script>
-
-<template>
-  <div class="flex items-center justify-center bg-gray-600 bg-opacity-50 p-4">
-    <div
-      class="rounded-lg relative w-full max-w-lg overflow-hidden bg-white p-80 shadow-lg"
-    >
-      <h2 class="mb-6 text-2xl font-bold">Legg inn din bestilling</h2>
-      <p>Fyll ut feltene og klikk bestill</p>
-      <form @submit.prevent="sendEmail" class="space-y-4">
-        <div v-for="field in fields" :key="field.name" class="flex flex-col">
-          <label :for="field.name" class="mb-2 font-body text-lg font-normal">
-            {{ field.label }}
-          </label>
-          <input
-            v-if="!field.component"
-            v-bind="field.props"
-            v-model="formData[field.name]"
-            class="rounded-lg h-[50px] w-full border border-gray-300 px-4 text-base hover:border-2 hover:border-green-1100 focus-visible:border-2 focus-visible:outline-none active:border-2 active:border-green-1100"
-          />
-          <select
-            v-else-if="field.component === 'select'"
-            v-model="formData[field.name]"
-            class="rounded-lg h-[50px] w-full border border-gray-300 text-base"
-          >
-            <option
-              v-for="option in field.props?.options || []"
-              :key="option"
-              :value="option"
-            >
-              {{ option }}
-            </option>
-          </select>
-          <textarea
-            v-else-if="field.component === 'textarea'"
-            v-model="formData[field.name]"
-            class="rounded-lg h-[100px] w-full border border-gray-300 px-4 text-base"
-          >
-          </textarea>
-          <input
-            v-else-if="field.component === 'checkbox'"
-            type="checkbox"
-            v-model="formData[field.name]"
-            class="h-5 w-5"
-          />
-          <VueDatePicker
-            v-else-if="field.component === 'datepicker'"
-            v-model="formData[field.name]"
-            class="w-full"
-          />
-
-          <DropdownWithCheckboxes
-            v-else-if="field.component === 'MultiCheckbox'"
-            :options="field.props?.options"
-            v-model="formData[field.name]"
-          />
-        </div>
-        <div class="flex justify-end gap-10 pt-10">
-          <ButtonSecondary buttonText="Avbryt" @click="closeModal" />
-          <ButtonPrimary buttonText="Bestill nå!" @click="sendEmail" />
-        </div>
-      </form>
-    </div>
-  </div>
-</template>
