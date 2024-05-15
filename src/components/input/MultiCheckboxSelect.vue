@@ -1,11 +1,12 @@
 <script lang="ts">
 import { ref, watch } from 'vue'
 import type { Employee } from '@/types/employeeType'
+
 export default {
   name: 'DropdownWithCheckboxes',
   props: {
     options: {
-      type: Array as () => Array<{ value: Employee }>, // Define the type of options as an array of objects
+      type: Array as () => Array<Employee>,
       required: true,
     },
     selectedValues: Array as () => Array<any>,
@@ -14,19 +15,19 @@ export default {
     console.log(props.options)
     const showDropdown = ref(false)
     const internalSelectedValues = ref([...(props.selectedValues || [])])
-    console.log(props.options)
-    const updateValue = () => {
+
+    const updateValue = (employeeId: number, checked: boolean) => {
+      if (checked) {
+        internalSelectedValues.value.push(employeeId)
+      } else {
+        const index = internalSelectedValues.value.indexOf(employeeId)
+        if (index !== -1) {
+          internalSelectedValues.value.splice(index, 1)
+        }
+      }
       emit('update:selectedValues', internalSelectedValues.value)
       console.log(internalSelectedValues.value)
     }
-
-    watch(
-      () => props.selectedValues,
-      (newVal) => {
-        internalSelectedValues.value = [...(newVal ?? [])]
-      },
-      { deep: true },
-    )
 
     return { showDropdown, internalSelectedValues, updateValue }
   },
@@ -42,15 +43,20 @@ export default {
       Åpne
     </button>
     <div v-if="showDropdown" class="absolute bg-white border rounded mt-1">
-      <div v-for="option in options" :key="option.value.employee_id" class="p-2">
+      <div v-for="option in options" :key="option.employee_id" class="p-2">
         <label class="flex items-center space-x-3">
           <input
             type="checkbox"
-            :value="option.value"
-            :checked="internalSelectedValues.includes(option.value)"
-            @change="updateValue"
+            value="option.employee_id"
+            :checked="internalSelectedValues.includes(option.employee_id)"
+            @change="
+              updateValue(
+                option.employee_id,
+                ($event.target as HTMLInputElement)?.checked,
+              )
+            "
           />
-          {{ option }}
+          {{ option.first_name + ' ' + option.last_name }}
         </label>
       </div>
     </div>
