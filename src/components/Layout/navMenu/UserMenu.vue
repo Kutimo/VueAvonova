@@ -7,6 +7,7 @@ import { userNameStore } from '@/lib/store'
 export default {
   name: 'UserMenu',
   setup() {
+    const toast = useToast()
     let firstName = ref({})
     firstName.value = userNameStore.state.user.user_metadata.firstName
 
