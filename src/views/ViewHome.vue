@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import ProductCard from '@/components/cards/ProductCard.vue'
 import EmailForm from '@/components/Layout/Forms/DynamicEmailForm.vue'
 import ProductsTable from '@/components/Layout/Table/ProductsTable.vue'
