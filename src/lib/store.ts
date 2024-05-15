@@ -5,3 +5,12 @@ export const store = {
     user: {},
   }),
 }
+export const userNameStore = {
+  state: reactive({
+    user: {
+      user_metadata: {
+        firstName: {},
+      },
+    },
+  }),
+}
