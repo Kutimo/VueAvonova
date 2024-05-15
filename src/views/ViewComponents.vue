@@ -7,7 +7,7 @@ import ContactCardPFA from '@/components/cards/ContactCardPFA.vue'
 import TextAreaField from '@/components/input/TextAreaField.vue'
 import SelectField from '@/components/select/SelectField.vue'
 import CheckBoxField from '@/components/checkbox/CheckBoxField.vue'
-import ConfirmationDialog from '@/components/Layout/modal/ConfirmationDialog.vue'
+import ConfirmationDialog from '@/components/Layout/Modal/ConfirmationDialog.vue'
 import { ref } from 'vue'
 
 export default {
@@ -54,26 +54,9 @@ export default {
     </div>
     <div class="m-10 flex flex-col gap-10">
       <p class="text-lg">inputs:</p>
-      <TextInput
-        label="Text"
-        name="lastName"
-        descriptive-text="hello"
-        error
-        error-text="test"
-      />
-      <TextInput
-        label="with error"
-        name="lastName"
-        descriptive-text="hello"
-        error
-        error-text="test"
-      />
-      <TextInput
-        label="with question icon"
-        name="lastName"
-        descriptive-text="hello"
-        icon
-      />
+      <TextInput label="Text" name="lastName" descriptive-text="hello" error error-text="test" />
+      <TextInput label="with error" name="lastName" descriptive-text="hello" error error-text="test" />
+      <TextInput label="with question icon" name="lastName" descriptive-text="hello" icon />
     </div>
     <div>
       <p>date picker:</p>
@@ -92,11 +75,7 @@ export default {
     </div>
     <div>
       <p>Select</p>
-      <SelectField
-        placeholder="Select a option:"
-        :data="options"
-        @change="updateSelectedValue"
-      />
+      <SelectField placeholder="Select a option:" :data="options" @change="updateSelectedValue" />
     </div>
     <div>
       <ConfirmationDialog />
