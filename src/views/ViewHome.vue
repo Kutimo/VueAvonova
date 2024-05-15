@@ -220,6 +220,6 @@ export default {
       :cardHeader="card.cardHeader"
       :cardContent="card.cardContent"
     />
-    <ProductTable :productHeaders="productHeaders" :data="products" />
+    <ProductsTable :headers="productHeaders" :data="products" />
   </main>
 </template>
