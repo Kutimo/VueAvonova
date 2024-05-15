@@ -123,7 +123,7 @@ export default {
 
 <template>
   <main class="m-10 h-screen">
-    <div class="container mx-auto px-4 py-10 mt-40 mb-20">
+    <div class="mx-auto px-4 py-10 mt-40 mb-20">
       <div class="mb-8">
         <h1 class="text-4xl font-bold mb-4">Våre Tjenester</h1>
         <p class="text-center text-lg">Oppdag vårt utvalg av tjenester som kan hjelpe deg med å nå dine mål. Bla gjennom
@@ -131,10 +131,11 @@ export default {
       </div>
     </div>
     <!-- Modal -->
-    <DynamicModal :showModal="showModal" @update:showModal="(value) => (showModal = value)">
-      <EmailForm :fields="formFields" :closeModal="() => (showModal = false)" @email-sent="handleEmailSent" />
-    </DynamicModal>
-
+    <div class=" max-h-screen max-w-screen flex justify-center">
+      <DynamicModal :showModal="showModal" @update:showModal="(value) => (showModal = value)">
+        <EmailForm :fields="formFields" :closeModal="() => (showModal = false)" @email-sent="handleEmailSent" />
+      </DynamicModal>
+    </div>
     <!-- Product Cards -->
     <div class="flex justify-center">
       <div class="flex flex-wrap justify-center items-center -m-10 mb-28">
@@ -153,3 +154,4 @@ export default {
     <ProductsTable :headers="productHeaders" :data="excludedServices" />
   </main>
 </template>
+
