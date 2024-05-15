@@ -1,16 +1,17 @@
 <script lang="ts">
 import { ref, watch } from 'vue'
-
+import type { Employee } from '@/types/employeeType'
 export default {
   name: 'DropdownWithCheckboxes',
   props: {
     options: {
-      type: Array as () => Array<{ value: string }>,
+      type: Array as () => Array<{ value: Employee }>, // Define the type of options as an array of objects
       required: true,
     },
     selectedValues: Array as () => Array<any>,
   },
   setup(props, { emit }) {
+    console.log(props.options)
     const showDropdown = ref(false)
     const internalSelectedValues = ref([...(props.selectedValues || [])])
     console.log(props.options)
@@ -41,7 +42,7 @@ export default {
       Åpne
     </button>
     <div v-if="showDropdown" class="absolute bg-white border rounded mt-1">
-      <div v-for="option in options" :key="option.value" class="p-2">
+      <div v-for="option in options" :key="option.value.employee_id" class="p-2">
         <label class="flex items-center space-x-3">
           <input
             type="checkbox"

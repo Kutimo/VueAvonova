@@ -1,5 +1,5 @@
 <script lang="ts">
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import ProductCard from '@/components/cards/ProductCard.vue'
 import EmailForm from '@/components/Layout/Forms/DynamicEmailForm.vue'
 import ProductsTable from '@/components/Layout/Table/ProductsTable.vue'
@@ -60,6 +60,7 @@ export default {
           return
         }
         if (data) {
+          console.log(data)
           employees.value = data
         }
       } catch (error: any) {
@@ -76,6 +77,8 @@ export default {
       { key: 'name', label: 'Produkt' },
       { key: 'description', label: 'Beskrivelse' },
     ]
+
+    const options = computed(() => employees.value)
 
     const formFields = ref([
       {
@@ -109,7 +112,7 @@ export default {
         name: 'ansatte',
         label: 'Anstatte:',
         component: 'MultiCheckbox',
-        props: { options: [1, 2] },
+        props: { options },
       },
       { name: 'date', label: 'Velg dato:', component: 'datepicker', props: {} },
     ])
