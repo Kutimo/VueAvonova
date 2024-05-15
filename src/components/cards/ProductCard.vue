@@ -1,20 +1,23 @@
 <script setup lang="ts">
-import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
-import ButtonSecondary from '../buttons/ButtonSecondary.vue'
+import { defineProps, defineEmits } from 'vue';
+import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue';
+import ButtonSecondary from '../buttons/ButtonSecondary.vue';
 
-const { cardIcon, cardHeader, cardContent } = defineProps({
+const props = defineProps({
   cardIcon: String,
   cardHeader: String,
   cardContent: String,
-})
+});
+
+const emit = defineEmits(['read-more', 'book-appointment']);
 
 const onReadMore = () => {
-  console.log('Read more action')
-}
+  emit('read-more');
+};
 
 const onBookAppointment = () => {
-  console.log('Book appointment action')
-}
+  emit('book-appointment');
+};
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <template>
-  <div v-if="showModal" class="h absolute left-2/4">
-    <div class="flex justify-center">
+  <div v-if="showModal" class="absolute flex items-center justify-center z-50 bg-black bg-opacity-50">
+    <div class="bg-white rounded-lg shadow-lg p-4">
       <slot></slot>
     </div>
   </div>
@@ -22,3 +22,4 @@ export default {
   },
 }
 </script>
+
