@@ -1,5 +1,7 @@
 <template>
-  <VueDatePicker v-model="date"></VueDatePicker>
+  <div class="w-[160px]">
+    <VueDatePicker v-model="date"></VueDatePicker>
+  </div>
 </template>
 
 <script lang="ts">

@@ -1,25 +1,19 @@
-<script lang="ts">
+<script setup lang="ts">
+import { ref } from "vue";
 import QuestionMenu from "./navMenu/QuestionMenu.vue";
 import UserMenu from "./navMenu/UserMenu.vue";
+import { onClickOutside } from "@vueuse/core";
 
-export default {
-  name: "PageNavigation",
-  components: {
-    UserMenu,
-    QuestionMenu,
-  },
-  data() {
-    return {
-      isMobileMenuOpen: false,
-      isUserMenuOpen: false,
-      isHelpMenuOpen: false,
-    };
-  },
-  methods: {
-    toggleMobileMenu() {
-      this.isMobileMenuOpen = !this.isMobileMenuOpen;
-    },
-  },
+const isMobileMenuOpen = ref(false);
+const isUserMenuOpen = ref(false);
+const isHelpMenuOpen = ref(false);
+const targetUserMenu = ref(null);
+const targetHelpMenu = ref(null);
+onClickOutside(targetUserMenu, () => (isUserMenuOpen.value = false));
+onClickOutside(targetHelpMenu, () => (isHelpMenuOpen.value = false));
+
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value;
 };
 </script>
 
@@ -87,7 +81,7 @@ export default {
       </ul>
     </div>
     <div class="hidden gap-10 laptop:flex">
-      <div class="relative">
+      <div class="relative" ref="targetUserMenu">
         <button
           @click="isUserMenuOpen = !isUserMenuOpen"
           class="flex h-40 w-40 items-center justify-center rounded-full border-2 border-green-1100 bg-gray-200 ring-offset-2 hover:cursor-pointer hover:bg-gray-300 focus:ring-2 focus:ring-green-1100"
@@ -101,7 +95,7 @@ export default {
         </button>
         <UserMenu v-if="isUserMenuOpen" />
       </div>
-      <div class="relative">
+      <div class="relative" ref="targetHelpMenu">
         <button
           @click="isHelpMenuOpen = !isHelpMenuOpen"
           class="flex h-40 w-40 items-center justify-center rounded-full border-2 border-green-1100 bg-gray-200 ring-offset-2 focus-within:ring-2 hover:cursor-pointer hover:bg-gray-300 focus:ring-green-1100"

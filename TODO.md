@@ -1,10 +1,14 @@
-#add router
-#Add loader
-#add user select none to images
-#add custom scroll bar
-#add tool tip input button "IconQuestion"
-#date picker?
-#Add absolute paths to ts config and vite config
-#Add github ci/cd 
-#Login page
-#Slots for components
+[x] lage 5 eposter for selskapene
+[] fikse table import i viewHome
+1.(hent alle tjenester) 2. (lage array) 3. ( sortere array etter inkludert eller ikke)
+bht kort må hente riktig data  
+bht kort å hente riktig employee data (business_id)
+dropdown med ansatte
+melding box
+dato
+ekstra bht tjenester.
+
+fjern passord i login et sted
+reset passord.
+rydde i kode.
+read me
