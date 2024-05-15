@@ -7,12 +7,14 @@ import ContactCardPFA from '@/components/cards/ContactCardPFA.vue'
 import TextAreaField from '@/components/input/TextAreaField.vue'
 import SelectField from '@/components/select/SelectField.vue'
 import CheckBoxField from '@/components/checkbox/CheckBoxField.vue'
-import ConfirmationDialog from '@/components/Layout/modal/ConfirmationDialog.vue'
+import ConfirmationDialog from '@/components/Layout/Modal/ConfirmationDialog.vue'
+import InfoCard from '@/components/cards/InfoCard.vue'
 import { ref } from 'vue'
 
 export default {
   name: 'ViewComponents',
   components: {
+    InfoCard,
     ConfirmationDialog,
     SelectField,
     TextAreaField,
@@ -47,12 +49,12 @@ export default {
 </script>
 
 <template>
-  <main id="Components" class="m-10 flex flex-col gap-10">
+  <main id="Components" class="flex flex-col gap-10 m-10">
     <div class="buttons">
       <ButtonPrimary button-text="Buy now" />
       <ButtonSecondary button-text="secondary" />
     </div>
-    <div class="m-10 flex flex-col gap-10">
+    <div class="flex flex-col gap-10 m-10">
       <p class="text-lg">inputs:</p>
       <TextInput
         label="Text"
@@ -101,5 +103,6 @@ export default {
     <div>
       <ConfirmationDialog />
     </div>
+    <div><InfoCard /></div>
   </main>
 </template>
