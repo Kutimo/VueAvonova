@@ -1,11 +1,13 @@
 <script lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import ProductCard from '@/components/cards/ProductCard.vue'
 import EmailForm from '@/components/Layout/Forms/DynamicEmailForm.vue'
 import ProductsTable from '@/components/Layout/Table/ProductsTable.vue'
 import DynamicModal from '@/components/Layout/Modal/DynamicModal.vue'
 import ButtonPrimaryVue from '@/components/buttons/ButtonPrimary.vue'
 import { supabase } from '@/lib/supabaseClient'
+import { userNameStore } from '@/lib/store'
+import { useToast } from 'vue-toastification'
 
 interface Service {
   service_id: number
@@ -13,6 +15,16 @@ interface Service {
   description: string
   category: string
   included: boolean
+}
+
+interface Employee {
+  employee_id: number
+  birthdate: string
+  company_name: string
+  email: string
+  first_name: string
+  gender: string
+  last_name: string
 }
 
 export default {
@@ -25,6 +37,7 @@ export default {
   },
 
   setup() {
+    const toast = useToast()
     const showModal = ref(false)
     function handleEmailSent() {
       showModal.value = false
@@ -32,19 +45,43 @@ export default {
     const services = ref<Array<Service>>([])
     const includedServices = ref<Array<Service>>([])
     const excludedServices = ref<Array<Service>>([])
-    async function fetchData() {
+    const employees = ref<Array<Employee>>([])
+    async function fetchServices() {
       try {
         const { data, error } = await supabase.from('services').select('*')
         if (error) {
-          console.error('Error fetching services:', error.message)
+          toast.error(`Feil ved henting av tjenester: ${error.message}`)
           return
         }
         if (data) {
-          services.value = data // Update services with the fetched data
+          services.value = data
           sortServices()
         }
       } catch (error: any) {
-        console.error('Error fetching services:', error.message)
+        console.error(`feil:, ${error.message}`)
+      }
+    }
+    async function fetchEmployees() {
+      try {
+        const { data, error } = await supabase
+          .from('employee')
+          .select('*')
+          .filter(
+            'company_name',
+            'ilike',
+            `%${userNameStore.state.user.user_metadata.firstName}%`,
+          )
+        if (error) {
+          toast.error(`Feil ved henting av brukere: ${error.message}`)
+          return
+        }
+        if (data) {
+          console.log(data)
+          employees.value = data
+          console.log(employees.value)
+        }
+      } catch (error: any) {
+        toast.error(`feil:, ${error.message}`)
       }
     }
 
@@ -86,11 +123,17 @@ export default {
         label: 'Meld deg på nyhetsbrev:',
         component: 'checkbox',
       },
+      {
+        name: 'ansatte',
+        label: 'Anstatte:',
+        component: 'MultiCheckbox',
+        props: { options: [1, 2, 3] },
+      },
       { name: 'date', label: 'Velg dato:', component: 'datepicker', props: {} },
     ])
 
     onMounted(() => {
-      fetchData()
+      fetchServices(), fetchEmployees()
     })
 
     return {
@@ -100,6 +143,7 @@ export default {
       handleEmailSent,
       includedServices,
       excludedServices,
+      toast,
     }
   },
 }
@@ -121,7 +165,7 @@ export default {
     <ProductCard
       v-for="service in includedServices"
       :key="service.service_id"
-      :cardIcon="`../../public/productCardIcons/${service.category}.svg`"
+      :cardIcon="`../../productCardIcons/${service.category}.svg`"
       :cardHeader="service.name"
       :cardContent="service.description"
     />
