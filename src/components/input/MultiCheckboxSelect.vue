@@ -1,5 +1,5 @@
 <template>
-    <div class="relative">
+    <div>
         <button @click="showDropdown = !showDropdown" class="bg-blue-500 text-white p-2 rounded">
             Velg alternativer
         </button>
