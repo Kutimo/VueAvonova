@@ -3,12 +3,12 @@ import { ref } from "vue";
 import ProductCard from "@/components/cards/ProductCard.vue";
 import EmailForm from "@/components/Layout/Forms/DynamicEmailForm.vue";
 import ProductsTable from "@/components/Layout/Table/ProductsTable.vue";
-import Modal from "@/components/Layout/Modal/DynamicModal.vue";
+import DynamicModal from "@/components/Layout/modal/DynamicModal.vue";
 import ButtonPrimaryVue from "@/components/buttons/ButtonPrimary.vue";
 
 export default {
   components: {
-    Modal,
+    DynamicModal,
     ProductCard,
     ProductsTable,
     EmailForm,
@@ -203,7 +203,7 @@ export default {
   <main class="m-10 h-screen">
     <!-- Modal -->
     <ButtonPrimaryVue buttonText="Bestill nå!" @click="showModal = true" />
-    <Modal
+    <DynamicModal
       :showModal="showModal"
       @update:showModal="(value) => (showModal = value)"
     >
@@ -212,7 +212,7 @@ export default {
         :closeModal="() => (showModal = false)"
         @email-sent="handleEmailSent"
       />
-    </Modal>
+    </DynamicModal>
     <ProductCard
       v-for="card in cards"
       :key="card.id"
@@ -220,5 +220,6 @@ export default {
       :cardHeader="card.cardHeader"
       :cardContent="card.cardContent"
     />
+    <ProductsTable :headers="productHeaders" :data="products" />
   </main>
 </template>

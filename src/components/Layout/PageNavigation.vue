@@ -9,19 +9,11 @@ const isUserMenuOpen = ref(false);
 const isHelpMenuOpen = ref(false);
 const targetUserMenu = ref(null);
 const targetHelpMenu = ref(null);
-onClickOutside(targetUserMenu, (event) => (isUserMenuOpen.value = false));
-onClickOutside(targetHelpMenu, (event) => (isHelpMenuOpen.value = false));
+onClickOutside(targetUserMenu, () => (isUserMenuOpen.value = false));
+onClickOutside(targetHelpMenu, () => (isHelpMenuOpen.value = false));
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
-};
-
-const toggleUserMenu = () => {
-  isUserMenuOpen.value = !isUserMenuOpen.value;
-};
-
-const toggleHelpMenu = () => {
-  isHelpMenuOpen.value = !isHelpMenuOpen.value;
 };
 </script>
 

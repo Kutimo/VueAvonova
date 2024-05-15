@@ -23,6 +23,7 @@
           >
             <option
               v-for="option in field.props?.options || []"
+              :key="option"
               :value="option"
             >
               {{ option }}
