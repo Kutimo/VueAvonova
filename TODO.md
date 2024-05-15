@@ -1,7 +1,7 @@
 [x] lage 5 eposter for selskapene
-[] fikse table import i viewHome
-1.(hent alle tjenester) 2. (lage array) 3. ( sortere array etter inkludert eller ikke)
-bht kort må hente riktig data  
+[x] fikse table import i viewHome
+[x] 1.(hent alle tjenester) 2. (lage array) 3. ( sortere array etter inkludert eller ikke)
+[x]bht kort må hente riktig data  
 bht kort å hente riktig employee data (business_id)
 dropdown med ansatte
 melding box
