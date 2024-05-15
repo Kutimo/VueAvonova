@@ -76,9 +76,7 @@ export default {
           return
         }
         if (data) {
-          console.log(data)
           employees.value = data
-          console.log(employees.value)
         }
       } catch (error: any) {
         toast.error(`feil:, ${error.message}`)
