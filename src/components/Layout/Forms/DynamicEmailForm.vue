@@ -25,7 +25,7 @@
 
           <DropdownWithCheckboxes v-else-if="field.component === 'multicheckbox'" :options="field.props?.options"
             v-model="formData[field.name]" />
-
+          <div></div>
         </div>
         <div class="flex justify-end gap-10 pt-10">
           <ButtonSecondary buttonText="Avbryt" @click="closeModal" />
