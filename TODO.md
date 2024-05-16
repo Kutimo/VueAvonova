@@ -9,10 +9,9 @@
 ekstra bht tjenester.
 
 [x]fjern passord i login et sted
-define props i product card
-test av kort
-end to end testing
-reset passord.
+[x]define props i product card
+[x]test av kort
+[x]reset passord.
 rydde i kode.
 read me
 admin
