@@ -102,8 +102,9 @@ export default {
       </form>
       <form class="flex flex-col gap-10">
         <input
-          type="text"
           v-model="password"
+          type="password"
+          autocomplete="current-password"
           placeholder="Passord"
           class="border border-gray-300 p-8"
         />

@@ -1,7 +1,6 @@
 <script lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import ProductCard from '@/components/cards/ProductCard.vue'
-import InfoCard from '@/components/cards/InfoCard.vue'
 import EmailForm from '@/components/Layout/Forms/DynamicEmailForm.vue'
 import ProductsTable from '@/components/Layout/Table/ProductsTable.vue'
 import DynamicModal from '@/components/Layout/Modal/DynamicModal.vue'
@@ -17,15 +16,17 @@ export default {
     ProductCard,
     ProductsTable,
     EmailForm,
-    InfoCard,
   },
 
   setup() {
     const toast = useToast()
     const showModal = ref(false)
-    const selectedCard = ref<{ cardIcon: string, cardHeader: string, cardContent: string } | null>(null) // Legg til type
+    const selectedCard = ref<{
+      cardIcon: string
+      cardHeader: string
+      cardContent: string
+    } | null>(null) // Legg til type
     const isEmailFormVisible = ref(false)
-    const isInfoCardVisible = ref(false)
     const selectedCardHeader = ref('')
 
     function handleEmailSent() {
@@ -111,11 +112,6 @@ export default {
         props: { options: ['Epost', 'Telefon'] },
       },
       {
-        name: 'newsletter',
-        label: 'Meld deg på nyhetsbrev:',
-        component: 'checkbox',
-      },
-      {
         name: 'ansatte',
         label: 'Anstatte:',
         component: 'MultiCheckbox',
@@ -127,36 +123,29 @@ export default {
     onMounted(() => {
       fetchServices(), fetchEmployees()
     })
-
-    const onReadMore = (card: { cardIcon: string, cardHeader: string, cardContent: string }) => {
-      selectedCard.value = card
-      isEmailFormVisible.value = false
-      isInfoCardVisible.value = true
-      showModal.value = true
+    const closeModal = () => {
+      showModal.value = false
     }
 
+    // Function to handle "Book Appointment" click
     const onBookAppointment = (cardHeader: string) => {
       selectedCardHeader.value = cardHeader
       isEmailFormVisible.value = true
-      isInfoCardVisible.value = false
       showModal.value = true
     }
 
     return {
-      productHeaders,
       showModal,
-      formFields,
       selectedCard,
-      selectedCardHeader,
       isEmailFormVisible,
-      isInfoCardVisible,
-      handleEmailSent,
+      selectedCardHeader,
+      closeModal,
+      onBookAppointment,
+      formFields,
       includedServices,
       excludedServices,
-      employees,
-      toast,
-      onReadMore,
-      onBookAppointment,
+      handleEmailSent,
+      productHeaders,
     }
   },
 }
@@ -175,13 +164,18 @@ export default {
     </div>
     <!-- Modal -->
     <div class="flex justify-center max-h-screen max-w-screen">
-      <DynamicModal :showModal="showModal" @update:showModal="(value) => (showModal = value)">
-        <EmailForm v-if="isEmailFormVisible" :fields="formFields" :cardHeader="selectedCardHeader"
-          :closeModal="() => (showModal = false)" @email-sent="handleEmailSent" />
+      <DynamicModal
+        :showModal="showModal"
+        @update:showModal="(value) => (showModal = value)"
+      >
+        <EmailForm
+          v-if="isEmailFormVisible"
+          :fields="formFields"
+          :cardHeader="selectedCardHeader"
+          :closeModal="() => (showModal = false)"
+          @email-sent="handleEmailSent"
+        />
         <!-- Info card -->
-        <InfoCard v-if="isInfoCardVisible && selectedCard" :cardIcon="selectedCard.cardIcon"
-          :title="selectedCard.cardHeader" :description="selectedCard.cardContent" :image="''" />
-        :cardHeader="selectedCard.cardHeader" :cardContent="selectedCard.cardContent" />
       </DynamicModal>
     </div>
     <!-- Product Cards -->
@@ -190,8 +184,12 @@ export default {
         class="flex flex-wrap items-center justify-center laptop:gap-52 gap-20 -m-10 mb-28"
       >
         <div v-for="service in includedServices" :key="service.service_id" class="m-4">
-          <ProductCard :cardIcon="`../../productCardIcons/${service.category}.svg`" :cardHeader="service.name"
-            :cardContent="service.description" @read-more="onReadMore" @book-appointment="onBookAppointment" />
+          <ProductCard
+            :cardIcon="`../../productCardIcons/${service.category}.svg`"
+            :cardHeader="service.name"
+            :cardContent="service.description"
+            @book-appointment="onBookAppointment"
+          />
         </div>
       </div>
     </div>

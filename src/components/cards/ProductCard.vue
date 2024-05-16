@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue'
-import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
 import ButtonSecondary from '../buttons/ButtonSecondary.vue'
 
 const props = defineProps({
@@ -9,11 +8,7 @@ const props = defineProps({
   cardContent: String,
 })
 
-const emit = defineEmits(['read-more', 'book-appointment'])
-
-const onReadMore = () => {
-  emit('read-more')
-}
+const emit = defineEmits(['book-appointment'])
 
 const onBookAppointment = () => {
   emit('book-appointment', props.cardHeader)
@@ -31,11 +26,17 @@ const onBookAppointment = () => {
           <p class="text-sm" v-html="cardContent"></p>
         </div>
         <div class="flex items-center justify-center ml-auto">
-          <img v-if="cardIcon" :src="cardIcon" class="p-4" alt="Card Icon" height="64" width="64" />
+          <img
+            v-if="cardIcon"
+            :src="cardIcon"
+            class="p-4"
+            alt="Card Icon"
+            height="64"
+            width="64"
+          />
         </div>
       </div>
       <div class="flex justify-start w-full gap-10 p-10">
-        <ButtonPrimary buttonText="Les mer" @click="onReadMore" />
         <ButtonSecondary buttonText="Bestill" @click="onBookAppointment" />
       </div>
     </div>
