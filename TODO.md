@@ -3,7 +3,7 @@
 [x] 1.(hent alle tjenester) 2. (lage array) 3. ( sortere array etter inkludert eller ikke)
 [x]bht kort må hente riktig data  
 [x]bht kort å hente riktig employee data (business_id)
-dropdown med ansatte
+[x]dropdown med ansatte
 melding box
 dato
 ekstra bht tjenester.
