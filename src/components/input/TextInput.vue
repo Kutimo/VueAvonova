@@ -1,6 +1,5 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
-export default defineComponent({
+export default {
   name: 'TextInput',
   data() {
     return {
@@ -41,7 +40,7 @@ export default defineComponent({
       default: '',
     },
   },
-})
+}
 </script>
 
 <template>

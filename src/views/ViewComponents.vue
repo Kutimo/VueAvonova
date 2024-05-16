@@ -14,7 +14,6 @@ import { ref } from 'vue'
 export default {
   name: 'ViewComponents',
   components: {
-    InfoCard,
     ConfirmationDialog,
     SelectField,
     TextAreaField,

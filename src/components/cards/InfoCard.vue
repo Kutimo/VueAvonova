@@ -1,8 +1,7 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
 import ButtonSecondary from '../buttons/ButtonSecondary.vue'
 
-export default defineComponent({
+export default {
   name: 'InfoCard',
   components: {
     ButtonSecondary,
@@ -21,7 +20,7 @@ export default defineComponent({
       required: true,
     },
   },
-})
+}
 </script>
 
 <template>
