@@ -42,7 +42,6 @@ export default {
     const formData: Ref<FormData> = ref({} as FormData)
     const date = ref(null)
     const selectedEmployees = ref([])
-    // ! Console.log
     watch(
       () => props.fields,
       (newFields) => {
