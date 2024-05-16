@@ -182,8 +182,8 @@ export default {
       </DynamicModal>
     </div>
     <!-- Product Cards -->
-    <div class="flex justify-center">
-      <div class="flex flex-wrap items-center justify-center -m-10 mb-28">
+    <div class="flex justify-center mt-40">
+      <div class="flex flex-wrap items-center justify-center gap-64 -m-10 mb-28">
         <div v-for="service in includedServices" :key="service.service_id" class="m-4">
           <ProductCard
             :cardIcon="`../../public/productCardIcons/${service.category}.svg`"
