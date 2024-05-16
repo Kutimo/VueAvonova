@@ -4,10 +4,11 @@
 [x]bht kort må hente riktig data  
 [x]bht kort å hente riktig employee data (business_id)
 [x]dropdown med ansatte
-melding box
-dato
+[x]melding box
+[x]dato
 ekstra bht tjenester.
 
+[x]fjern passord i login et sted
 [x]fjern passord i login et sted
 define props i product card
 []remove public path new svg's
