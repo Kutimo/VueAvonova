@@ -8,7 +8,6 @@ body {
   line-height: 1.6;
   font-family: vollkorn;
   color: var(--black);
-  min-width: 212px;
   font-size: 15px;
   transition: all 0.15s ease-in-out;
   text-rendering: optimizeLegibility;

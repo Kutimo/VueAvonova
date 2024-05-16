@@ -38,7 +38,7 @@ export default {
 }
 </script>
 <template>
-  <div class="container mx-auto px-4 py-6">
+  <div class="container mx-auto px-4 w-full py-40">
     <div class="relative mb-4">
       <input
         type="text"
@@ -47,8 +47,8 @@ export default {
         class="w-full p-4 pl-12 border border-green-800 rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-600 text-xl"
       />
     </div>
-    <table class="w-full border-collapse bg-white shadow-md text-lg">
-      <thead>
+    <table class="w-full border-collapse bg-white shadow-md laptop:text-lg text-sm mt-20">
+      <thead class="p-6">
         <tr>
           <th
             v-for="header in headers"
@@ -64,7 +64,7 @@ export default {
           </th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="p-6">
         <tr
           v-for="item in filteredData"
           :key="item.id"
@@ -78,11 +78,11 @@ export default {
           >
             {{ item[header.key] }}
           </td>
-          <td class="p-3 border-t border-gray-300 text-gray-700">
+          <td class="p-10 border-t border-gray-300 text-gray-700">
             <details class="group">
               <summary class="cursor-pointer text-green-800">Mer info</summary>
-              <div class="mt-4">
-                <p class="p-3 border border-gray-300 bg-gray-100 rounded">
+              <div class="mt-10">
+                <p class="laptop:p-6 p-1 border border-gray-300 bg-gray-100 rounded">
                   {{ item.description }}
                 </p>
                 <p

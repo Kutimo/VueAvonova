@@ -1,17 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import ViewHome from '../views/ViewHome.vue'
-import ViewTypography from '../views/ViewTypography.vue'
-import ViewComponents from '@/views/ViewComponents.vue'
 import ViewLogin from '@/views/ViewLogin.vue'
 import { supabase } from '@/lib/supabaseClient'
-import ViewAdmin from '@/views/ViewAdmin.vue'
+import ViewProfile from '@/views/ViewProfile.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: ViewHome },
-  { path: '/typography', name: 'About', component: ViewTypography },
-  { path: '/components', name: 'Components', component: ViewComponents },
   { path: '/login', name: 'Login', component: ViewLogin },
-  { path: '/admin', name: 'Admin', component: ViewAdmin },
+  { path: '/profile', name: 'Profile', component: ViewProfile },
 ]
 
 const router = createRouter({

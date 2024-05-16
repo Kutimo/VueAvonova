@@ -1,7 +1,5 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
+export default {
   name: 'ButtonSecondary',
   props: {
     buttonText: {
@@ -17,7 +15,7 @@ export default defineComponent({
       default: '',
     },
   },
-})
+}
 </script>
 
 <template>
