@@ -1,6 +1,5 @@
 <script lang="ts">
 import PageNavigation from '@/components/Layout/PageNavigation.vue'
-import PageFooter from './components/Layout/PageFooter.vue'
 import { store, userNameStore } from '@/lib/store'
 import { supabase } from './lib/supabaseClient'
 import { ref } from 'vue'
@@ -9,7 +8,6 @@ export default {
   name: 'App',
   components: {
     PageNavigation,
-    PageFooter,
   },
   setup() {
     const isLoggedIn = ref(false)
@@ -43,5 +41,4 @@ export default {
 <template>
   <PageNavigation v-if="isLoggedIn" />
   <router-view></router-view>
-  <PageFooter v-if="isLoggedIn" />
 </template>
