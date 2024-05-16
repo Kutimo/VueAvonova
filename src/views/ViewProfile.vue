@@ -1,7 +1,6 @@
 <script lang="ts">
 import { supabase } from '@/lib/supabaseClient'
 import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
-import ButtonSecondary from '@/components/buttons/ButtonSecondary.vue'
 import { ref } from 'vue'
 import { useToast } from 'vue-toastification'
 
