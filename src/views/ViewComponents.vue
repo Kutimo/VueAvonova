@@ -103,6 +103,5 @@ export default {
     <div>
       <ConfirmationDialog />
     </div>
-    <div><InfoCard /></div>
   </main>
 </template>

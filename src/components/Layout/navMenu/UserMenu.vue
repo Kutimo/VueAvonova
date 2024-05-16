@@ -1,29 +1,16 @@
 <script lang="ts">
-import { supabase } from '@/lib/supabaseClient'
 import { ref } from 'vue'
-import { useToast } from 'vue-toastification'
 import { userNameStore } from '@/lib/store'
-
+import { signOut } from '@/lib/signOut'
 export default {
   name: 'UserMenu',
   setup() {
-    const toast = useToast()
     let firstName = ref({})
     firstName.value = userNameStore.state.user.user_metadata.firstName
-
-    const signOut = async () => {
-      try {
-        const { error } = await supabase.auth.signOut()
-        if (error) {
-          alert(error.message)
-        } else {
-          window.location.reload()
-        }
-      } catch (error) {
-        toast.error(error)
-      }
+    const handleSignOut = () => {
+      signOut()
     }
-    return { signOut, firstName }
+    return { firstName, handleSignOut }
   },
 }
 </script>
@@ -44,7 +31,7 @@ export default {
         </a>
       </li>
       <li class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2">
-        <a href="#" class="flex gap-20" @click="signOut">
+        <a href="#" class="flex gap-20" @click="handleSignOut">
           <img
             src="../../../assets/icons/IconLogOut.svg"
             alt="Logg ut"

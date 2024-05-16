@@ -11,12 +11,13 @@ ekstra bht tjenester.
 [x]fjern passord i login et sted
 [x]fjern passord i login et sted
 define props i product card
-[]remove public path new svg's
-redo email input to composition api
-test av kort
-end to end testing
-reset passord.
-rydde i kode.
+[x]remove public path new svg's
+[x]redo email input to composition api
+[x]test av kort
+[x]end to end testing
+[x]reset passord.
+[x]rydde i kode.
+[]les mer og bestill i table
 read me
 admin
 mobile
