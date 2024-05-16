@@ -14,7 +14,6 @@ import { ref } from 'vue'
 export default {
   name: 'ViewComponents',
   components: {
-    InfoCard,
     ConfirmationDialog,
     SelectField,
     TextAreaField,
@@ -103,6 +102,5 @@ export default {
     <div>
       <ConfirmationDialog />
     </div>
-    <div><InfoCard /></div>
   </main>
 </template>
