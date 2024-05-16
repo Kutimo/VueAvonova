@@ -159,10 +159,10 @@ export default {
 
 <template>
   <main class="m-10 h-fit bg-neutral-100">
-    <div class="px-4 py-10 mx-auto mb-20">
-      <div class="mb-8">
-        <h1 class="mb-4 text-4xl font-bold">Våre Tjenester</h1>
-        <p class="text-lg text-center">
+    <div class="px-4 py-10 bg-white h-[200px] mt-40">
+      <div class="w-[600px] ml-[160px]">
+        <h4 class="">Våre tjenester</h4>
+        <p class="text-lg">
           Oppdag vårt utvalg av tjenester som kan hjelpe deg med å nå dine mål. Bla
           gjennom våre tjenester nedenfor og finn den perfekte løsningen for dine behov.
         </p>
