@@ -12,7 +12,6 @@ export default {
     selectedValues: Array as () => Array<any>,
   },
   setup(props, { emit }) {
-    console.log(props.options)
     const showDropdown = ref(false)
     const internalSelectedValues = ref([...(props.selectedValues || [])])
 
@@ -27,7 +26,6 @@ export default {
       )
       if (checked && employeeIndex === -1) {
         internalSelectedValues.value.push({ employeeId: employeeId, firstName, lastName })
-        console.log(internalSelectedValues.value)
       } else if (!checked && employeeIndex !== -1) {
         internalSelectedValues.value.splice(employeeIndex, 1)
       }

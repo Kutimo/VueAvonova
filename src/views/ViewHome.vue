@@ -60,7 +60,6 @@ export default {
           return
         }
         if (data) {
-          console.log(data)
           employees.value = data
         }
       } catch (error: any) {

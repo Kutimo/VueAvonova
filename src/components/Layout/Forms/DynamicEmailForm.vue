@@ -42,7 +42,7 @@ export default {
     const formData: Ref<FormData> = ref({} as FormData)
     const date = ref(null)
     const selectedEmployees = ref([])
-    console.log(formData.value)
+    // ! Console.log
     watch(
       () => props.fields,
       (newFields) => {
@@ -56,13 +56,11 @@ export default {
     )
 
     const handleSelectedValues = (selectedValues: Array<any>, fieldName: string) => {
-      console.log(selectedValues)
       const names = selectedValues.map(
         (employee) =>
           `Ansattnummer: ${employee.employeeId} ${employee.firstName} ${employee.lastName}`,
       )
       formData.value['ansatte'] = names.join(', ')
-      console.log(formData.value)
     }
 
     const toast = useToast()
@@ -74,8 +72,6 @@ export default {
       Body: body,
     })
     const sendEmail = async () => {
-      console.log(formData.value)
-
       try {
         let emailBody = ''
         for (const key in formData.value) {
