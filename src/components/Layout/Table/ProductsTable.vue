@@ -31,11 +31,7 @@ export default {
       })
     })
 
-    const emit = defineEmits(['book-appointment'])
-    const onBookAppointment = () => {
-      emit('book-appointment', props.headers)
-    }
-    return { searchQuery, filteredData, onBookAppointment }
+    return { searchQuery, filteredData }
   },
 }
 </script>
@@ -86,12 +82,6 @@ export default {
               <div class="mt-10">
                 <p class="laptop:p-6 p-1 border border-gray-300 bg-gray-100 rounded">
                   {{ item.description }}
-                </p>
-                <p
-                  class="text-green-1200 mt-2 cursor-pointer hover:text-green-600 underline"
-                  @click="onBookAppointment"
-                >
-                  Bestill nå
                 </p>
               </div>
             </details>

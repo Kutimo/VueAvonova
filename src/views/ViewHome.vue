@@ -202,10 +202,6 @@ export default {
         </p>
       </div>
     </div>
-    <ProductsTable
-      :headers="productHeaders"
-      :data="excludedServices"
-      @book-appointment="onBookAppointment"
-    />
+    <ProductsTable :headers="productHeaders" :data="excludedServices" />
   </main>
 </template>
