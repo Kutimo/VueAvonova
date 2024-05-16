@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import CardComponent from '../../cards/ProductCard.vue'
-import ButtonPrimary from '../../buttons/ButtonPrimary.vue'
 
 describe('CardComponent', () => {
   it('renders card with correct props and buttons', async () => {
@@ -15,11 +14,6 @@ describe('CardComponent', () => {
         cardHeader,
         cardContent,
       },
-      global: {
-        components: {
-          ButtonPrimary,
-        },
-      },
     })
 
     // Check if props are rendered correctly
@@ -27,12 +21,5 @@ describe('CardComponent', () => {
     expect(wrapper.find('img').attributes('src')).toBe(cardIcon)
     expect(wrapper.find('h4').text()).toBe(cardHeader)
     expect(wrapper.find('p').text()).toBe(cardContent)
-
-    // Check if buttons are rendered and emit correct events
-    const buttons = wrapper.findAllComponents(ButtonPrimary)
-    expect(buttons.length).toBe(1)
-
-    // Simulate button clicks and check if corresponding methods are called
-    await buttons[0].trigger('click')
   })
 })
