@@ -30,10 +30,12 @@ export default {
         })
       })
     })
-    function orderProduct(item: any) {
-      alert(`Bestilling for ${item.name} initiert!`)
+
+    const emit = defineEmits(['book-appointment'])
+    const onBookAppointment = () => {
+      emit('book-appointment', props.headers)
     }
-    return { searchQuery, filteredData, orderProduct }
+    return { searchQuery, filteredData, onBookAppointment }
   },
 }
 </script>
@@ -87,7 +89,7 @@ export default {
                 </p>
                 <p
                   class="text-green-1200 mt-2 cursor-pointer hover:text-green-600 underline"
-                  @click="orderProduct"
+                  @click="onBookAppointment"
                 >
                   Bestill nå
                 </p>

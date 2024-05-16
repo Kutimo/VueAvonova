@@ -9,11 +9,7 @@ const props = defineProps({
   cardContent: String,
 })
 
-const emit = defineEmits(['read-more', 'book-appointment'])
-
-const onReadMore = () => {
-  emit('read-more')
-}
+const emit = defineEmits(['book-appointment'])
 
 const onBookAppointment = () => {
   emit('book-appointment', props.cardHeader)
