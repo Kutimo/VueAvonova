@@ -143,7 +143,7 @@ export default {
 </script>
 
 <template>
-  <main class="m-10 h-fit w-full bg-neutral-100">
+  <main class="m-10 h-fit bg-neutral-100">
     <div class="px-4 py-10 flex bg-white h-[200px] mt-40">
       <div class="md:w-[60ch] w-[45ch] ml-[80px]">
         <h4 class="">Våre tjenester</h4>

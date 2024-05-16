@@ -24,8 +24,6 @@ export default defineComponent({
 })
 </script>
 
-<style scoped></style>
-
 <template>
   <div class="overflow-hidden p-20 rounded-10 shadow-md w-[700px]">
     <h4 class="flex justify-center">Kartlegging og risikovurdering</h4>
