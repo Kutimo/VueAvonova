@@ -42,7 +42,7 @@ export default {
     >
       Åpne
     </button>
-    <div v-if="showDropdown" class="absolute bg-white border rounded mt-1">
+    <div v-if="showDropdown" class="absolute bg-white border z-20 p-8 rounded mt-1">
       <div v-for="option in options" :key="option.employee_id" class="p-2">
         <label class="flex items-center space-x-3">
           <input
