@@ -21,14 +21,14 @@ export default {
       <li
         class="z-50 px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2"
       >
-        <a href="#" class="flex gap-20">
+        <router-link to="/profile" class="flex gap-20">
           <img
             src="../../../assets/icons/IconUsername.svg"
             alt="user icon"
             draggable="false"
           />
           {{ firstName }}
-        </a>
+        </router-link>
       </li>
       <li class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2">
         <a href="#" class="flex gap-20" @click="handleSignOut">

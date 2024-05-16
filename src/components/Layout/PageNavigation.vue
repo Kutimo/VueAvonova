@@ -172,7 +172,7 @@ const handleSignOut = () => {
         <li
           class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2"
         >
-          <router-link class="flex gap-20" to="/admin" @click="toggleMobileMenu">
+          <router-link class="flex gap-20" to="/profile" @click="toggleMobileMenu">
             <img
               src="../../assets/icons/IconUser.svg"
               alt="Brukermeny"
