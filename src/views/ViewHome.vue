@@ -195,11 +195,12 @@ export default {
         </div>
       </div>
     </div>
-    <div class="px-4 py-10 mx-auto">
-      <div class="mb-8 text-center">
+    <div class="px-4 py-10 mt-40 bg-white">
+      <div class="mb-8 ml-[160px] w-[60ch] h-[125px] mt-20">
         <h1 class="mb-4 text-4xl font-bold">Alle tjenester</h1>
         <p class="text-lg">
-          Her er alle våre tjenester, søk i tjenestene og bestill ønsket tjeneste
+          Under kan du søke i katalogen over alle våre tjenester, samt bestille ønsket
+          tjeneste
         </p>
       </div>
     </div>
