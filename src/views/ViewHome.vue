@@ -144,8 +144,8 @@ export default {
 
 <template>
   <main class="m-10 h-fit bg-neutral-100">
-    <div class="px-4 py-10 bg-white h-[200px] mt-40">
-      <div class="w-[60ch] ml-[160px]">
+    <div class="px-4 py-10 flex bg-white h-[200px] mt-40">
+      <div class="md:w-[60ch] w-[45ch] ml-[80px]">
         <h4 class="">Våre tjenester</h4>
         <p class="text-lg">
           Oppdag vårt utvalg av tjenester som kan hjelpe deg med å nå dine mål. Bla
@@ -168,7 +168,9 @@ export default {
     </div>
     <!-- Product Cards -->
     <div class="flex justify-center mt-40">
-      <div class="flex flex-wrap items-center justify-center gap-64 -m-10 mb-28">
+      <div
+        class="flex flex-wrap items-center justify-center laptop:gap-52 gap-20 -m-10 mb-28"
+      >
         <div v-for="service in includedServices" :key="service.service_id" class="m-4">
           <ProductCard
             :cardIcon="`../../productCardIcons/${service.category}.svg`"
@@ -180,8 +182,8 @@ export default {
         </div>
       </div>
     </div>
-    <div class="px-4 py-10 mt-40 bg-white">
-      <div class="mb-8 ml-[160px] w-[60ch] h-[125px] mt-20">
+    <div class="px-4 py-10 mt-40 flex bg-white">
+      <div class="mb-8 md:w-[60ch] ml-[80px] w-[45ch] h-[125px] mt-20">
         <h1 class="mb-4 text-4xl font-bold">Alle tjenester</h1>
         <p class="text-lg">
           Under kan du søke i katalogen over alle våre tjenester, samt bestille ønsket

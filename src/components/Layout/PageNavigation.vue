@@ -3,6 +3,8 @@ import { ref } from 'vue'
 import QuestionMenu from './navMenu/QuestionMenu.vue'
 import UserMenu from './navMenu/UserMenu.vue'
 import { onClickOutside } from '@vueuse/core'
+import { signOut } from '@/lib/signOut'
+import { userNameStore } from '@/lib/store'
 
 const isMobileMenuOpen = ref(false)
 const isUserMenuOpen = ref(false)
@@ -14,6 +16,13 @@ onClickOutside(targetHelpMenu, () => (isHelpMenuOpen.value = false))
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
+}
+
+let firstName = ref({})
+firstName.value = userNameStore.state.user.user_metadata.firstName
+
+const handleSignOut = () => {
+  signOut()
 }
 </script>
 
@@ -160,9 +169,32 @@ const toggleMobileMenu = () => {
             width="15"
           />
         </li>
+        <li
+          class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2"
+        >
+          <router-link class="flex gap-20" to="/profile" @click="toggleMobileMenu">
+            <img
+              src="../../assets/icons/IconUser.svg"
+              alt="Brukermeny"
+              height="18"
+              width="20"
+            />
+            {{ firstName }}
+          </router-link>
+        </li>
+        <li
+          class="px-12 py-6 ring-black hover:bg-green-300 active:rounded-6 active:ring-2"
+        >
+          <a href="#" class="flex gap-20" @click="handleSignOut">
+            <img
+              src="../../assets//icons/IconLogOut.svg"
+              alt="Logg ut"
+              draggable="false"
+            />
+            Logg ut
+          </a>
+        </li>
       </ul>
     </div>
   </nav>
 </template>
-
-<style scoped></style>
