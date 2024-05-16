@@ -12,17 +12,15 @@ const onBookAppointment = () => {
 </script>
 
 <template>
-  <div
-    class="m-10 flex h-[375px] w-[500px] justify-center overflow-hidden rounded-10 px-20 shadow-md"
-  >
-    <div class="flex w-full items-center justify-center">
+  <div class="flex h-[300px] w-[50ch] overflow-hidden rounded-10 px-20 shadow-md">
+    <div class="flex items-center justify-center w-full">
       <div>
-        <h4>Er informasjonen du har lagt til korrekt?</h4>
+        <h4 class="flex justify-center">Korrekt informasjon?</h4>
         <p class="mt-20 text-base">
-          Er du sikker på at informasjonen du har lagt til stemmer? Ved og klikke "Fullfør
-          bestilling", bekrefter du samtidig at samtlige opplysninger stemmer.
+          Er du sikker på at informasjonen du har lagt til er korrekt? Ved og klikke
+          "Fullfør bestilling", bekrefter du samtidig at samtlige opplysninger stemmer.
         </p>
-        <div class="mt-40 flex w-full justify-center gap-30">
+        <div class="flex justify-center w-full mt-48 gap-30">
           <ButtonSecondary buttonText="Tilbake" @click="onBookAppointment" />
           <ButtonPrimary buttonText="Fullfør bestilling" @click="onReadMore" />
         </div>
