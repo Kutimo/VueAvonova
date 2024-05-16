@@ -143,7 +143,7 @@ export default {
 </script>
 
 <template>
-  <main class="m-10 h-fit bg-neutral-100">
+  <main class="m-10 h-fit w-full bg-neutral-100">
     <div class="px-4 py-10 flex bg-white h-[200px] mt-40">
       <div class="md:w-[60ch] w-[45ch] ml-[80px]">
         <h4 class="">Våre tjenester</h4>
@@ -169,7 +169,7 @@ export default {
     <!-- Product Cards -->
     <div class="flex justify-center mt-40">
       <div
-        class="flex flex-wrap items-center justify-center laptop:gap-52 gap-22 -m-10 mb-28"
+        class="flex flex-wrap items-center justify-center laptop:gap-52 gap-20 -m-10 mb-28"
       >
         <div v-for="service in includedServices" :key="service.service_id" class="m-4">
           <ProductCard
