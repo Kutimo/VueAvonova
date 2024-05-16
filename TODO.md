@@ -8,7 +8,7 @@ melding box
 dato
 ekstra bht tjenester.
 
-fjern passord i login et sted
+[x]fjern passord i login et sted
 define props i product card
 test av kort
 end to end testing
