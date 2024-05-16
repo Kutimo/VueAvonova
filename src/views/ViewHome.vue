@@ -186,7 +186,7 @@ export default {
       <div class="flex flex-wrap justify-center items-center -m-10 mb-28">
         <div v-for="service in includedServices" :key="service.service_id" class="m-4">
           <ProductCard
-            :cardIcon="`../../public/productCardIcons/${service.category}.svg`"
+            :cardIcon="`../../productCardIcons/${service.category}.svg`"
             :cardHeader="service.name"
             :cardContent="service.description"
             @read-more="onReadMore"
