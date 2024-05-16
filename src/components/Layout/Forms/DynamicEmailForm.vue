@@ -1,3 +1,142 @@
+<script lang="ts">
+import { ref, watch } from 'vue'
+import { useToast } from 'vue-toastification'
+import type { Ref, PropType } from 'vue'
+
+import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
+import ButtonSecondary from '@/components/buttons/ButtonSecondary.vue'
+import VueDatePicker from '@vuepic/vue-datepicker'
+import DropdownWithCheckboxes from '@/components/input/MultiCheckboxSelect.vue'
+import '@vuepic/vue-datepicker/dist/main.css'
+
+const emailSecureKey: string = import.meta.env.VITE_EMAIL_SECURE_KEY || ''
+
+interface Field {
+  name: string
+  label: string
+  component?: string
+  props?: { [key: string]: any }
+  listeners?: { [key: string]: Function }
+}
+interface FormData {
+  [key: string]: string
+}
+interface Employee {
+  employee_id: number
+  first_name: string
+  last_name: string
+}
+
+export default {
+  name: 'EmailForm',
+  components: {
+    ButtonPrimary,
+    ButtonSecondary,
+    VueDatePicker,
+    DropdownWithCheckboxes,
+  },
+  props: {
+    fields: {
+      type: Array as PropType<Field[]>,
+      required: true,
+    },
+    closeModal: Function as PropType<() => void>,
+  },
+  emits: ['email-sent'],
+  setup(props, { emit }) {
+    const formData: Ref<FormData> = ref({} as FormData)
+    const date = ref(null)
+    const selectedEmployees: Ref<Employee[]> = ref([])
+
+    watch(
+      () => props.fields,
+      (newFields) => {
+        newFields?.forEach((field) => {
+          formData.value[field.name] = formData.value[field.name] || ''
+          field.props = field.props || {}
+          field.listeners = field.listeners || {}
+        })
+      },
+      { immediate: true },
+    )
+
+    const handleSelectedValues = (selectedValues: Employee[], fieldName: string) => {
+      console.log('Selected Values:', selectedValues) // Debugging line
+      selectedEmployees.value = selectedValues
+      formData.value[fieldName] = selectedValues
+        .map(
+          (employee) =>
+            `Navn: ${employee.first_name} ${employee.last_name}, Nummer: ${employee.employee_id}`,
+        )
+        .join(' , ')
+    }
+
+    const toast = useToast()
+
+    const prepareEmail = (to: string, subject: string, body: string) => ({
+      SecureToken: emailSecureKey,
+      To: to,
+      From: 'Anders-wroldsen@live.com',
+      Subject: subject,
+      Body: body,
+    })
+
+    const sendEmail = async () => {
+      try {
+        let emailBody = ''
+        for (const key in formData.value) {
+          emailBody += `${key}: ${formData.value[key]}<br>`
+        }
+
+        const mainEmail = prepareEmail(
+          'Anders-wroldsen@live.com',
+          'Fra avonova assist.',
+          emailBody,
+        )
+
+        const confirmationEmail = prepareEmail(
+          formData.value.email,
+          'Vi har mottatt din bestilling!',
+          `Hei ${formData.value.name || 'Kjære kunde'},<br><br>Takk for din bestilling.<br> Den vil bli behandlet av en av våre kundeveiledere så fort som mulig.<br><br>Med vennlig hilsen,<br>avonova`,
+        )
+
+        const mainEmailResponse = await (window as any).Email.send(mainEmail)
+        if (mainEmailResponse !== 'OK') {
+          throw new Error('Failed to send order email')
+        }
+
+        const confirmationEmailResponse = await (window as any).Email.send(
+          confirmationEmail,
+        )
+        if (confirmationEmailResponse !== 'OK') {
+          throw new Error('Failed to send confirmation email')
+        }
+
+        toast.success(
+          `Takk for bestillingen ${formData.value.name}! En bekreftelse er sendt til epost ${formData.value.email}`,
+        )
+
+        emit('email-sent')
+        for (const key in formData.value) {
+          formData.value[key] = ''
+        }
+      } catch (error) {
+        console.error('Error sending emails:', error)
+        toast.error('Noe gikk galt, prøv igjen senere eller kontakt administrator.')
+      }
+    }
+
+    return {
+      formData,
+      date,
+      sendEmail,
+      handleSelectedValues,
+      selectedEmployees,
+    }
+  },
+}
+</script>
+
 <template>
   <div class="flex items-center justify-center">
     <div
@@ -50,7 +189,10 @@
           <DropdownWithCheckboxes
             v-else-if="field.component === 'MultiCheckbox'"
             :options="field.props?.options"
-            v-model="formData[field.name]"
+            :selectedValues="selectedEmployees"
+            @update:selectedValues="
+              (selectedValues) => handleSelectedValues(selectedValues, field.name)
+            "
           />
         </div>
         <div class="flex justify-end gap-10 pt-10">
@@ -61,112 +203,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts">
-import { ref, watch } from 'vue'
-import { useToast } from 'vue-toastification'
-import type { Ref, PropType } from 'vue'
-
-import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
-import ButtonSecondary from '@/components/buttons/ButtonSecondary.vue'
-import VueDatePicker from '@vuepic/vue-datepicker'
-import DropdownWithCheckboxes from '@/components/input/MultiCheckboxSelect.vue'
-import '@vuepic/vue-datepicker/dist/main.css'
-
-const emailSecureKey: string = import.meta.env.VITE_EMAIL_SECURE_KEY || ''
-
-interface Field {
-  name: string
-  label: string
-  component?: string
-  props?: { [key: string]: any }
-  listeners?: { [key: string]: Function }
-}
-interface FormData {
-  [key: string]: string
-}
-export default {
-  name: 'EmailForm',
-  components: {
-    ButtonPrimary,
-    ButtonSecondary,
-    VueDatePicker,
-    DropdownWithCheckboxes,
-  },
-  props: {
-    fields: {
-      type: Array as PropType<Field[]>,
-      required: true,
-    },
-    closeModal: Function as PropType<() => void>,
-  },
-  emits: ['email-sent'],
-  setup(props, { emit }) {
-    function closeForm() {}
-    const formData: Ref<FormData> = ref({} as FormData)
-    const date = ref(null)
-
-    watch(
-      () => props.fields,
-      (newFields) => {
-        newFields?.forEach((field) => {
-          formData.value[field.name] = formData.value[field.name] || ''
-          field.props = field.props || {}
-          field.listeners = field.listeners || {}
-        })
-      },
-      { immediate: true },
-    )
-
-    const toast = useToast()
-    const prepareEmail = (to: string, subject: string, body: string) => ({
-      SecureToken: emailSecureKey,
-      To: to,
-      From: 'Anders-wroldsen@live.com',
-      Subject: subject,
-      Body: body,
-    })
-    const sendEmail = async () => {
-      try {
-        let emailBody = ''
-        for (const key in formData.value) {
-          emailBody += `${key}: ${formData.value[key]}<br>`
-        }
-
-        const mainEmail = prepareEmail(
-          'Anders-wroldsen@live.com',
-          'Fra avonova assist.',
-          emailBody,
-        )
-
-        const confirmationEmail = prepareEmail(
-          formData.value.email,
-          'Vi har motatt din bestilling!',
-          `Hei ${formData.value.name || 'Kjære kunde'},<br><br>Takk for din bestilling.<br> Den vil bli behandlet av en av våre kundeveiledere så fort som mulig.<br><br>Med vennlig hilsen,<br>avonova`,
-        )
-
-        const mainEmailResponse = await (window as any).Email.send(mainEmail)
-        if (mainEmailResponse !== 'OK') throw new Error('Failed to send order email')
-
-        const confirmationEmailResponse = await (window as any).Email.send(
-          confirmationEmail,
-        )
-        if (confirmationEmailResponse !== 'OK')
-          throw new Error('Failed to send confirmation email')
-
-        toast.success(
-          `Takk for bestillingen ${formData.value.name}! En bekreftelse er sendt til epost ${formData.value.email}`,
-        )
-        emit('email-sent')
-        for (const key in formData.value) {
-          formData.value[key] = ''
-        }
-      } catch (error) {
-        console.error(error)
-        toast.error('Noe gikk galt, prøv igjen senere eller kontakt administrator.')
-      }
-    }
-    return { formData, date, sendEmail, closeForm }
-  },
-}
-</script>

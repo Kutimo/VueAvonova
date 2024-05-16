@@ -9,6 +9,7 @@
 ekstra bht tjenester.
 
 [x]fjern passord i login et sted
+[x]fjern passord i login et sted
 [x]define props i product card
 [x]test av kort
 [x]reset passord.
