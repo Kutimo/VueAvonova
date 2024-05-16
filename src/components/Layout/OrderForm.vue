@@ -18,13 +18,23 @@
         <TextareaField label="Adresse" v-model="address" />
       </div>
       <div class="mb-4">
-        <TextEncoderStreamInput label="Antall ansatte" v-model="employeeCount" type="number" />
+        <TextEncoderStreamInput
+          label="Antall ansatte"
+          v-model="employeeCount"
+          type="number"
+        />
       </div>
       <div class="mb-4">
-        <Datepicker label="Ønsket tidspunkt for tjenesteleveranse" v-model="deliveryDate" />
+        <Datepicker
+          label="Ønsket tidspunkt for tjenesteleveranse"
+          v-model="deliveryDate"
+        />
       </div>
       <div class="mb-4">
-        <TextareaField label="Spesielle behov eller forespørsler" v-model="specialRequests" />
+        <TextareaField
+          label="Spesielle behov eller forespørsler"
+          v-model="specialRequests"
+        />
       </div>
       <div class="mb-4">
         <TextInput label="Budsjett" v-model="budget" />
@@ -35,7 +45,10 @@
       <div class="mb-4">
         <CheckboxField label="Jeg har lest og godtar vilkårene" v-model="termsAccepted" />
       </div>
-      <button type="submit" class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
+      <button
+        type="submit"
+        class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
+      >
         Send bestilling
       </button>
     </form>

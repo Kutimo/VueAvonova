@@ -54,9 +54,26 @@ export default {
     </div>
     <div class="m-10 flex flex-col gap-10">
       <p class="text-lg">inputs:</p>
-      <TextInput label="Text" name="lastName" descriptive-text="hello" error error-text="test" />
-      <TextInput label="with error" name="lastName" descriptive-text="hello" error error-text="test" />
-      <TextInput label="with question icon" name="lastName" descriptive-text="hello" icon />
+      <TextInput
+        label="Text"
+        name="lastName"
+        descriptive-text="hello"
+        error
+        error-text="test"
+      />
+      <TextInput
+        label="with error"
+        name="lastName"
+        descriptive-text="hello"
+        error
+        error-text="test"
+      />
+      <TextInput
+        label="with question icon"
+        name="lastName"
+        descriptive-text="hello"
+        icon
+      />
     </div>
     <div>
       <p>date picker:</p>
@@ -75,7 +92,11 @@ export default {
     </div>
     <div>
       <p>Select</p>
-      <SelectField placeholder="Select a option:" :data="options" @change="updateSelectedValue" />
+      <SelectField
+        placeholder="Select a option:"
+        :data="options"
+        @change="updateSelectedValue"
+      />
     </div>
     <div>
       <ConfirmationDialog />

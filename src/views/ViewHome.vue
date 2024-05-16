@@ -6,6 +6,8 @@ import ProductsTable from '@/components/Layout/Table/ProductsTable.vue'
 import DynamicModal from '@/components/Layout/Modal/DynamicModal.vue'
 import ButtonPrimaryVue from '@/components/buttons/ButtonPrimary.vue'
 import { supabase } from '@/lib/supabaseClient'
+import { userNameStore } from '@/lib/store'
+import { useToast } from 'vue-toastification'
 
 interface Service {
   service_id: number
@@ -13,6 +15,16 @@ interface Service {
   description: string
   category: string
   included: boolean
+}
+
+interface Employee {
+  employee_id: number
+  birthdate: string
+  company_name: string
+  email: string
+  first_name: string
+  gender: string
+  last_name: string
 }
 
 export default {
@@ -25,6 +37,7 @@ export default {
   },
 
   setup() {
+    const toast = useToast()
     const showModal = ref(false)
     function handleEmailSent() {
       showModal.value = false
@@ -32,19 +45,43 @@ export default {
     const services = ref<Array<Service>>([])
     const includedServices = ref<Array<Service>>([])
     const excludedServices = ref<Array<Service>>([])
-    async function fetchData() {
+    const employees = ref<Array<Employee>>([])
+    async function fetchServices() {
       try {
         const { data, error } = await supabase.from('services').select('*')
         if (error) {
-          console.error('Error fetching services:', error.message)
+          toast.error(`Feil ved henting av tjenester: ${error.message}`)
           return
         }
         if (data) {
-          services.value = data // Update services with the fetched data
+          services.value = data
           sortServices()
         }
       } catch (error: any) {
-        console.error('Error fetching services:', error.message)
+        console.error(`feil:, ${error.message}`)
+      }
+    }
+    async function fetchEmployees() {
+      try {
+        const { data, error } = await supabase
+          .from('employee')
+          .select('*')
+          .filter(
+            'company_name',
+            'ilike',
+            `%${userNameStore.state.user.user_metadata.firstName}%`,
+          )
+        if (error) {
+          toast.error(`Feil ved henting av brukere: ${error.message}`)
+          return
+        }
+        if (data) {
+          console.log(data)
+          employees.value = data
+          console.log(employees.value)
+        }
+      } catch (error: any) {
+        toast.error(`feil:, ${error.message}`)
       }
     }
 
@@ -96,7 +133,7 @@ export default {
     ])
 
     onMounted(() => {
-      fetchData()
+      fetchServices(), fetchEmployees()
     })
 
     const onReadMore = () => {
@@ -114,6 +151,7 @@ export default {
       handleEmailSent,
       includedServices,
       excludedServices,
+      toast,
       onReadMore,
       onBookAppointment,
     }
@@ -122,7 +160,7 @@ export default {
 </script>
 
 <template>
-  <main class="m-10 h-screen">
+  <main class="m-10 h-fit">
     <div class="mx-auto px-4 py-10 mt-40 mb-20">
       <div class="mb-8">
         <h1 class="text-4xl font-bold mb-4">Våre Tjenester</h1>
