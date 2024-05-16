@@ -18,6 +18,8 @@ define props i product card
 [x]reset passord.
 [x]rydde i kode.
 []les mer og bestill i table
-read me
-admin
-mobile
+[x]read me
+[x]admin
+[x]mobile
+read more 
+check required true email form
