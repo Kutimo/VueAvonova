@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center bg-gray-600 bg-opacity-50 p-4">
+  <div class="flex items-center justify-center">
     <div
       class="rounded-lg relative w-full max-w-lg overflow-hidden bg-white p-80 shadow-lg"
     >

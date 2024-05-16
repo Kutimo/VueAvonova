@@ -1,3 +1,42 @@
+<script lang="ts">
+import { ref, computed } from 'vue'
+import type { PropType } from 'vue'
+
+export default {
+  props: {
+    data: {
+      type: Array as PropType<Array<any>>,
+      required: true,
+    },
+    headers: {
+      type: Array as PropType<
+        Array<{
+          key: string
+          label: string
+        }>
+      >,
+      required: true,
+    },
+  },
+  setup(props) {
+    const searchQuery = ref('')
+    const filteredData = computed(() => {
+      return props.data.filter((item) => {
+        return props.headers.some((header) => {
+          return item[header.key]
+            .toString()
+            .toLowerCase()
+            .includes(searchQuery.value.toLowerCase())
+        })
+      })
+    })
+    function orderProduct(item: any) {
+      alert(`Bestilling for ${item.name} initiert!`)
+    }
+    return { searchQuery, filteredData, orderProduct }
+  },
+}
+</script>
 <template>
   <div class="container mx-auto px-4 py-6">
     <div class="relative mb-4">
@@ -60,45 +99,3 @@
     </table>
   </div>
 </template>
-
-<script lang="ts">
-import { ref, computed } from 'vue'
-import type { PropType } from 'vue'
-import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
-
-export default {
-  props: {
-    data: {
-      type: Array as PropType<Array<any>>,
-      required: true,
-    },
-    headers: {
-      type: Array as PropType<
-        Array<{
-          key: string
-          label: string
-        }>
-      >,
-      required: true,
-    },
-  },
-  setup(props) {
-    const searchQuery = ref('')
-    const filteredData = computed(() => {
-      return props.data.filter((item) => {
-        return props.headers.some((header) => {
-          return item[header.key]
-            .toString()
-            .toLowerCase()
-            .includes(searchQuery.value.toLowerCase())
-        })
-      })
-    })
-    function orderProduct(item: any) {
-      alert(`Bestilling for ${item.name} initiert!`)
-    }
-    return { searchQuery, filteredData, orderProduct }
-  },
-  components: { ButtonPrimary },
-}
-</script>
