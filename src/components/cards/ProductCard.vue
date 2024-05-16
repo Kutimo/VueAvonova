@@ -25,7 +25,7 @@ const onBookAppointment = () => {
 
 <template>
   <div
-    class="m-10 h-[150px] w-[500px] flex justify-center overflow-hidden rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105"
+    class="m-10 h-[150px] w-[500px] p-12 flex justify-center bg-white p- overflow-hidden rounded-10 shadow-md transform transition-transform duration-300 hover:scale-105"
   >
     <div class="flex flex-col justify-between w-full">
       <div class="flex flex-row justify-between px-8 py-4">
@@ -33,7 +33,7 @@ const onBookAppointment = () => {
           <h4 v-if="cardHeader" class="text-xl text-left">{{ cardHeader }}</h4>
           <p class="text-sm" v-html="cardContent"></p>
         </div>
-        <div class="flex justify-center items-center ml-auto">
+        <div class="flex items-center justify-center ml-auto">
           <img
             v-if="cardIcon"
             :src="cardIcon"
