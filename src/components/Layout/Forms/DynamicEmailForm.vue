@@ -1,6 +1,8 @@
 <template>
   <div class="flex items-center justify-center">
-    <div class="rounded-lg relative w-full max-w-lg overflow-hidden bg-white p-80 shadow-lg">
+    <div
+      class="rounded-lg relative w-full max-w-lg overflow-hidden bg-white p-80 shadow-lg"
+    >
       <h2 class="mb-6 text-2xl font-bold">Legg inn din bestilling</h2>
       <p>Fyll ut feltene og klikk bestill</p>
       <form @submit.prevent="sendEmail" class="space-y-4">

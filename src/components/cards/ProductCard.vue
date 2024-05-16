@@ -1,28 +1,29 @@
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue';
-import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue';
-import ButtonSecondary from '../buttons/ButtonSecondary.vue';
+import { defineProps, defineEmits } from 'vue'
+import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
+import ButtonSecondary from '../buttons/ButtonSecondary.vue'
 
 const props = defineProps({
   cardIcon: String,
   cardHeader: String,
   cardContent: String,
-});
+})
 
-const emit = defineEmits(['read-more', 'book-appointment']);
+const emit = defineEmits(['read-more', 'book-appointment'])
 
 const onReadMore = () => {
-  emit('read-more');
-};
+  emit('read-more')
+}
 
 const onBookAppointment = () => {
-  emit('book-appointment');
-};
+  emit('book-appointment')
+}
 </script>
 
 <template>
   <div
-    class="m-10 h-[150px] w-[500px] flex justify-center overflow-hidden rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105">
+    class="m-10 h-[150px] w-[500px] flex justify-center overflow-hidden rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105"
+  >
     <div class="flex flex-col justify-between w-full">
       <div class="flex flex-row justify-between px-8 py-4">
         <div>
@@ -30,7 +31,14 @@ const onBookAppointment = () => {
           <p class="text-sm" v-html="cardContent"></p>
         </div>
         <div class="flex justify-center items-center ml-auto">
-          <img v-if="cardIcon" :src="cardIcon" class="p-4" alt="Card Icon" height="64" width="64" />
+          <img
+            v-if="cardIcon"
+            :src="cardIcon"
+            class="p-4"
+            alt="Card Icon"
+            height="64"
+            width="64"
+          />
         </div>
       </div>
       <div class="flex justify-start w-full gap-10 p-10">
