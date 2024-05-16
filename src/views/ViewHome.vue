@@ -1,5 +1,5 @@
 <script lang="ts">
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import ProductCard from '@/components/cards/ProductCard.vue'
 import EmailForm from '@/components/Layout/Forms/DynamicEmailForm.vue'
 import ProductsTable from '@/components/Layout/Table/ProductsTable.vue'
@@ -7,24 +7,8 @@ import DynamicModal from '@/components/Layout/Modal/DynamicModal.vue'
 import { supabase } from '@/lib/supabaseClient'
 import { userNameStore } from '@/lib/store'
 import { useToast } from 'vue-toastification'
-
-interface Service {
-  service_id: number
-  name: string
-  description: string
-  category: string
-  included: boolean
-}
-
-interface Employee {
-  employee_id: number
-  birthdate: string
-  company_name: string
-  email: string
-  first_name: string
-  gender: string
-  last_name: string
-}
+import type { Employee } from '@/types/employeeType'
+import type { Service } from '@/types/servicesType'
 
 export default {
   components: {
@@ -74,9 +58,7 @@ export default {
           return
         }
         if (data) {
-          console.log(data)
           employees.value = data
-          console.log(employees.value)
         }
       } catch (error: any) {
         toast.error(`feil:, ${error.message}`)
@@ -92,6 +74,8 @@ export default {
       { key: 'name', label: 'Produkt' },
       { key: 'description', label: 'Beskrivelse' },
     ]
+
+    const options = computed(() => employees.value)
 
     const formFields = ref([
       {
@@ -125,7 +109,7 @@ export default {
         name: 'ansatte',
         label: 'Anstatte:',
         component: 'MultiCheckbox',
-        props: { options: [1, 2, 3] },
+        props: { options },
       },
       { name: 'date', label: 'Velg dato:', component: 'datepicker', props: {} },
     ])
@@ -149,6 +133,7 @@ export default {
       handleEmailSent,
       includedServices,
       excludedServices,
+      employees,
       toast,
       onReadMore,
       onBookAppointment,

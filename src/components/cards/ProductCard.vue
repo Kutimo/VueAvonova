@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { defineEmits } from 'vue'
 import { defineProps, defineEmits } from 'vue'
 import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
 import ButtonSecondary from '../buttons/ButtonSecondary.vue'
@@ -9,6 +10,8 @@ const props = defineProps({
   cardContent: String,
 })
 
+const emit = defineEmits(['book-appointment'])
+
 const emit = defineEmits(['read-more', 'book-appointment'])
 
 const onReadMore = () => {
@@ -16,7 +19,7 @@ const onReadMore = () => {
 }
 
 const onBookAppointment = () => {
-  emit('book-appointment')
+  emit('book-appointment', cardHeader)
 }
 </script>
 
