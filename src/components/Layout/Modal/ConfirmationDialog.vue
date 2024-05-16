@@ -12,9 +12,7 @@ const onBookAppointment = () => {
 </script>
 
 <template>
-  <div
-    class="flex h-[300px] w-[500px] justify-center overflow-hidden rounded-10 px-20 shadow-md"
-  >
+  <div class="flex h-[300px] w-[50ch] overflow-hidden rounded-10 px-20 shadow-md">
     <div class="flex items-center justify-center w-full">
       <div>
         <h4 class="flex justify-center">Korrekt informasjon?</h4>
