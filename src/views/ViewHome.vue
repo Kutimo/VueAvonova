@@ -160,7 +160,7 @@ export default {
 <template>
   <main class="m-10 h-fit bg-neutral-100">
     <div class="px-4 py-10 bg-white h-[200px] mt-40">
-      <div class="w-[600px] ml-[160px]">
+      <div class="w-[60ch] ml-[160px]">
         <h4 class="">Våre tjenester</h4>
         <p class="text-lg">
           Oppdag vårt utvalg av tjenester som kan hjelpe deg med å nå dine mål. Bla
