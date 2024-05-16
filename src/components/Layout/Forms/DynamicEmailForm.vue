@@ -41,19 +41,29 @@ export default {
     function closeForm() {}
     const formData: Ref<FormData> = ref({} as FormData)
     const date = ref(null)
-
+    const selectedEmployees = ref([])
+    console.log(formData.value)
     watch(
       () => props.fields,
       (newFields) => {
         newFields?.forEach((field) => {
           formData.value[field.name] = formData.value[field.name] || ''
-          console.log(formData.value[field.name])
           field.props = field.props || {}
           field.listeners = field.listeners || {}
         })
       },
       { immediate: true },
     )
+
+    const handleSelectedValues = (selectedValues: Array<any>, fieldName: string) => {
+      console.log(selectedValues)
+      const names = selectedValues.map(
+        (employee) =>
+          `Ansattnummer: ${employee.employeeId} ${employee.firstName} ${employee.lastName}`,
+      )
+      formData.value['ansatte'] = names.join(', ')
+      console.log(formData.value)
+    }
 
     const toast = useToast()
     const prepareEmail = (to: string, subject: string, body: string) => ({
@@ -64,6 +74,8 @@ export default {
       Body: body,
     })
     const sendEmail = async () => {
+      console.log(formData.value)
+
       try {
         let emailBody = ''
         for (const key in formData.value) {
@@ -94,6 +106,7 @@ export default {
         toast.success(
           `Takk for bestillingen ${formData.value.name}! En bekreftelse er sendt til epost ${formData.value.email}`,
         )
+
         emit('email-sent')
         for (const key in formData.value) {
           formData.value[key] = ''
@@ -103,7 +116,15 @@ export default {
         toast.error('Noe gikk galt, prøv igjen senere eller kontakt administrator.')
       }
     }
-    return { formData, date, sendEmail, closeForm }
+
+    return {
+      formData,
+      date,
+      sendEmail,
+      closeForm,
+      handleSelectedValues,
+      selectedEmployees,
+    }
   },
 }
 </script>
@@ -161,6 +182,8 @@ export default {
             v-else-if="field.component === 'MultiCheckbox'"
             :options="field.props?.options"
             v-model="formData[field.name]"
+            :selectedValues="selectedEmployees"
+            @update:selectedValues="handleSelectedValues"
           />
         </div>
         <div class="flex justify-end gap-10 pt-10">

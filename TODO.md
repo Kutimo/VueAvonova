@@ -10,6 +10,8 @@ ekstra bht tjenester.
 
 [x]fjern passord i login et sted
 define props i product card
+[]remove public path new svg's
+redo email input to composition api
 test av kort
 end to end testing
 reset passord.
