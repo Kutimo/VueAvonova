@@ -1,3 +1,4 @@
+// ParentComponent.vue
 <script lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import ProductCard from '@/components/cards/ProductCard.vue'
@@ -21,13 +22,17 @@ export default {
   setup() {
     const toast = useToast()
     const showModal = ref(false)
+    const selectedCardHeader = ref('')
+
     function handleEmailSent() {
       showModal.value = false
     }
+
     const services = ref<Array<Service>>([])
     const includedServices = ref<Array<Service>>([])
     const excludedServices = ref<Array<Service>>([])
     const employees = ref<Array<Employee>>([])
+
     async function fetchServices() {
       try {
         const { data, error } = await supabase.from('services').select('*')
@@ -43,6 +48,7 @@ export default {
         console.error(`feil:, ${error.message}`)
       }
     }
+
     async function fetchEmployees() {
       try {
         const { data, error } = await supabase
@@ -122,7 +128,8 @@ export default {
       console.log('Read more action')
     }
 
-    const onBookAppointment = () => {
+    const onBookAppointment = (cardHeader: string) => {
+      selectedCardHeader.value = cardHeader
       showModal.value = true
     }
 
@@ -130,6 +137,7 @@ export default {
       productHeaders,
       showModal,
       formFields,
+      selectedCardHeader,
       handleEmailSent,
       includedServices,
       excludedServices,
@@ -155,28 +163,17 @@ export default {
     </div>
     <!-- Modal -->
     <div class="flex justify-center max-h-screen max-w-screen">
-      <DynamicModal
-        :showModal="showModal"
-        @update:showModal="(value) => (showModal = value)"
-      >
-        <EmailForm
-          :fields="formFields"
-          :closeModal="() => (showModal = false)"
-          @email-sent="handleEmailSent"
-        />
+      <DynamicModal :showModal="showModal" @update:showModal="(value) => (showModal = value)">
+        <EmailForm :fields="formFields" :cardHeader="selectedCardHeader" :closeModal="() => (showModal = false)"
+          @email-sent="handleEmailSent" />
       </DynamicModal>
     </div>
     <!-- Product Cards -->
     <div class="flex justify-center mt-40">
       <div class="flex flex-wrap items-center justify-center gap-64 -m-10 mb-28">
         <div v-for="service in includedServices" :key="service.service_id" class="m-4">
-          <ProductCard
-            :cardIcon="`../../productCardIcons/${service.category}.svg`"
-            :cardHeader="service.name"
-            :cardContent="service.description"
-            @read-more="onReadMore"
-            @book-appointment="onBookAppointment"
-          />
+          <ProductCard :cardIcon="`../../productCardIcons/${service.category}.svg`" :cardHeader="service.name"
+            :cardContent="service.description" @read-more="onReadMore" @book-appointment="onBookAppointment" />
         </div>
       </div>
     </div>
