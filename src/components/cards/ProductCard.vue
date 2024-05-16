@@ -17,7 +17,6 @@ const onReadMore = () => {
 
 const onBookAppointment = () => {
   emit('book-appointment', props.cardHeader)
-  console.log(props.cardHeader)
 }
 </script>
 

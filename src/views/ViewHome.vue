@@ -1,7 +1,7 @@
-// ParentComponent.vue
 <script lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import ProductCard from '@/components/cards/ProductCard.vue'
+import InfoCard from '@/components/cards/InfoCard.vue'
 import EmailForm from '@/components/Layout/Forms/DynamicEmailForm.vue'
 import ProductsTable from '@/components/Layout/Table/ProductsTable.vue'
 import DynamicModal from '@/components/Layout/Modal/DynamicModal.vue'
@@ -17,11 +17,15 @@ export default {
     ProductCard,
     ProductsTable,
     EmailForm,
+    InfoCard,
   },
 
   setup() {
     const toast = useToast()
     const showModal = ref(false)
+    const selectedCard = ref<{ cardIcon: string, cardHeader: string, cardContent: string } | null>(null) // Legg til type
+    const isEmailFormVisible = ref(false)
+    const isInfoCardVisible = ref(false)
     const selectedCardHeader = ref('')
 
     function handleEmailSent() {
@@ -104,7 +108,7 @@ export default {
         name: 'preferred_contact',
         label: 'Foretrukket kontaktmetode:',
         component: 'select',
-        props: { options: ['Epost', 'Telefon', 'På døra'] },
+        props: { options: ['Epost', 'Telefon'] },
       },
       {
         name: 'newsletter',
@@ -124,12 +128,17 @@ export default {
       fetchServices(), fetchEmployees()
     })
 
-    const onReadMore = () => {
-      console.log('Read more action')
+    const onReadMore = (card: { cardIcon: string, cardHeader: string, cardContent: string }) => {
+      selectedCard.value = card
+      isEmailFormVisible.value = false
+      isInfoCardVisible.value = true
+      showModal.value = true
     }
 
     const onBookAppointment = (cardHeader: string) => {
       selectedCardHeader.value = cardHeader
+      isEmailFormVisible.value = true
+      isInfoCardVisible.value = false
       showModal.value = true
     }
 
@@ -137,7 +146,10 @@ export default {
       productHeaders,
       showModal,
       formFields,
+      selectedCard,
       selectedCardHeader,
+      isEmailFormVisible,
+      isInfoCardVisible,
       handleEmailSent,
       includedServices,
       excludedServices,
@@ -164,8 +176,12 @@ export default {
     <!-- Modal -->
     <div class="flex justify-center max-h-screen max-w-screen">
       <DynamicModal :showModal="showModal" @update:showModal="(value) => (showModal = value)">
-        <EmailForm :fields="formFields" :cardHeader="selectedCardHeader" :closeModal="() => (showModal = false)"
-          @email-sent="handleEmailSent" />
+        <EmailForm v-if="isEmailFormVisible" :fields="formFields" :cardHeader="selectedCardHeader"
+          :closeModal="() => (showModal = false)" @email-sent="handleEmailSent" />
+        <!-- Info card -->
+        <InfoCard v-if="isInfoCardVisible && selectedCard" :cardIcon="selectedCard.cardIcon"
+          :title="selectedCard.cardHeader" :description="selectedCard.cardContent" :image="''" />
+        :cardHeader="selectedCard.cardHeader" :cardContent="selectedCard.cardContent" />
       </DynamicModal>
     </div>
     <!-- Product Cards -->
