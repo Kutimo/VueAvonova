@@ -1,44 +1,49 @@
 <script setup lang="ts">
+import { defineProps, defineEmits } from 'vue'
 import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
 import ButtonSecondary from '../buttons/ButtonSecondary.vue'
 
-const { cardIcon, cardHeader, cardContent } = defineProps({
+const props = defineProps({
   cardIcon: String,
   cardHeader: String,
   cardContent: String,
 })
 
+const emit = defineEmits(['read-more', 'book-appointment'])
+
 const onReadMore = () => {
-  console.log('Read more action')
+  emit('read-more')
 }
 
 const onBookAppointment = () => {
-  console.log('Book appointment action')
+  emit('book-appointment')
 }
 </script>
 
 <template>
   <div
-    class="m-10 h-[225px] w-[643px] flex justify-center overflow-hidden rounded-10 shadow-md"
+    class="m-10 h-[150px] w-[500px] flex justify-center overflow-hidden rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105"
   >
-    <div class="flex justify-between px-48 py-[38px] w-full">
-      <div class="flex-col">
-        <h4 v-if="cardHeader" class="p-4 text-xl text-left">{{ cardHeader }}</h4>
-        <p class="p-4 text-sm" v-html="cardContent"></p>
-        <div class="flex justify-start w-full gap-10 p-4 mt-40">
-          <ButtonPrimary buttonText="Les mer" @click="onReadMore" />
-          <ButtonSecondary buttonText="Bestill" @click="onBookAppointment" />
+    <div class="flex flex-col justify-between w-full">
+      <div class="flex flex-row justify-between px-8 py-4">
+        <div>
+          <h4 v-if="cardHeader" class="text-xl text-left">{{ cardHeader }}</h4>
+          <p class="text-sm" v-html="cardContent"></p>
+        </div>
+        <div class="flex justify-center items-center ml-auto">
+          <img
+            v-if="cardIcon"
+            :src="cardIcon"
+            class="p-4"
+            alt="Card Icon"
+            height="64"
+            width="64"
+          />
         </div>
       </div>
-      <div class="flex justify-center">
-        <img
-          v-if="cardIcon"
-          :src="cardIcon"
-          class="p-4"
-          alt="Card Icon"
-          height="64"
-          width="64"
-        />
+      <div class="flex justify-start w-full gap-10 p-10">
+        <ButtonPrimary buttonText="Les mer" @click="onReadMore" />
+        <ButtonSecondary buttonText="Bestill" @click="onBookAppointment" />
       </div>
     </div>
   </div>

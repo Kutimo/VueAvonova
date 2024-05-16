@@ -1,7 +1,7 @@
 <script lang="ts">
 import PageNavigation from '@/components/Layout/PageNavigation.vue'
 import PageFooter from './components/Layout/PageFooter.vue'
-import { store } from '@/lib/store'
+import { store, userNameStore } from '@/lib/store'
 import { supabase } from './lib/supabaseClient'
 import { ref } from 'vue'
 
@@ -19,11 +19,15 @@ export default {
     supabase.auth.onAuthStateChange((event, session) => {
       if (event == 'SIGNED_OUT') {
         store.state.user = 'null'
+        userNameStore.state.user.user_metadata.firstName = 'null'
       } else {
         if (session !== null) {
           store.state.user = supabase.auth.getUser()
           store.state.user = session.user
+          userNameStore.state.user.user_metadata.firstName =
+            session.user.user_metadata.firstName
           isLoggedIn.value = true
+          // console.log(store.state.user)
         }
       }
     })

@@ -1,10 +1,30 @@
 <script lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import ProductCard from '@/components/cards/ProductCard.vue'
 import EmailForm from '@/components/Layout/Forms/DynamicEmailForm.vue'
 import ProductsTable from '@/components/Layout/Table/ProductsTable.vue'
 import DynamicModal from '@/components/Layout/Modal/DynamicModal.vue'
-import ButtonPrimaryVue from '@/components/buttons/ButtonPrimary.vue'
+import { supabase } from '@/lib/supabaseClient'
+import { userNameStore } from '@/lib/store'
+import { useToast } from 'vue-toastification'
+
+interface Service {
+  service_id: number
+  name: string
+  description: string
+  category: string
+  included: boolean
+}
+
+interface Employee {
+  employee_id: number
+  birthdate: string
+  company_name: string
+  email: string
+  first_name: string
+  gender: string
+  last_name: string
+}
 
 export default {
   components: {
@@ -12,147 +32,67 @@ export default {
     ProductCard,
     ProductsTable,
     EmailForm,
-    ButtonPrimaryVue,
   },
+
   setup() {
+    const toast = useToast()
     const showModal = ref(false)
     function handleEmailSent() {
       showModal.value = false
     }
+    const services = ref<Array<Service>>([])
+    const includedServices = ref<Array<Service>>([])
+    const excludedServices = ref<Array<Service>>([])
+    const employees = ref<Array<Employee>>([])
+    async function fetchServices() {
+      try {
+        const { data, error } = await supabase.from('services').select('*')
+        if (error) {
+          toast.error(`Feil ved henting av tjenester: ${error.message}`)
+          return
+        }
+        if (data) {
+          services.value = data
+          sortServices()
+        }
+      } catch (error: any) {
+        console.error(`feil:, ${error.message}`)
+      }
+    }
+    async function fetchEmployees() {
+      try {
+        const { data, error } = await supabase
+          .from('employee')
+          .select('*')
+          .filter(
+            'company_name',
+            'ilike',
+            `%${userNameStore.state.user.user_metadata.firstName}%`,
+          )
+        if (error) {
+          toast.error(`Feil ved henting av brukere: ${error.message}`)
+          return
+        }
+        if (data) {
+          console.log(data)
+          employees.value = data
+          console.log(employees.value)
+        }
+      } catch (error: any) {
+        toast.error(`feil:, ${error.message}`)
+      }
+    }
 
-    const products = ref([
-      {
-        id: 1,
-        name: 'Helsekontroll',
-        description: 'Regelmessig medisinsk sjekk for å overvåke ansattes helse.',
-      },
-      {
-        id: 2,
-        name: 'Kiropraktor',
-        description:
-          'Spesialisert rygg- og nakkebehandling for å forebygge muskel- og skjelettplager.',
-      },
-      {
-        id: 3,
-        name: 'Ergonomisk rådgivning',
-        description:
-          'Ekspertvurdering og justering av arbeidsplasser for optimal ergonomi.',
-      },
-      {
-        id: 4,
-        name: 'Psykologtjenester',
-        description:
-          'Tilgjengelig psykologhjelp for å støtte mental helse på arbeidsplassen.',
-      },
-      {
-        id: 5,
-        name: 'Vaksinasjoner',
-        description:
-          'Forebyggende vaksiner for å beskytte ansatte mot sesongbetingede sykdommer.',
-      },
-      {
-        id: 6,
-        name: 'Fysioterapi',
-        description:
-          'Behandlinger og programmer for å gjenopprette og vedlikeholde fysisk funksjon.',
-      },
-      {
-        id: 7,
-        name: 'Ernæringsrådgivning',
-        description: 'Profesjonell veiledning for å fremme sunne kostholdsvaner.',
-      },
-      {
-        id: 8,
-        name: 'Helsefremmende workshops',
-        description: 'Workshops for å øke bevissthet og kunnskap om helse.',
-      },
-      {
-        id: 9,
-        name: 'Stressmestringskurs',
-        description: 'Kurs for å lære teknikker for å håndtere og redusere stress.',
-      },
-      {
-        id: 10,
-        name: 'Røykesluttkurs',
-        description: 'Hjelp og støtte for ansatte som ønsker å slutte å røyke.',
-      },
-      {
-        id: 11,
-        name: 'Bedriftsmassasje',
-        description:
-          'Massasje på arbeidsplassen for å redusere stress og forebygge muskelplager.',
-      },
-      {
-        id: 12,
-        name: 'Synstester',
-        description:
-          'Regelmessige synsundersøkelser for å sikre at ansattes syn ikke påvirker deres arbeid.',
-      },
-      {
-        id: 13,
-        name: 'Hørselstester',
-        description:
-          'Tester for å oppdage og tilrettelegge for hørselsrelaterte utfordringer på arbeidsplassen.',
-      },
-      {
-        id: 14,
-        name: 'Yogatimer',
-        description:
-          'Organiserte yogatimer for å fremme fysisk fleksibilitet og mental ro.',
-      },
-      {
-        id: 15,
-        name: 'Mindfulness økter',
-        description: 'Veiledede økter for å fremme tilstedeværelse og mental klarhet.',
-      },
-      {
-        id: 16,
-        name: 'Treningsabonnement',
-        description: 'Subsidierte eller gratis treningsabonnement for ansatte.',
-      },
-      {
-        id: 17,
-        name: 'Sykkeltilskudd',
-        description:
-          'Tilskuddsordninger for ansatte som velger sykkel som transportmiddel til og fra arbeid.',
-      },
-      {
-        id: 18,
-        name: 'Søvnhelseprogrammer',
-        description: 'Programmer designet for å forbedre kvaliteten på søvn.',
-      },
-      {
-        id: 19,
-        name: 'Alkohol og rusforebyggende tiltak',
-        description:
-          'Forebyggende tiltak og ressurser for å håndtere alkohol- og rusmisbruk.',
-      },
-      {
-        id: 20,
-        name: 'Digitale helseverktøy',
-        description: 'Teknologiske løsninger for å overvåke og fremme helse og velvære.',
-      },
-    ])
+    function sortServices() {
+      includedServices.value = services.value.filter((service) => service.included)
+      excludedServices.value = services.value.filter((service) => !service.included)
+    }
 
     const productHeaders = [
       { key: 'name', label: 'Produkt' },
       { key: 'description', label: 'Beskrivelse' },
     ]
 
-    const cards = ref([
-      {
-        id: 1,
-        cardIcon: 'productCardIcons/hospital.svg',
-        cardHeader: 'Helsesjekk',
-        cardContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      },
-      {
-        id: 2,
-        cardIcon: 'productCardIcons/notepad.svg',
-        cardHeader: 'Helseattest',
-        cardContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      },
-    ])
     const formFields = ref([
       {
         name: 'name',
@@ -181,40 +121,88 @@ export default {
         label: 'Meld deg på nyhetsbrev:',
         component: 'checkbox',
       },
+      {
+        name: 'ansatte',
+        label: 'Anstatte:',
+        component: 'MultiCheckbox',
+        props: { options: [1, 2, 3] },
+      },
       { name: 'date', label: 'Velg dato:', component: 'datepicker', props: {} },
     ])
+
+    onMounted(() => {
+      fetchServices(), fetchEmployees()
+    })
+
+    const onReadMore = () => {
+      console.log('Read more action')
+    }
+
+    const onBookAppointment = () => {
+      showModal.value = true
+    }
+
     return {
-      cards,
       productHeaders,
-      products,
       showModal,
       formFields,
       handleEmailSent,
+      includedServices,
+      excludedServices,
+      toast,
+      onReadMore,
+      onBookAppointment,
     }
   },
 }
 </script>
+
 <template>
-  <main class="m-10 h-screen">
+  <main class="m-10 h-fit">
+    <div class="mx-auto px-4 py-10 mt-40 mb-20">
+      <div class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">Våre Tjenester</h1>
+        <p class="text-center text-lg">
+          Oppdag vårt utvalg av tjenester som kan hjelpe deg med å nå dine mål. Bla
+          gjennom våre tjenester nedenfor og finn den perfekte løsningen for dine behov.
+        </p>
+      </div>
+    </div>
     <!-- Modal -->
-    <ButtonPrimaryVue buttonText="Bestill nå!" @click="showModal = true" />
-    <DynamicModal
-      :showModal="showModal"
-      @update:showModal="(value) => (showModal = value)"
-    >
-      <EmailForm
-        :fields="formFields"
-        :closeModal="() => (showModal = false)"
-        @email-sent="handleEmailSent"
-      />
-    </DynamicModal>
-    <ProductCard
-      v-for="card in cards"
-      :key="card.id"
-      :cardIcon="card.cardIcon"
-      :cardHeader="card.cardHeader"
-      :cardContent="card.cardContent"
-    />
-    <ProductsTable :headers="productHeaders" :data="products" />
+    <div class="max-h-screen max-w-screen flex justify-center">
+      <DynamicModal
+        :showModal="showModal"
+        @update:showModal="(value) => (showModal = value)"
+      >
+        <EmailForm
+          :fields="formFields"
+          :closeModal="() => (showModal = false)"
+          @email-sent="handleEmailSent"
+        />
+      </DynamicModal>
+    </div>
+    <!-- Product Cards -->
+    <div class="flex justify-center">
+      <div class="flex flex-wrap justify-center items-center -m-10 mb-28">
+        <div v-for="service in includedServices" :key="service.service_id" class="m-4">
+          <ProductCard
+            :cardIcon="`../../public/productCardIcons/${service.category}.svg`"
+            :cardHeader="service.name"
+            :cardContent="service.description"
+            @read-more="onReadMore"
+            @book-appointment="onBookAppointment"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="mx-auto px-4 py-10">
+      <div class="mb-8 text-center">
+        <h1 class="text-4xl font-bold mb-4">Alle tjenester</h1>
+        <p class="text-lg">
+          Her er alle våre tjenester, søk i tjenestene og bestill ønsket tjeneste
+        </p>
+      </div>
+    </div>
+    <ProductsTable :headers="productHeaders" :data="excludedServices" />
   </main>
 </template>

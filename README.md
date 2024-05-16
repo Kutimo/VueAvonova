@@ -59,7 +59,8 @@ npm run test:unit
 
 Login is done with supabase where the user is already authenticated beforehand just like it would be in the case of a Avonova customer, and is then redirected to the home page if the user session is validated from supabase.
 There are 5 customer email accounts in the DB;
-info@greenenergy.as
+
+
 sales@techsolutions.as
 support@healthcorp.as
 info@ecobuild.as

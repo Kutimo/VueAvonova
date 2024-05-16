@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center bg-gray-600 bg-opacity-50 p-4">
+  <div class="flex items-center justify-center">
     <div
       class="rounded-lg relative w-full max-w-lg overflow-hidden bg-white p-80 shadow-lg"
     >
@@ -46,6 +46,12 @@
             v-model="formData[field.name]"
             class="w-full"
           />
+
+          <DropdownWithCheckboxes
+            v-else-if="field.component === 'MultiCheckbox'"
+            :options="field.props?.options"
+            v-model="formData[field.name]"
+          />
         </div>
         <div class="flex justify-end gap-10 pt-10">
           <ButtonSecondary buttonText="Avbryt" @click="closeModal" />
@@ -60,9 +66,11 @@
 import { ref, watch } from 'vue'
 import { useToast } from 'vue-toastification'
 import type { Ref, PropType } from 'vue'
+
 import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
 import ButtonSecondary from '@/components/buttons/ButtonSecondary.vue'
 import VueDatePicker from '@vuepic/vue-datepicker'
+import DropdownWithCheckboxes from '@/components/input/MultiCheckboxSelect.vue'
 import '@vuepic/vue-datepicker/dist/main.css'
 
 const emailSecureKey: string = import.meta.env.VITE_EMAIL_SECURE_KEY || ''
@@ -83,13 +91,14 @@ export default {
     ButtonPrimary,
     ButtonSecondary,
     VueDatePicker,
+    DropdownWithCheckboxes,
   },
   props: {
     fields: {
       type: Array as PropType<Field[]>,
       required: true,
     },
-    closeModal: Function as PropType<() => void>, // Legger til closeModal prop
+    closeModal: Function as PropType<() => void>,
   },
   emits: ['email-sent'],
   setup(props, { emit }) {
