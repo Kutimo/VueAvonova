@@ -15,7 +15,7 @@ type User = {
 
 export default {
   name: 'ViewProfile',
-  components: { ButtonPrimary, ButtonSecondary },
+  components: { ButtonPrimary },
 
   setup() {
     const firstName = ref<string>('')
