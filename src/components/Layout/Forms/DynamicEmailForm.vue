@@ -63,9 +63,12 @@ export default {
     const handleSelectedValues = (selectedValues: Employee[], fieldName: string) => {
       console.log('Selected Values:', selectedValues) // Debugging line
       selectedEmployees.value = selectedValues
-      formData.value[fieldName] = selectedValues.map(
-        (employee) => `Navn: ${employee.first_name} ${employee.last_name}, Nummer: ${employee.employee_id}`
-      ).join(' , ')
+      formData.value[fieldName] = selectedValues
+        .map(
+          (employee) =>
+            `Navn: ${employee.first_name} ${employee.last_name}, Nummer: ${employee.employee_id}`,
+        )
+        .join(' , ')
     }
 
     const toast = useToast()
@@ -102,7 +105,9 @@ export default {
           throw new Error('Failed to send order email')
         }
 
-        const confirmationEmailResponse = await (window as any).Email.send(confirmationEmail)
+        const confirmationEmailResponse = await (window as any).Email.send(
+          confirmationEmail,
+        )
         if (confirmationEmailResponse !== 'OK') {
           throw new Error('Failed to send confirmation email')
         }
@@ -144,24 +149,51 @@ export default {
           <label :for="field.name" class="mb-2 font-body text-lg font-normal">
             {{ field.label }}
           </label>
-          <input v-if="!field.component" v-bind="field.props" v-model="formData[field.name]"
-            class="rounded-lg h-[50px] w-full border border-gray-300 px-4 text-base hover:border-2 hover:border-green-1100 focus-visible:border-2 focus-visible:outline-none active:border-2 active:border-green-1100" />
-          <select v-else-if="field.component === 'select'" v-model="formData[field.name]"
-            class="rounded-lg h-[50px] w-full border border-gray-300 text-base">
-            <option v-for="option in field.props?.options || []" :key="option" :value="option">
+          <input
+            v-if="!field.component"
+            v-bind="field.props"
+            v-model="formData[field.name]"
+            class="rounded-lg h-[50px] w-full border border-gray-300 px-4 text-base hover:border-2 hover:border-green-1100 focus-visible:border-2 focus-visible:outline-none active:border-2 active:border-green-1100"
+          />
+          <select
+            v-else-if="field.component === 'select'"
+            v-model="formData[field.name]"
+            class="rounded-lg h-[50px] w-full border border-gray-300 text-base"
+          >
+            <option
+              v-for="option in field.props?.options || []"
+              :key="option"
+              :value="option"
+            >
               {{ option }}
             </option>
           </select>
-          <textarea v-else-if="field.component === 'textarea'" v-model="formData[field.name]"
-            class="rounded-lg h-[100px] w-full border border-gray-300 px-4 text-base">
+          <textarea
+            v-else-if="field.component === 'textarea'"
+            v-model="formData[field.name]"
+            class="rounded-lg h-[100px] w-full border border-gray-300 px-4 text-base"
+          >
           </textarea>
-          <input v-else-if="field.component === 'checkbox'" type="checkbox" v-model="formData[field.name]"
-            class="h-5 w-5" />
-          <VueDatePicker v-else-if="field.component === 'datepicker'" v-model="formData[field.name]" class="w-full" />
+          <input
+            v-else-if="field.component === 'checkbox'"
+            type="checkbox"
+            v-model="formData[field.name]"
+            class="h-5 w-5"
+          />
+          <VueDatePicker
+            v-else-if="field.component === 'datepicker'"
+            v-model="formData[field.name]"
+            class="w-full"
+          />
 
-          <DropdownWithCheckboxes v-else-if="field.component === 'MultiCheckbox'" :options="field.props?.options"
+          <DropdownWithCheckboxes
+            v-else-if="field.component === 'MultiCheckbox'"
+            :options="field.props?.options"
             :selectedValues="selectedEmployees"
-            @update:selectedValues="(selectedValues) => handleSelectedValues(selectedValues, field.name)" />
+            @update:selectedValues="
+              (selectedValues) => handleSelectedValues(selectedValues, field.name)
+            "
+          />
         </div>
         <div class="flex justify-end gap-10 pt-10">
           <ButtonSecondary buttonText="Avbryt" @click="closeModal" />
