@@ -159,7 +159,7 @@ export default {
 
 <template>
   <main class="m-10 h-fit bg-neutral-100">
-    <div class="px-4 py-10 mx-auto mt-40 mb-20">
+    <div class="px-4 py-10 mx-auto mb-20">
       <div class="mb-8">
         <h1 class="mb-4 text-4xl font-bold">Våre Tjenester</h1>
         <p class="text-lg text-center">
