@@ -21,13 +21,23 @@ export default {
   setup() {
     const toast = useToast()
     const showModal = ref(false)
+    const selectedCard = ref<{
+      cardIcon: string
+      cardHeader: string
+      cardContent: string
+    } | null>(null) // Legg til type
+    const isEmailFormVisible = ref(false)
+    const selectedCardHeader = ref('')
+
     function handleEmailSent() {
       showModal.value = false
     }
+
     const services = ref<Array<Service>>([])
     const includedServices = ref<Array<Service>>([])
     const excludedServices = ref<Array<Service>>([])
     const employees = ref<Array<Employee>>([])
+
     async function fetchServices() {
       try {
         const { data, error } = await supabase.from('services').select('*')
@@ -43,6 +53,7 @@ export default {
         console.error(`feil:, ${error.message}`)
       }
     }
+
     async function fetchEmployees() {
       try {
         const { data, error } = await supabase
@@ -98,12 +109,7 @@ export default {
         name: 'preferred_contact',
         label: 'Foretrukket kontaktmetode:',
         component: 'select',
-        props: { options: ['Epost', 'Telefon', 'På døra'] },
-      },
-      {
-        name: 'newsletter',
-        label: 'Meld deg på nyhetsbrev:',
-        component: 'checkbox',
+        props: { options: ['Epost', 'Telefon'] },
       },
       {
         name: 'ansatte',
@@ -117,26 +123,29 @@ export default {
     onMounted(() => {
       fetchServices(), fetchEmployees()
     })
-
-    const onReadMore = () => {
-      console.log('Read more action')
+    const closeModal = () => {
+      showModal.value = false
     }
 
-    const onBookAppointment = () => {
+    // Function to handle "Book Appointment" click
+    const onBookAppointment = (cardHeader: string) => {
+      selectedCardHeader.value = cardHeader
+      isEmailFormVisible.value = true
       showModal.value = true
     }
 
     return {
-      productHeaders,
       showModal,
+      selectedCard,
+      isEmailFormVisible,
+      selectedCardHeader,
+      closeModal,
+      onBookAppointment,
       formFields,
-      handleEmailSent,
       includedServices,
       excludedServices,
-      employees,
-      toast,
-      onReadMore,
-      onBookAppointment,
+      handleEmailSent,
+      productHeaders,
     }
   },
 }
@@ -160,10 +169,13 @@ export default {
         @update:showModal="(value) => (showModal = value)"
       >
         <EmailForm
+          v-if="isEmailFormVisible"
           :fields="formFields"
+          :cardHeader="selectedCardHeader"
           :closeModal="() => (showModal = false)"
           @email-sent="handleEmailSent"
         />
+        <!-- Info card -->
       </DynamicModal>
     </div>
     <!-- Product Cards -->
@@ -176,7 +188,6 @@ export default {
             :cardIcon="`../../productCardIcons/${service.category}.svg`"
             :cardHeader="service.name"
             :cardContent="service.description"
-            @read-more="onReadMore"
             @book-appointment="onBookAppointment"
           />
         </div>

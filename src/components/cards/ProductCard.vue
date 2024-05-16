@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue'
-import ButtonPrimary from '@/components/buttons/ButtonPrimary.vue'
 import ButtonSecondary from '../buttons/ButtonSecondary.vue'
 
 const props = defineProps({
@@ -38,7 +37,6 @@ const onBookAppointment = () => {
         </div>
       </div>
       <div class="flex justify-start w-full gap-10 p-10">
-        <ButtonPrimary buttonText="Les mer" @click="onReadMore" />
         <ButtonSecondary buttonText="Bestill" @click="onBookAppointment" />
       </div>
     </div>

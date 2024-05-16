@@ -76,7 +76,7 @@ export default {
     </button>
     <div
       v-if="showDropdown"
-      class="absolute bg-neutral-100 border z-20 w-[250px] p-8 rounded mt-1"
+      class="absolute bg-neutral-100 border z-20 w-[250px] p-8 rounded mt-1 max-h-[200px] overflow-y-auto"
     >
       <div v-for="option in options" :key="option.employee_id" class="p-2">
         <label class="flex items-center space-x-3">

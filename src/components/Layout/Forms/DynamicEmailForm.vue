@@ -1,3 +1,4 @@
+// EmailForm.vue
 <script lang="ts">
 import { ref, watch } from 'vue'
 import { useToast } from 'vue-toastification'
@@ -41,6 +42,10 @@ export default {
       required: true,
     },
     closeModal: Function as PropType<() => void>,
+    cardHeader: {
+      type: String,
+      required: true,
+    },
   },
   emits: ['email-sent'],
   setup(props, { emit }) {
@@ -61,7 +66,6 @@ export default {
     )
 
     const handleSelectedValues = (selectedValues: Employee[], fieldName: string) => {
-      console.log('Selected Values:', selectedValues) // Debugging line
       selectedEmployees.value = selectedValues
       formData.value[fieldName] = selectedValues
         .map(
@@ -83,7 +87,7 @@ export default {
 
     const sendEmail = async () => {
       try {
-        let emailBody = ''
+        let emailBody = `Produkt: ${props.cardHeader}<br>`
         for (const key in formData.value) {
           emailBody += `${key}: ${formData.value[key]}<br>`
         }
@@ -145,6 +149,10 @@ export default {
       <h2 class="mb-6 text-2xl font-bold">Legg inn din bestilling</h2>
       <p>Fyll ut feltene og klikk bestill</p>
       <form @submit.prevent="sendEmail" class="space-y-4">
+        <div>
+          <label class="mb-2 font-body text-lg font-normal"> Bestilling for: </label>
+          <p class="font-body text-lg font-bold">{{ cardHeader }}</p>
+        </div>
         <div v-for="field in fields" :key="field.name" class="flex flex-col">
           <label :for="field.name" class="mb-2 font-body text-lg font-normal">
             {{ field.label }}
@@ -174,12 +182,6 @@ export default {
             class="rounded-lg h-[100px] w-full border border-gray-300 px-4 text-base"
           >
           </textarea>
-          <input
-            v-else-if="field.component === 'checkbox'"
-            type="checkbox"
-            v-model="formData[field.name]"
-            class="h-5 w-5"
-          />
           <VueDatePicker
             v-else-if="field.component === 'datepicker'"
             v-model="formData[field.name]"
