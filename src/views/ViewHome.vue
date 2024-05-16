@@ -137,23 +137,12 @@ export default {
   <main class="m-10 h-fit">
     <!-- Modal -->
     <ButtonPrimaryVue buttonText="Bestill nå!" @click="showModal = true" />
-    <DynamicModal
-      :showModal="showModal"
-      @update:showModal="(value) => (showModal = value)"
-    >
-      <EmailForm
-        :fields="formFields"
-        :closeModal="() => (showModal = false)"
-        @email-sent="handleEmailSent"
-      />
+    <DynamicModal :showModal="showModal" @update:showModal="(value) => (showModal = value)">
+      <EmailForm :fields="formFields" :closeModal="() => (showModal = false)" @email-sent="handleEmailSent" />
     </DynamicModal>
-    <ProductCard
-      v-for="service in includedServices"
-      :key="service.service_id"
-      :cardIcon="`../../productCardIcons/${service.category}.svg`"
-      :cardHeader="service.name"
-      :cardContent="service.description"
-    />
+    <ProductCard v-for="service in includedServices" :key="service.service_id"
+      :cardIcon="`../../productCardIcons/${service.category}.svg`" :cardHeader="service.name"
+      :cardContent="service.description" />
     <ProductsTable :headers="productHeaders" :data="excludedServices" />
   </main>
 </template>
